@@ -1,0 +1,128 @@
+{% extends 'plantilla_base_flex.html' %}
+{% load static %} 
+{% block content %}
+
+<form action="{% url 'administrador' %}" method="POST"> 
+{% csrf_token %}
+<section class="administrador"> <!-- grid principal -->
+
+	<div class = "administrador-titulo">
+		<div>Opciones del administrador del sistema</div> 
+	</div>
+
+	<div class="administrador-titulo-opciones">
+		Opciones de Horario:		
+	</div>
+
+	<div class="grid-cabeceras"> <!-- subgrid -->
+		<div class="col1">
+		   <p>Código</p>
+		</div>
+		
+		<div class="col2">
+		   <p>Decripción</p>
+		</div>
+		
+		<div class="col3">
+		   <p>Muestra al usuario</p>
+		</div>
+	
+		<div class="col4">
+		   <p>Vigente hoy</p>
+		</div>
+
+	</div>
+
+ 	{% for hrs in horas %}
+ 		<div class="celdas-sub-grid">
+ 			<div class="col-grid1">
+	   			{{hrs.codigo}} 
+	   	    </div>
+
+			<div class="col-grid2">
+				{{hrs.descrip}}
+			</div>
+
+			<div class="col-grid3">
+				{% if hrs.switch1 == 0 %}
+					<input type="checkbox"  name="{{hrs.codigo}}"  value='{{ 0 }}'>
+				{% else %}
+					<input type="checkbox"  name="{{hrs.codigo}}"  value='{{ 1 }}' checked>	
+				{% endif %}
+			</div>
+
+			<div class="col-grid4">
+				{% if hrs.switch2 == 0 %}
+					<input type="checkbox" name="{{hrs.corr}}"  value='{{ 0 }}'>
+				{% else %}
+					<input type="checkbox" name="{{hrs.corr}}"  value='{{ 1 }}' checked>	
+				{% endif %}
+			</div>
+
+		</div>	
+	{% endfor %} 
+
+	
+	<!-- SEGUNDA GRID (CTAS) -->
+	<br>
+	<div class="administrador-titulo-opciones">
+		Opciones de cuentas bancarias para depósito por ventas:		
+	</div>
+
+	<div class="grid-cabeceras"> <!-- subgrid -->
+		<div class="col1">
+		   <p>Código</p>
+		</div>
+		
+		<div class="col2">
+		   <p>Cuenta</p>
+		</div>
+		
+		<div class="col3">
+		   <p>Cuenta definida</p>
+		</div>
+	
+		<div class="col4">
+		   <p>Vigente hoy</p>
+		</div>
+	</div>	
+
+	<!-- CUENTAS BANCARIAS -->
+ 	{% for ct in cta %}
+ 		<div class="celdas-sub-grid-cuentas">
+ 			<div class="col-grid1-cuentas">
+	   			{{ct.codigo}} 
+	   	    </div>
+
+			<div class="col-grid2-cuentas">
+				{{ct.descrip}}
+			</div>
+
+			<div class="col-grid3-cuentas">
+				<!-- definidos check1 -->
+				{% if ct.switch1 == 0 %}
+					<input type="checkbox"  name="{{ct.codigo}}"  value='{{ 0 }}'>
+				{% else %}
+					<input type="checkbox"  name="{{ct.codigo}}"  value='{{ 1 }}' checked>	
+				{% endif %}
+			</div>
+
+			<div class="col-grid4-cuentas">
+				<!-- los que verá el usuario check2 -->
+				{% if ct.switch2 == 0 %}
+					<input type="checkbox" name="{{ct.corr}}"  value="{{ 0 }}">
+				{% else %}
+					<input type="checkbox" name="{{ct.corr}}"  value="{{ 1 }}" checked>	
+				{% endif %}
+			</div>
+
+		</div>	
+	{% endfor %} 
+
+	<div class="boton-graba">
+  		<input type="submit" value="Graba cambios"  style="height:60px;"  class="btn btn-primary login-btn btn-block"></input>  
+	</div>
+
+</section> 
+</form>
+{% endblock %}  

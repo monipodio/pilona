@@ -1,0 +1,147 @@
+{% extends 'plantilla_base_flex.html' %}
+{% load static %}
+{% block content %}
+
+<form method = "POST" action="" onsubmit="return val_eligio()"> 
+  {% csrf_token %}
+
+  <!-- IMAGENES DE TODAS LAS PROMOS -->
+  <div  class = "personas">  
+   <div class = "capa-titulo">    
+       <!-- <p class="page-description text-center">Hay disponibilidad de entrega a las: </p> -->
+
+      <!-- <img src="/static/img/reloj.png" id="reloj" width="28"> -->             
+      <span id="disponibilidad">Disponibilidad</span>
+      <!-- <img src="/static/img/reloj.png" id="reloj" width="28"> -->
+
+       <p class="disponibles">{{string_horas}}</p>
+   </div>
+
+   <div class="contenedor">  
+          <article class="persona__columna">
+              <a title="promo de 20" href="#">
+                <img src="/static/img/prom20.jpg" />
+              </a>
+          </article>
+
+          <article class="persona__columna">
+              <a title="promo de 30" href="#">
+                <img src="/static/img/prom30.jpg" />
+              </a>
+          </article>
+
+          <article class="persona__columna">
+              <a title="promo de 30" href="#">
+                <img src="/static/img/prom40.jpg" />
+              </a>
+          </article>
+
+          <article class="persona__columna">
+              <a title="promo de 40" href="{% url 'pedidos_sc' 50 %}">
+                <img src="/static/img/prom50.jpg" />
+              </a>
+          </article>
+
+          <article class="persona__columna">
+              <a title="promo de 60" href="{% url 'pedidos_sc' 60 %}">
+                <img src="/static/img/prom60.jpg" />
+              </a>
+          </article>
+          
+          <article class="persona__columna">
+              <a title="promo de 70" href="{% url 'pedidos_sc' 70 %}">
+                <img src="/static/img/prom70.jpg" />
+              </a>
+          </article>
+
+          <article class="persona__columna">
+              <a title="promo de 99" href="{% url 'pedidos_sc' 99 %}">
+                <img src="/static/img/gold.jpg" />
+              </a>
+          </article>
+    
+  </div>
+
+
+  <div class="contenedor-seleccion">
+      <div class="combo-promos">
+          <p>Seleccione promo (una o más)</p>
+          <select name="promos" class="items-combo-promos" id="id_promo">
+          {% for c in prs %}
+              <option value ="{{c.descrip}}">{{c.descrip}}</option>
+          {% endfor %}      
+          </select>
+
+          <br>
+
+    </div>
+
+    <div class="promos-seleccionadas">
+        <div class ="contenedor-subgrid">
+            <div class="primera-celda">
+              <img src="/static/img/icon-carrito.png" id="carrito-icon-menu" width="28">              
+              <span id="cantidad">Seleccionadas</span>
+              <!-- <p>Promos seleccionadas</p>  -->
+            </div>
+
+            <div>
+              <input type="text" name="caja1" size="25" id="caja1" readonly> 
+            </div>   
+
+            <!--
+            SE AGREGA AL FINAL DE LA CLASE DEL BOTON (define tamaño)
+            btn-xs : Define un tamaño extra pequeño.
+            btn-sm : Define un tamaño de botón pequeño.
+            btn-lg : Define un tamaño de botón grande.
+            btn-block : Define un botón que se expande a todo el ancho del contenedor.
+            -->
+            <div class="boton-elimina">
+              <button title="Elimina selección" type="submit" id="elimina1" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+                <!-- <input type="text" name="fname" id="codigo1" class="codigo1" readonly> -->
+            </div>
+
+
+            <div class = "alto-combo">
+              <input type="text" name="caja2" size="25" id="caja2"  readonly> 
+            </div>
+
+            <div >
+              <button title="Elimina selección" type="submit" id="elimina2" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+            </div>
+
+            <!-- Las cajas de la 3 y 4 han sido momentaneamente ocultadas (type="hidden")-->
+            <!-- Para revertir esto, en la caja se cambia el type="hidden" por el type="text", -->
+            <!-- y en el button se descomentan -->
+            <div class = "alto-combo">
+              <input type="hidden" name="caja3" size="15" id="caja3" readonly> 
+            </div>
+
+            <!--
+            <div class="provisorio" type="hidden">
+              <button title="Elimina selección" id="elimina3" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+            </div>
+            -->
+            
+            <div class = "alto-combo">
+              <input type="hidden" name="caja4" size="15" id="caja4" readonly> 
+            </div>
+
+            <!--
+            <div class="provisorio" type="hidden">
+              <button type="hidden" title="Elimina selección" id="elimina4" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+            </div>
+            -->
+
+        </div>
+    </div>  
+
+    <!-- BOTON CONTINUAR  -->
+    <div class="cont-boton-seguir">
+        <button  class="btn btn-success" type="submit">
+             Cambios, adicionales y valorizacion
+        </button>
+    </div>
+
+  </div>
+</form> 
+{% endblock %}          

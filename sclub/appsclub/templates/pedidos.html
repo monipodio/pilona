@@ -1,0 +1,62 @@
+{% extends 'plantilla_base_flex.html' %}
+{% load static %} 
+{% block content %}
+ 
+
+<section class="personas"> 
+		<article class = "capa-titulo">
+			<div class="grid-item1"><p>Solo reparto gratis dentro de Coelemu</p> 
+		</article>
+
+		<!-- IDENTIFICACION DE LA PROMO -->
+		{%if promo == 99 %}
+		   	<td  width="40" style="font-size:30px">
+		 		Promo Gold. El valor final incluirá el monto de la bolsa ecológica
+		 	</td>	 
+   		   {%else%}
+   		   	<td  width="40" style="font-size:10px">
+		   		Promo de {{ promo }} piezas. El valor final incluirá el monto de la bolsa ecológica
+		   	</td>	
+		{% endif %}
+
+	
+		<!-- IMAGEN DE LA PROMO -->
+		<article class="promo-pedida">
+			{% if promo == 99 %}
+            	<a>
+                	<img src="{% static 'img/gold.jpg' %}">
+                	{{pr}}
+            	</a>
+			{% else %}
+            	
+            	<a>
+                	<img src="{% static 'img/'%}{{ variable2 }}">
+            	</a>
+
+            {% endif %}	
+		</article>
+
+		<!-- PANTALLA DE AUTENTICACION-->
+		<section class ="form-register" id="form-register">
+			<form class="login100-form validate-form" action="{% url 'registrarse' promo %}" method="post">{% csrf_token %}
+				<h4>Formulario de registro</h4>
+				<div>
+				<input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required="required" onblur="return mayusculas()">
+				</div>
+	
+				<div>
+				<input class="controls" type="text" name="direccion" id="direccion" placeholder="Dirección para la entrega" required="required">
+				</div>
+ 
+				<div>
+					<input class="controls" type="text" name="celu" id="celu" onkeypress="return valideKey(event);" required="required" placeholder="Celular, Ejemplo: 977211470" onblur="return val_longitud();"/> 
+				</div>
+            	
+            	<div>
+            		<input type="submit" value="Aceptar" class="btn btn-primary login-btn btn-block"></input>        
+				</div>
+			</form>
+		</section>
+</section> 
+
+{% endblock %}  
