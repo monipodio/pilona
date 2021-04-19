@@ -7,7 +7,6 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import Permission
 from datetime import datetime
 
-
 class Param(models.Model):
 	tipo = models.CharField(max_length=5,blank=True)
 	codigo = models.CharField(max_length=5,blank=True)
@@ -108,3 +107,9 @@ class Adicionales(models.Model):
 	class Meta:
 		ordering = ['descrip']
 
+class Otrospermisos(models.Model):
+    rut = models.CharField(max_length=10,blank=True)
+    class Meta:
+        permissions = (
+        	('administrador','administrador'),
+            )

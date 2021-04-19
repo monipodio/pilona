@@ -6,18 +6,25 @@
   {% csrf_token %}
 
   <!-- IMAGENES DE TODAS LAS PROMOS -->
-  <div  class = "personas">  
-   <div class = "capa-titulo">    
-       <!-- <p class="page-description text-center">Hay disponibilidad de entrega a las: </p> -->
+<div  class = "personas"> 
+    <div class = "capa-titulo">    
+      
+      <div id="fantasma"></div> 
 
-      <!-- <img src="/static/img/reloj.png" id="reloj" width="28"> -->             
-      <span id="disponibilidad">Disponibilidad</span>
-      <!-- <img src="/static/img/reloj.png" id="reloj" width="28"> -->
+      <div id="disponibilidad">
+        <spam>Disponibilidad</spam>
+      </div>
 
-       <p class="disponibles">{{string_horas}}</p>
-   </div>
+      <div id="cerrar">
+        <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
+      </div>
 
-   <div class="contenedor">  
+      <div id="horas">
+         <p>{{string_horas}}</p>
+      </div>
+    </div>
+
+    <div class="contenedor">  
           <article class="persona__columna">
               <a title="promo de 20" href="#">
                 <img src="/static/img/prom20.jpg" />
@@ -59,21 +66,16 @@
                 <img src="/static/img/gold.jpg" />
               </a>
           </article>
-    
-  </div>
+          <div class="contenedor-seleccion">
 
-
-  <div class="contenedor-seleccion">
-      <div class="combo-promos">
+          <div class="combo-promos">
           <p>Seleccione promo (una o más)</p>
           <select name="promos" class="items-combo-promos" id="id_promo">
           {% for c in prs %}
               <option value ="{{c.descrip}}">{{c.descrip}}</option>
           {% endfor %}      
           </select>
-
           <br>
-
     </div>
 
     <div class="promos-seleccionadas">
@@ -85,7 +87,7 @@
             </div>
 
             <div>
-              <input type="text" name="caja1" size="25" id="caja1" readonly> 
+              <input type="text" name="caja1" size="20" id="caja1" readonly> 
             </div>   
 
             <!--
@@ -102,7 +104,7 @@
 
 
             <div class = "alto-combo">
-              <input type="text" name="caja2" size="25" id="caja2"  readonly> 
+              <input type="text" name="caja2" size="20" id="caja2"  readonly> 
             </div>
 
             <div >
@@ -141,7 +143,6 @@
              Cambios, adicionales y valorizacion
         </button>
     </div>
-
-  </div>
+ </div>
 </form> 
 {% endblock %}          

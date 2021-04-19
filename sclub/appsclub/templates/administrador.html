@@ -1,8 +1,8 @@
 {% extends 'plantilla_base_flex.html' %}
 {% load static %} 
-{% block content %}
+{% block content %} 
 
-<form action="{% url 'administrador' %}" method="POST"> 
+<form method="POST" action=""> 
 {% csrf_token %}
 <section class="administrador"> <!-- grid principal -->
 
@@ -10,9 +10,11 @@
 		<div>Opciones del administrador del sistema</div> 
 	</div>
 
-	<div class="administrador-titulo-opciones">
-		Opciones de Horario:		
-	</div>
+    <div class="administrador-titulo-opciones">
+    	<p>Opciones de Horario:</p>
+        <u><a href="{% url 'log_out' %}">Inicializa dia</a></u>
+      </div>
+	
 
 	<div class="grid-cabeceras"> <!-- subgrid -->
 		<div class="col1">
@@ -24,7 +26,7 @@
 		</div>
 		
 		<div class="col3">
-		   <p>Muestra al usuario</p>
+		   <p>Definidos para uso</p>
 		</div>
 	
 		<div class="col4">

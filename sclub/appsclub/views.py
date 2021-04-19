@@ -8,32 +8,27 @@ from datetime import datetime,timedelta,date
 from django.db import connection
 from django.db.models import Q
 
-from sclub.appsclub.models import Param, Diario, Pedidos, Promos, Envolturas, Rellenos, Adicionales
+from sclub.appsclub.models import Param, Diario, Pedidos,Promos, Envolturas
+from sclub.appsclub.models import Rellenos, Adicionales, Otrospermisos
+
 #from misitio.ai.forms import cambios
 
-
-# from gmiproj.gmiapp.forms import CuidadoresForm # POR CADA MODELO una línea de estas
-
 def login_ini(request):
-    #return HttpResponse("!! Sistema momentaneamente en etapa de pruebas y avance de desarrollo!!")
     variable1 = 'Pantalla de Acceso al Sistema'
     error_log = 'ok'
-    username = request.POST.get('username')
-    password = request.POST.get('password') # valor del template
-    user = auth.authenticate(username=username, password=password)
     if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password') # valor del template
+        user = auth.authenticate(username=username, password=password)
         if user is not None and user.is_active:
-            auth.login(request, user)
-            request.session['username_x'] = username # variable gobal
-            request.session['id_x'] = user.id   # variable gobal
+            auth.login(request,user)
+            request.session['username_x'] = username # inicializa variable gobal
+            request.session['id_x'] = user.id   # inicializa variable gobal
             return HttpResponseRedirect("principal")
-        
         error_log = "error"
-
-    context = {'user':user,"variable1":variable1,"error_log":error_log,}
-
+    context = {"variable1":variable1,"error_log":error_log,}
     return render(request,'login_ini.html',context)
-    #return render(request,'principal_flex2.html',context)
+
 
 def log_out(request):
 	logout(request)
@@ -479,6 +474,7 @@ def registrarse(request,pr):
     return render(request,'cambios.html',context) 
 
 
+@login_required(login_url='login_ini')
 def administrador(request):
     horas = Param.objects.filter(tipo="HORA").exclude(descrip='hora').order_by('codigo')
     cta  =  Param.objects.filter(tipo="CTA").order_by('codigo')    

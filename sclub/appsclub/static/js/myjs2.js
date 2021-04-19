@@ -1055,22 +1055,6 @@ $(document).ready(function () {
 });
 
 
-/* valida si seleccionó una o mas promos*/
-function val_eligio() {
-	var caja1 = document.getElementById("caja1").value;
-	if(caja1 === "") {
-		Swal.fire({
-		  icon: 'error',
-		  title: 'Debes seleccionar una promoción!',
-		  footer: '<a href>Para disfrutar los sushis mas deliciosos del mundo</a>',
-		  allowOutsideClick:false,
-		  confirmButtonText: "Aceptar",
-		  width: '700px'
-		})
-		return false;
-	}	
-}
-
 
 /* ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS */
 /* Puebla ultimas cajas de sub-totales */
@@ -1460,6 +1444,23 @@ $(document).ready(function () {
 });
 
 
+/* valida si seleccionó una o mas promos*/
+function val_eligio() {
+	var caja1 = document.getElementById("caja1").value;
+	if(caja1 === "") {
+		Swal.fire({
+		  icon: 'error',
+		  title: 'Debes seleccionar una promoción!',
+		  footer: '<a href>Para disfrutar los sushis mas deliciosos del mundo</a>',
+		  allowOutsideClick:false,
+		  confirmButtonText: "Aceptar",
+		  width: '700px'
+		})
+		return false;
+	}	
+}
+
+
 /* Va totalizando, segun cambios y/o adicionales  < val_eligio() >*/
 function valor_totalizando(inicial,total) {
 	Swal.fire({
@@ -1471,4 +1472,16 @@ function valor_totalizando(inicial,total) {
 	/* confirmButtonText: "Seguir", */
 	width: '700px'
 	})
+}
+
+function seguir_comoadmin() {
+	Swal.fire({
+	  icon: 'error',
+	  title: 'Debes seleccionar una promoción!',
+	  footer: '<a href>Para disfrutar los sushis mas deliciosos del mundo</a>',
+	  allowOutsideClick:false,
+	  confirmButtonText: "Aceptar",
+	  width: '700px'
+	})
+	return false;
 }

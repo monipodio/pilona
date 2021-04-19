@@ -21,4 +21,6 @@ class AdminEnvolturas(admin.ModelAdmin):
 	search_fields = ['envolt']
 
 
+admin.site.register(Pedidos,AdminPedidos)
 admin.site.register(Promos,AdminPromos)
+admin.site.register(Envolturas,AdminEnvolturas)

@@ -58,7 +58,7 @@ p {
 }
 
 .titulo {
-  font-size:3rem;
+  font-size:2.5rem;
 }
 
 /*icono rayitas*/
@@ -106,7 +106,7 @@ p {
   padding: 4rem 0;
   text-align: center;
   margin-top: 6rem;
-  grid-auto-rows: minmax(100px, auto);  
+  /*grid-auto-rows: minmax(100px, auto);*/  
 }
 
 .footer .footer-texto1 {
@@ -133,7 +133,7 @@ p {
 
 
 /* 550 */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 550px) {
     .menu-icon{
         display: block;
         cursor: pointer;
@@ -173,23 +173,52 @@ p {
          margin: auto;  /* alinea y centra respecto al HTML*/
          margin-top: 0.5rem;  /* posiciona verticalmente el titulo respecto a la pantalla */      
       }
-                /* "Despacho grátis a domicílio solo dentro de Coelemu" */
+
       .capa-titulo {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;    /* a partir de la columna 1 toma 3 columnas*/
           background: #BAFEC1; /* verde claro */
-          height: 50px;        /* alto de la franja que lleva el titulo verde */
-          font-size: 2rem;     
-          margin-top: 10rem;  /* posiciona verticalmente el titulo respecto a la pantalla */
-          padding: 19px;      /* centra el texto verticalmente respecto al HTML*/ 
+          height: 80px;        /* alto de la franja que lleva el titulo verde */
+          margin-top: 13rem;  /* posiciona verticalmente el titulo respecto a la pantalla */
+          /*padding: 20px;      /* centra el texto verticalmente respecto al HTML*/ 
           color: blue;
-          font-size: 2rem; 
+          font-size: 1.5rem; 
           text-align: center;
       }
-  
+
+      .capa-titulo #fantasma {
+          padding: 0rem;
+          width:100%;
+         /*background-color: red;*/
+
+      } 
+
+       .capa-titulo #disponibilidad {
+          text-align:right;
+          font-size: 1.8rem;
+          width:100%;
+          /*background-color: blue;*/
+      }
+
+      .capa-titulo #cerrar {
+          font-size: 15px; 
+          text-align: right;
+          width:100%;
+          /*background-color: orange; */
+      }
+
+      .capa-titulo #horas {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        text-align: center;
+        width:100%;
+        /*background-color:green;*/       
+      }
+
       /* marco que contiene la grid (imagenes) */
       .contenedor {
-          margin-top: 1rem;
+        margin-top: 1rem;
       }
-    
         
       /* PRINCIPAL - promos */
       .personas .contenedor {
@@ -380,11 +409,12 @@ p {
     }
      
     .capa-titulo {
-      grid-column: 1 / span 3;    /* a partir de la columna1 toma 3 columnas*/
-      /*background: #BAFEC1; /* verde claro  /*rojo*/
-      height: 60px; /* alto de la franja que lleva el titulo verde */
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;    /* a partir de la columna 1 toma 3 columnas*/
+      background: #BAFEC1; /* verde claro */
+      height: 80px; /* alto de la franja que lleva el titulo verde */
       border-radius: 5px; 
-      color: blue;
+      color: blue;   /* color del texto */
       font-family: 'Poppins', sans-serif;
       font-size: 2rem; 
       text-align: center;
@@ -392,6 +422,16 @@ p {
       padding: 18px;  /* centra el texto verticalmente */
     }
 
+    .capa-titulo #cerrar {
+      font-size: 17px; 
+    }
+
+    .capa-titulo #horas {
+      grid-column-start: 1;
+      grid-column-end: 4;
+      text-align: center;
+      background-color: #EAE9E4;
+    }
 
     /* contenedor de GRID GRANDE */
     .valorizacion {
@@ -1102,10 +1142,20 @@ p {
 
 /* Las opciones son las siguientes:; */
 .administrador-titulo-opciones {
-  /* background: #F46C8D;  */
-  padding: 1px;  /* da margen superior e inferior al texto */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  /*background: #F46C8D;  /* rosado */
+  padding:0.5px;  /* da margen superior e inferior al texto */
   font-weight: bold;  
 }
+
+#inicializa-dia {
+  font-size: 1.4rem; 
+  color:#7A7FF3;  
+}
+
+
 
 /* SUB GRID cabeceras de la grid */
 .grid-cabeceras {
