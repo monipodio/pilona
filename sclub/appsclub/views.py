@@ -37,6 +37,7 @@ def log_out(request):
 
 
 def principal(request):
+    #return HttpResponse(str(request.user.is_staff))
     variable1 = 'PAGINA PRINCIPAL'
     logo2 = "/static/img/Logo_sc.jpg"
     #logo = "/staticfiles/img/Logo_AsistenciaIntegral.jpg" # for PythonAnyWhere
@@ -78,8 +79,8 @@ def principal(request):
         envolt1,envolt2,envolt3,envolt4,envolt5,envolt6,envolt7 = "","","","","","",""
         envolt1_2,envolt2_2,envolt3_2,envolt4_2,envolt5_2,envolt6_2,envolt7_2 = "","","","","","",""
 
-        caja1 = request.POST.get('caja1')    # valor desde el template el identificatorio es el <name>
-        caja2 = request.POST.get('caja2')    # valor desde el template el identificatorio es el <name>
+        caja1_seleccionada = request.POST.get('caja1-seleccionada')    # valor desde el template el identificatorio es el <name>
+        caja2_seleccionada = request.POST.get('caja2-seleccionada')    # valor desde el template el identificatorio es el <name>
         caja3 = request.POST.get('caja3')    # valor desde el template el identificatorio es el <name>
         caja4 = request.POST.get('caja4')    # valor desde el template el identificatorio es el <name>
         #
@@ -129,9 +130,9 @@ def principal(request):
 
         # TODOS LOS RELLENOS DISPONIBLES PARA SELECCIONAR CAMBIAR
         relle_tot = Rellenos.objects.filter(cod="RE")
-        #PRMERA PROMO SELECCIONADA
-        if  caja1 != "":
-            pr1 = Promos.objects.filter(Q(descrip__icontains=caja1))
+        #PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA
+        if  caja1_seleccionada != "":
+            pr1 = Promos.objects.filter(Q(descrip__icontains=caja1_seleccionada))
             for sal in pr1:
                 cod1_x = sal.cod
                 descrip1_x = sal.descrip
@@ -160,9 +161,9 @@ def principal(request):
                 kontador = kontador + 1    
 
         #SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA 
-        if  caja2 != "" or  caja2 == None:
+        if  caja2_seleccionada != "" or  caja2_seleccionada == None:
             npromo = npromo + 1
-            pr2 = Promos.objects.filter(Q(descrip__icontains=caja2))      
+            pr2 = Promos.objects.filter(Q(descrip__icontains=caja2_seleccionada))      
             for sal in pr2:
                 cod2_x = sal.cod
                 descrip2_x = sal.descrip
@@ -195,76 +196,43 @@ def principal(request):
 
                 kontador2 = kontador2 + 1    
 
-        if caja3 != "":
-            pr3 = Promos.objects.filter(Q(descrip__icontains=caja3))         
-            nRoll = 1   
-            for sal in pr3:
-                cod3_x = sal.cod
-                descrip3_x = sal.descrip
-                valor3_x = sal.valor
-                incluye3_x = sal.incluye
+        #if caja3 != "":
+        #    pr3 = Promos.objects.filter(Q(descrip__icontains=caja3))         
+        #    nRoll = 1   
+        #    for sal in pr3:
+        #        cod3_x = sal.cod
+        #        descrip3_x = sal.descrip
+        #        valor3_x = sal.valor
+        #        incluye3_x = sal.incluye
 
-            envolt3  =  Envolturas.objects.filter(cod=cod3_x)
-            kontador = 1
-            for envolt in envolt3:
-                if kontador == 1:
-                   envolt1_3 = envolt.envolt 
+        #    envolt3  =  Envolturas.objects.filter(cod=cod3_x)
+        #    kontador = 1
+        #    for envolt in envolt3:
+        #        if kontador == 1:
+        #           envolt1_3 = envolt.envolt 
 
-                if kontador == 2: 
-                   envolt2_3 = envolt.envolt 
+        #        if kontador == 2: 
+        #           envolt2_3 = envolt.envolt 
 
-                if kontador == 3: 
-                   envolt3_3 = envolt.envolt 
+        #        if kontador == 3: 
+        #           envolt3_3 = envolt.envolt 
 
-                if kontador == 4: 
-                   envolt4_3 = envolt.envolt 
+        #        if kontador == 4: 
+        #           envolt4_3 = envolt.envolt 
 
-                if kontador == 5: 
-                   envolt5_3 = envolt.envolt 
+        #        if kontador == 5: 
+        #           envolt5_3 = envolt.envolt 
 
-                if kontador == 6: 
-                   envolt6_3 = envolt.envolt 
+        #        if kontador == 6: 
+        #           envolt6_3 = envolt.envolt 
 
-                if kontador == 7: 
-                   envolt7_3 = envolt.envolt
+        #        if kontador == 7: 
+        #           envolt7_3 = envolt.envolt
 
-                kontador = kontador + 1    
-
-        if caja4 != "":
-            pr4 = Promos.objects.filter(Q(descrip__icontains=caja4))         
-            nRoll = 1   
-            for sal in pr4:
-                cod4_x = sal.cod
-                descrip4_x = sal.descrip
-                valor4_x = sal.valor
-                incluye4_x = sal.incluye
-            envolt4  =  Envolturas.objects.filter(cod=cod4_x)
-            kontador = 1
-            for envolt in envolt4:
-                if kontador == 1:
-                   envolt1 = envolt.envolt  
-
-                if kontador == 2: 
-                   envolt2 = envolt.envolt 
-
-                if kontador == 3: 
-                   envolt3 = envolt.envolt 
-
-                if kontador == 4: 
-                   envolt4 = envolt.envolt 
-
-                if kontador == 5: 
-                   envolt5 = envolt.envolt 
-
-                if kontador == 6: 
-                   envolt6 = envolt.envolt 
-
-                if kontador == 7: 
-                   envolt7 = envolt.envolt 
-
-                kontador = kontador + 1    
+        #        kontador = kontador + 1    
 
         #para mostrar rellenos disponibles - promo1 - columna 1
+
         kontador = kontador - 1
         if kontador == 2:    
              relle1  =  Rellenos.objects.filter(cod=20,roll=1)
@@ -357,8 +325,8 @@ def principal(request):
                 "aSubtotal2_adic":aSubtotal2_adic,
                 "descrip_adi3":descrip_adi3,
                 "aSubtotal3_adic":aSubtotal3_adic,
-                "caja1":caja1,
-                "caja2":caja2,
+                "caja1_seleccionada":caja1_seleccionada,
+                "caja2_seleccionada":caja2_seleccionada,
                 "caja3":caja3,
                 "caja4":caja4,
                 "cod1_x"    : cod1_x     ,

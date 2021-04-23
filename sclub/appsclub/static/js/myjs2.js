@@ -997,13 +997,13 @@ function selecciona(codigo) {
 /* botones ELIMINA */
 function elimina(id) {
 	if (id=="elimina1")
-		document.getElementById("caja1").value = ""; 
+		document.getElementById("caja1-seleccionada").value = ""; 
 
 	else if (id=="elimina2")
-		document.getElementById("caja2").value = ""; 
+		document.getElementById("caja2-seleccionada").value = ""; 
 
 	else if (id=="elimina3")
-		document.getElementById("caja3").value = ""; 
+		document.getElementById("caja3-seleccionada").value = ""; 
 
 	else if (id=="elimina4")
 		document.getElementById("caja4").value = ""; 
@@ -1012,36 +1012,16 @@ function elimina(id) {
 }
 
 
-$(document).ready(function () {
-    $("#id_promo_").on('change', function () {            
-        var pr = $(this).val();
-      	
-		if ($('#caja1').val().length == 0 && pr != "SELECCIONE PROMO...") 
-			document.getElementById("caja1").value = pr;
-			/* document.getElementById("codigo1").value = codpr; */
-
-        else if ($('#caja2').val().length == 0 && pr != "SELECCIONE PROMO...") 
-        	document.getElementById("caja2").value = pr;
-        
-        else if  ($('#caja3').val().length == 0 && pr != "SELECCIONE PROMO...") 
-        	document.getElementById("caja3").value = pr;
-
-        else if  ($('#caja4').val().length == 0 && pr != "SELECCIONE PROMO...") 
-        	document.getElementById("caja4").value = pr;
-
-	});
-});
-
 
 $(document).ready(function () {
     $("#id_promo").on('change', function () {            
         var pr = $(this).val();
-		if ($('#caja1').val().length == 0 && pr != "SELECCIONE PROMO...") 
-			document.getElementById("caja1").value = pr;
+		if ($('#caja1-seleccionada').val().length == 0 && pr != "SELECCIONE PROMO...") 
+			document.getElementById("caja1-seleccionada").value = pr;
 			/* document.getElementById("codigo1").value = codpr; */
 
-        else if ($('#caja2').val().length == 0 && pr != "SELECCIONE PROMO...") 
-        	document.getElementById("caja2").value = pr;
+        else if ($('#caja2-seleccionada').val().length == 0 && pr != "SELECCIONE PROMO...") 
+        	document.getElementById("caja2-seleccionada").value = pr;
         
         else if  ($('#caja3').val().length == 0 && pr != "SELECCIONE PROMO...") 
         	document.getElementById("caja3").value = pr;
@@ -1446,8 +1426,8 @@ $(document).ready(function () {
 
 /* valida si seleccionó una o mas promos*/
 function val_eligio() {
-	var caja1 = document.getElementById("caja1").value;
-	if(caja1 === "") {
+	var caja1 = document.getElementById("btn-seguir").value;
+	if(caja1-seleccionada === "") {
 		Swal.fire({
 		  icon: 'error',
 		  title: 'Debes seleccionar una promoción!',
@@ -1485,3 +1465,15 @@ function seguir_comoadmin() {
 	})
 	return false;
 }
+
+function actualiza_horas() {
+	swal.fire ({
+	title:"Todas las horas definidas, pasarán a estar vigentes. ¿Procede?",
+	showconfirmButton: true,
+  	showCancelButton: true,
+	confirmButtonText: "Sí",
+	CancelButtonText: "No",
+	footer: 'A partir de la presente hora',
+	})
+}
+

@@ -1,5 +1,5 @@
 {% extends 'plantilla_base_flex.html' %}
-{% load static %} 
+{% load static %}
 {% block content %} 
 
 <form method="POST" action=""> 
@@ -12,9 +12,8 @@
 
     <div class="administrador-titulo-opciones">
     	<p>Opciones de Horario:</p>
-        <u><a href="{% url 'log_out' %}">Inicializa dia</a></u>
+        <u><a id= "inicializa" onclick="return actualiza_horas();">Inicializa dia</a></u>
       </div>
-	
 
 	<div class="grid-cabeceras"> <!-- subgrid -->
 		<div class="col1">
@@ -26,7 +25,7 @@
 		</div>
 		
 		<div class="col3">
-		   <p>Definidos para uso</p>
+		   <p>Definidas para uso</p>
 		</div>
 	
 		<div class="col4">

@@ -6,25 +6,21 @@
   {% csrf_token %}
 
   <!-- IMAGENES DE TODAS LAS PROMOS -->
-<div  class = "personas"> 
-    <div class = "capa-titulo">    
-      
-      <div id="fantasma"></div> 
-
-      <div id="disponibilidad">
-        <spam>Disponibilidad</spam>
+  <div  class = "personas"> 
+      <div class = "capa-titulo">    
+          <div id="fantasma"></div> 
+          <div id="disponibilidad">
+            <spam>Disponibilidad</spam>
+          </div>
+          <div id="cerrar">
+            <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
+          </div>
+          <div id="horas">
+             <p>{{string_horas}}</p>
+          </div>
       </div>
-
-      <div id="cerrar">
-        <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
-      </div>
-
-      <div id="horas">
-         <p>{{string_horas}}</p>
-      </div>
-    </div>
-
-    <div class="contenedor">  
+  
+      <div class="contenedor">  
           <article class="persona__columna">
               <a title="promo de 20" href="#">
                 <img src="/static/img/prom20.jpg" />
@@ -66,83 +62,68 @@
                 <img src="/static/img/gold.jpg" />
               </a>
           </article>
-          <div class="contenedor-seleccion">
+      </div> <!-- contendor de fotos -->
 
-          <div class="combo-promos">
-          <p>Seleccione promo (una o más)</p>
-          <select name="promos" class="items-combo-promos" id="id_promo">
-          {% for c in prs %}
-              <option value ="{{c.descrip}}">{{c.descrip}}</option>
-          {% endfor %}      
-          </select>
-          <br>
-    </div>
 
-    <div class="promos-seleccionadas">
-        <div class ="contenedor-subgrid">
-            <div class="primera-celda">
-              <img src="/static/img/icon-carrito.png" id="carrito-icon-menu" width="28">              
-              <span id="cantidad">Seleccionadas</span>
-              <!-- <p>Promos seleccionadas</p>  -->
+      <div class="contenedor-seleccion">
+          <div class ="contenedor-subgrid">
+            <div class="combo-promos">
+                <p>Seleccione promos (dos máximo)</p>
+                <select name="promos" class="items-combo-promos" id="id_promo">
+                  {% for c in prs %}
+                    <option value ="{{c.descrip}}">{{c.descrip}}</option>
+                  {% endfor %}      
+                </select>
             </div>
 
-            <div>
-              <input type="text" name="caja1" size="20" id="caja1" readonly> 
+            <div class="primera-celda">
+              <img id="carrito-icon-menu" src="/static/img/icon-carrito.png"  width="28">         
+              <span id="cantidad">Seleccionadas:</span> 
+            </div>
+          
+            <div class="div-caja1-seleccionada">
+              <input type="text" name="caja1-seleccionada" id="caja1-seleccionada" readonly> 
             </div>   
-
-            <!--
-            SE AGREGA AL FINAL DE LA CLASE DEL BOTON (define tamaño)
-            btn-xs : Define un tamaño extra pequeño.
-            btn-sm : Define un tamaño de botón pequeño.
-            btn-lg : Define un tamaño de botón grande.
-            btn-block : Define un botón que se expande a todo el ancho del contenedor.
-            -->
-            <div class="boton-elimina">
-              <button title="Elimina selección" type="submit" id="elimina1" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+            
+            <div class="boton-elimina1"> <!--btn-xs: Define un tamaño extra pequeño. -->
+              <button title="Elimina selección" type="submit" id="elimina1" onclick="return elimina(this.id);" name ="submit" class="btn btn-danger btn-xs">X</button> 
                 <!-- <input type="text" name="fname" id="codigo1" class="codigo1" readonly> -->
             </div>
 
 
-            <div class = "alto-combo">
-              <input type="text" name="caja2" size="20" id="caja2"  readonly> 
+            <div class = "div-caja2-seleccionada">
+              <input type="text" name="caja2-seleccionada" size="25" id="caja2-seleccionada" readonly> 
             </div>
-
-            <div >
-              <button title="Elimina selección" type="submit" id="elimina2" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+            <div class="boton-elimina2">
+              <button title="Elimina selección" type="submit" id="elimina2" onclick="return elimina(this.id);" name="submit" class="btn btn-danger btn-xs">X</button> 
             </div>
-
             <!-- Las cajas de la 3 y 4 han sido momentaneamente ocultadas (type="hidden")-->
             <!-- Para revertir esto, en la caja se cambia el type="hidden" por el type="text", -->
-            <!-- y en el button se descomentan -->
+            <!-- y en el button se descomentan 
             <div class = "alto-combo">
               <input type="hidden" name="caja3" size="15" id="caja3" readonly> 
             </div>
-
-            <!--
+            
             <div class="provisorio" type="hidden">
-              <button title="Elimina selección" id="elimina3" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+              <button title="Elimina selección" id="elimina3" onclick="return elimina(this.id);" name = "submit" s="btn       n-danger btn-xs">X</button> 
             </div>
-            -->
             
             <div class = "alto-combo">
-              <input type="hidden" name="caja4" size="15" id="caja4" readonly> 
+                <input type="hidden" name="caja4" size="15" id="caja4" readonly> 
             </div>
-
-            <!--
+            
             <div class="provisorio" type="hidden">
-              <button type="hidden" title="Elimina selección" id="elimina4" onclick="return elimina(this.id);" name = "submit" class="btn btn-danger btn-xs">X</button> 
+              <button type="hidden" title="Elimina selección" id="elimina4" onclick="return elimina(this.id);" name     "submit" ass="btn btn-danger btn-xs">X</button> 
             </div>
             -->
+            <div class="cont-boton-seguir"> 
+              <button  class="btn btn-success" type="submit" id="btn-seguir">
+                     Cambios adicionales y val
+              </button>
+            </div>
+          </div> <!--contenedor-subgrid -->
+      </div>  <!-- contenedor-seleccion -->
+  </div>  <!-- personas -->
 
-        </div>
-    </div>  
-
-    <!-- BOTON CONTINUAR  -->
-    <div class="cont-boton-seguir">
-        <button  class="btn btn-success" type="submit">
-             Cambios, adicionales y valorizacion
-        </button>
-    </div>
- </div>
 </form> 
 {% endblock %}          

@@ -74,9 +74,12 @@
                     <li><a href="{% url 'principal' %}">Inicio</a></li>
                     <li><a href="#">Nosotros</a></li>
                     <li><a href="{% url 'galeria' %}">Galería</a></li>
-                    <li><a href="{% url 'administrador' %}">Admin</a></li>         
+                    {%if request.user.is_staff %}
+                        <li><a href="{% url 'administrador' %}">Admin</a></li>    
+                    {%else%}
+                        <li><a></a></li>
+                    {%endif%}
                 </ul>
-                
             </div>
         </div>        
         
@@ -93,7 +96,7 @@
 
     <footer class="footer">
         <div class="footer-texto1">
-            <p>Despacho grátis a domicílio solo dentro de Coelemu</p>
+            <p>Entrega puntual en nuestro domicilio</p>
         </div>
         <div class="footer-texto2">
             <p>Página diseñada por GMI - Gabriel Araya Garcia</p>

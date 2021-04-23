@@ -131,9 +131,8 @@ p {
    color: blue;
 }
 
-
 /* 550 */
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 600px) {
     .menu-icon{
         display: block;
         cursor: pointer;
@@ -176,14 +175,15 @@ p {
 
       .capa-titulo {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;    /* a partir de la columna 1 toma 3 columnas*/
+          grid-template-columns: 1fr 1fr 1fr;    
           background: #BAFEC1; /* verde claro */
           height: 80px;        /* alto de la franja que lleva el titulo verde */
           margin-top: 13rem;  /* posiciona verticalmente el titulo respecto a la pantalla */
           /*padding: 20px;      /* centra el texto verticalmente respecto al HTML*/ 
-          color: blue;
+          color: blue;    /* letra del texto*/
           font-size: 1.5rem; 
           text-align: center;
+          width:100%;
       }
 
       .capa-titulo #fantasma {
@@ -217,7 +217,7 @@ p {
 
       /* marco que contiene la grid (imagenes) */
       .contenedor {
-        margin-top: 1rem;
+        margin-top: 0rem;
       }
         
       /* PRINCIPAL - promos */
@@ -323,6 +323,31 @@ p {
         padding-top: 0.7rem;
       }
 
+      .contenedor-seleccion_ {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1px;
+        height: 200px;        /* 300 alto */
+        text-align: center;   /* alinea horizontalmente*/
+        padding-top: 2rem;    /* margen sup. de la grid con respecto a su contenedor */ 
+        margin: auto;         /* alinea y centra respecto al HTML*/
+        padding: 2px; /*  */
+        margin-bottom: 5px;
+        background-color: #EDEDED;
+        border: 4px solid blue; 
+      }
+
+      .cont-boton-seguir {
+        display: flex;             /* para centrar el boton */
+        align-items: center;       /* para centrar verticalmente el boton */
+        justify-content: center;   /* para centrar horizontalmente el boton */
+        background-color: #C3E3AA; /* verde claro */ 
+        grid-column: 1 / 3;   
+        height: 100px;             /*alto de la caja verdecita que contiene el boton*/
+        margin-top: 0.5rem;        /* separacion del contend. c/respecto a la fila ant. de cuadriculas */
+        width:100%;
+      }
+
 }
 
 
@@ -385,7 +410,6 @@ p {
   width: 100%;
 }
 
-
 .gallery__img {
     width: 100%;
     /* object-fit: cover; */
@@ -430,7 +454,7 @@ p {
       grid-column-start: 1;
       grid-column-end: 4;
       text-align: center;
-      background-color: #EAE9E4;
+      /*background-color: #EAE9E4; /* gris */
     }
 
     /* contenedor de GRID GRANDE */
@@ -591,18 +615,26 @@ p {
     cursor: pointer;
 }
 
-/* contenedor titulo y combo selecciona promos */
 .combo-promos {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;  /* para centrar horizontalmente el objeto */   
-    align-items: center;      /*para centrar verticalmente el boton */
-    background-color: #F2D3F5;  /* violeta claro */
-    height: 150px;
-    grid-column-start: 1/2; 
-    grid-row-start: 1/2; 
-    max-width: 350px;  /* determina el ancho del contenedor */   
-    border-radius: 8px;
+    display:flex;
+    flex-direction:column;
+    /*grid-column: 1 / 3;   /* parte en la 1 y termina en la 3*/
+    text-align: left; 
+    /*background-color: orange; */
+    align-items: center;
+    height: 75px;
+}
+
+#id_promo {
+  width:100%;
+}
+
+.primera-celda {
+    grid-column: 1/3;   /* parte en la 1 y termina en la 3*/
+    /*text-align: center; */
+    /*background-color: yellow; */
+    height: 40px;
+    text-align: left;
 }
 
 .combo-promos p {
@@ -610,18 +642,12 @@ p {
     justify-content: center;  /* para centrar horizontalmente el objeto */   
 }
 
-.primera-celda {
-    grid-column: 1 / 3;
-    text-align: left; 
-    /* background-color: #B2FEB1; /* verde claro */
-    weight: 5px;
-    /*border: 4px solid red; */
+
+.boton-elimina1, .boton-elimina2{
+  /*background-color: green; */
+  height: 30px;  
 }
 
-
-.boton-elimina {
-    height: 8px;   
-}
 
 .linea-divisoria {
   border-bottom:solid 1px grey;
@@ -717,6 +743,12 @@ p {
    border: none;
 }
 
+
+#caja1-seleccionada, #caja2-seleccionada{
+   width: 100%;
+   /*border: none; */
+   justify-self: stretch;
+}
 
 /* COMBO ENVOLTURAS PARA CAMBIAR PROMO1 Y PROMO2 */
 #id_env1, #id_env2, #id_env3, #id_env4, #id_env5, #id_env6, #id_env7,
@@ -974,57 +1006,51 @@ p {
 
 /* contendor de la subgrid - combo seleccionador y promos seleccionadas */ 
 .contenedor-seleccion {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(2,1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  /* centra horizontal (flex-box) */
+    align-items: center; /* centra verticalmente*/  
     grid-gap: 1px;
-    grid-auto-rows: minmax(100px, auto);
-    max-width: 600px;     /* ancho del contenedor */
-    height: 350px;        /* 300 alto de la franja que lleva el titulo verde */
+    max-width: 400px;     /* ancho del contenedor */
+    height: 370px;        /* 300 alto */
     text-align: center;   /* alinea horizontalmente*/
-    padding-top: 2rem;    /* margen sup. de la grid con respecto a su contenedor */ 
     margin: auto;         /* alinea y centra respecto al HTML*/
-    padding: 19px; /* ? */
-    margin-bottom: 5px;
-    background-color: #EDEDED;
-    /* border: 4px solid blue; */
+    background-color: #888887; /* gris */
+    border-radius: 15px;
 }
 
 
 /* contenedor de la sub-grid de objetos de promos seleccionadas */
 .contenedor-subgrid {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: 25px 25px 25px;
-    grid-gap: 5px;
-    align-items: top;     /* para centrar verticalmente el boton */
+    grid-template-columns: 1fr 15%;
+    grid-template-rows: 1fr 40px 30px 1fr 1fr;
+    align-items: top;     /* para centrar verticalmente */
     text-align: center;   /* centra texto horizontalmente respecto a los limites de la celda */   
-    max-width: 350px;     /* 250 determina el ancho del contenedor */
-    /*border: 4px solid black; */
+    height: 300px; 
+    width: 80%; 
+    padding:1.5rem; /* contorno c/respecto al contenedor */ 
+    grid-gap: 5px;
+    background-color: #E7E7BE; /* gris */
+    border-radius: 15px;
 }
 
-/* subgrid de promos seleccionadas carrito - 2 cajas y cruces (color blanco) */
-.promos-seleccionadas {
-  display: grid;
-  grid-template-rows: repeat(1fr,1fr);
-  background-color: #FFFFFF;   /* blanco */  
-  border-radius: 7px;
-  padding: 2rem;
-  /*align-items: right; /* para centrar verticalmente */
-  max-width: 100%;      /* determina el ancho del contenedor */
-}
-
-/* contenedor del boton SEGUIR - caja verdecita que contiene el boton */
 .cont-boton-seguir {
-    display: flex;             /* para centrar el boton */
-    align-items: center;       /* para centrar verticalmente el boton */
-    justify-content: center;   /* para centrar horizontalmente el boton */
-    background-color: #C3E3AA; /* verde claro */ 
-    grid-column: 1 / 3;   
-    height: 100px;             /*alto de la caja verdecita que contiene el boton*/
-    margin-top: 0.5rem;        /* separacion del contend. c/respecto a la fila ant. de cuadriculas */
+   grid-column: 1 / 3;        /* parte en la 1 y termina en la 3*/
+   background-color: #C3E3AA; /* verde claro */ 
+   height: 60px;              /*alto de la caja verdecita que contiene el boton*/
+   width:83%;
+   border: none;
+   margin:0;
 }
 
+ #btn-seguir {
+    grid-column: 1/3;  /* cominenza en el eje 1 y termina en el eje 3*/
+    align-items: center;       /* para centrar verticalmente el boton */
+    height: 30px;              /*alto de la caja verdecita que contiene el boton*/
+    margin-top: 4%;
+    width: 100%;
+}
 
 .peticion_final {
     display: grid; 
@@ -1032,13 +1058,13 @@ p {
     grid-template-rows: 2fr;
     grid-gap: 2px;
     background-color: #BFB7BC;   /* morado claro */  
-    /* background:linear-gradient(-90deg, red, white); */
+    /*background:linear-gradient(-90deg, red, white); */
     /*align-items: top; /* para centrar verticalmente */
     text-align: center; 
     align-items: center; /* para centrar verticalmente */
     padding-bottom: 25px;
     height: 100px;  /* alto de la caja contenedora */
-    max-width: 100%;  /* determina el ancho del contenedor */
+    /*max-width: 100%;  /* determina el ancho del contenedor */
     border-radius: 20px 20px 20px 20px;
     /*border-radius: 7px;*/
 }
@@ -1234,3 +1260,4 @@ p {
   justify-self: center;
   width: 60%; /* ancho de la caja de texto */
 }
+
