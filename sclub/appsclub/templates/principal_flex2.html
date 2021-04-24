@@ -12,9 +12,15 @@
           <div id="disponibilidad">
             <spam>Disponibilidad</spam>
           </div>
+
+          {%if request.user.is_staff %}
           <div id="cerrar">
-            <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
+              <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
           </div>
+          {%else%}
+              <a></a>
+          {%endif%}
+
           <div id="horas">
              <p>{{string_horas}}</p>
           </div>

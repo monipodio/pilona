@@ -10,19 +10,19 @@
 		<ul>
 			<!-- cantidad de promos seleccionadas -->
 			<div class = "promos-seleccionadas">
-				{% if caja1 != "" %}  
+				{% if caja1_seleccionada != "" %}  
 	   			   	<li>Hola, has seleccionado una {{descrip1_x}}, la cual incluye:
 	   			   	{{incluye1_x}}. Valor: ${{valor1_x}} </li>
 				{% endif %}
-				{% if caja2 != "" %}  
+				{% if caja2_seleccionada != "" %}  
 	   			   	<li>y también una {{descrip2_x}}, la cual incluye:
 	   			   	{{incluye2_x}}. Valor: ${{valor2_x}}</li>
 				{% endif %}
-				{% if caja3 != "" %}  
+				{% if caja3_seleccionada != "" %}  
 	   			   	<li>y también una {{descrip3_x}}, la cual incluye:
-	   			   	{{incluye3_x}}. Valor: ${{valor3_x}}</li>
+	   			   	{{incluye3_x}}. Valor: {{ valor3_x}}</li>
 				{% endif %}
-				{% if caja4 != "" %}  
+				{% if caja4_seleccionada != "" %}  
 	   			   	<li>y también una {{descrip4_x}}, la cual incluye:
 	   			   	{{incluye4_x}}. Valor: ${{valor4_x}}</li>
 				{% endif %}

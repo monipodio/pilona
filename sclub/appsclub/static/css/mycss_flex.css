@@ -57,9 +57,13 @@ p {
   font-size: 1.3em;
 }
 
+/*
 .titulo {
   font-size:2.5rem;
+  text-align: right;
+  width:40%;
 }
+*/
 
 /*icono rayitas*/
 .menu-icon {
@@ -173,19 +177,6 @@ p {
          margin-top: 0.5rem;  /* posiciona verticalmente el titulo respecto a la pantalla */      
       }
 
-      .capa-titulo {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;    
-          background: #BAFEC1; /* verde claro */
-          height: 80px;        /* alto de la franja que lleva el titulo verde */
-          margin-top: 13rem;  /* posiciona verticalmente el titulo respecto a la pantalla */
-          /*padding: 20px;      /* centra el texto verticalmente respecto al HTML*/ 
-          color: blue;    /* letra del texto*/
-          font-size: 1.5rem; 
-          text-align: center;
-          width:100%;
-      }
-
       .capa-titulo #fantasma {
           padding: 0rem;
           width:100%;
@@ -216,10 +207,27 @@ p {
       }
 
       /* marco que contiene la grid (imagenes) */
-      .contenedor {
+      .contenedor_ {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1px;
         margin-top: 0rem;
+        /*background: #F20707;*/
+        /*With:100%;*/
       }
         
+      .contenedor {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1px;
+        text-align: center;   /* alinea horizontalmente*/
+        padding-top: 2rem;    /* margen sup. de la grid con respecto a su contenedor */ 
+        margin: auto;         /* alinea y centra respecto al HTML*/
+        margin-bottom: 5px;
+        /*background-color: #EDEDED;*/  /*rojo*/
+        border: 1px;
+      }
+
       /* PRINCIPAL - promos */
       .personas .contenedor {
           grid-template-columns: repeat(1,1fr); 
@@ -239,7 +247,8 @@ p {
 
       /* PRINCIPAL - borde de cada promo*/
       persona__columna {
-        margin: 5px;
+        margin-right: 0px;
+        padding: 0rem;
       }
       
       /*clase padre*/
@@ -323,18 +332,16 @@ p {
         padding-top: 0.7rem;
       }
 
-      .contenedor-seleccion_ {
+      .contenedor-seleccion {
         display: grid;
         grid-template-columns: 1fr;
         grid-gap: 1px;
-        height: 200px;        /* 300 alto */
         text-align: center;   /* alinea horizontalmente*/
         padding-top: 2rem;    /* margen sup. de la grid con respecto a su contenedor */ 
         margin: auto;         /* alinea y centra respecto al HTML*/
-        padding: 2px; /*  */
         margin-bottom: 5px;
         background-color: #EDEDED;
-        border: 4px solid blue; 
+        border: 1px;
       }
 
       .cont-boton-seguir {
@@ -342,14 +349,45 @@ p {
         align-items: center;       /* para centrar verticalmente el boton */
         justify-content: center;   /* para centrar horizontalmente el boton */
         background-color: #C3E3AA; /* verde claro */ 
-        grid-column: 1 / 3;   
+        grid-column: 1 /  3;   
         height: 100px;             /*alto de la caja verdecita que contiene el boton*/
         margin-top: 0.5rem;        /* separacion del contend. c/respecto a la fila ant. de cuadriculas */
         width:100%;
       }
 
-}
+      .capa-titulo_ {
+        text-align: center;
+        /*background-color: #EAE9E4; /* gris */
+        background-color: #C3E3AA;
+        border: 1px;
+        height: 100px; /* alto de la franja que lleva el titulo verde */
+        margin-top: 10rem;
+        color:blue;
+      }
 
+      .capa-titulo {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;    
+          background: #BAFEC1; /* verde claro */
+          height: 90px;        /* alto de la franja que lleva el titulo verde */
+          margin-top: 9.5rem;  /* posiciona verticalmente el titulo respecto a la pantalla */
+          color: blue;    /* letra del texto*/
+          font-size: 1.5rem; 
+          text-align: center;
+          width:100%;
+          padding: 2rem;
+          border-radius: 0px 0px 15px 15px; 
+      }
+
+
+      .titulo {
+        text-align: center;
+        color: yellow; 
+        /*background-color: #C3E3AA;  /* verde claro */ 
+        width:100%;
+      }
+}
+/* fin responsivo 600 px */
 
 
 /* ==PROMOS====PROMOS====PROMOS====PROMOS====PROMOS====PROMOS====PROMOS====PROMOS====PROMOS==== */
@@ -427,7 +465,9 @@ p {
   
     /* marco que contiene la grid (fotos) */
     .contenedor {
-      width:95%; 
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr;
+      width:85%; 
       margin: auto;   /* alinea y centra equitativamente respecto al HTML*/
       justify-item: center;
     }
@@ -485,7 +525,13 @@ p {
       padding-top: 0.7rem;
     }
 
+    .titulo {
+        font-size:2.5rem;
+        text-align: right;
+        /*background-color: #C3E3AA;  /* verde claro */ 
+    }
 }
+/* fin responsive 1025px*/
 
 
 /* contenedor de la foto de promo seleccionada */
@@ -1037,7 +1083,7 @@ p {
 
 .cont-boton-seguir {
    grid-column: 1 / 3;        /* parte en la 1 y termina en la 3*/
-   background-color: #C3E3AA; /* verde claro */ 
+   /*background-color: #C3E3AA; /* verde claro */ 
    height: 60px;              /*alto de la caja verdecita que contiene el boton*/
    width:83%;
    border: none;
@@ -1260,4 +1306,5 @@ p {
   justify-self: center;
   width: 60%; /* ancho de la caja de texto */
 }
+
 

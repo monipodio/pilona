@@ -24,7 +24,7 @@ DEBUG = True
 #DEBUG = False
 
 # local
-ALLOWED_HOSTS = ['127.0.0.1','localhost','e7907bd47489.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','127bf8cda68d.ngrok.io']
 
 # Hosting web
 #ALLOWED_HOSTS = ['*']
@@ -148,7 +148,5 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static")
 
 # para hosting
 #STATIC_ROOT = '/home/monipodio/misitio/staticfiles/'  # ruta principal donde está carpeta con archivos estaticos
-
-
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'

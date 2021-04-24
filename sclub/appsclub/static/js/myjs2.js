@@ -1426,8 +1426,8 @@ $(document).ready(function () {
 
 /* valida si seleccionó una o mas promos*/
 function val_eligio() {
-	var caja1 = document.getElementById("btn-seguir").value;
-	if(caja1-seleccionada === "") {
+	var caja1 = document.getElementById("caja1-seleccionada").value;
+	if(caja1 === "") {
 		Swal.fire({
 		  icon: 'error',
 		  title: 'Debes seleccionar una promoción!',
