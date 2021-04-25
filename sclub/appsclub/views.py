@@ -82,7 +82,7 @@ def principal(request):
         caja1_seleccionada = request.POST.get('caja1-seleccionada')    # valor desde el template el identificatorio es el <name>
         caja2_seleccionada = request.POST.get('caja2-seleccionada')    # valor desde el template el identificatorio es el <name>
         caja3_seleccionada = request.POST.get('caja3-seleccionada')    # valor desde el template el identificatorio es el <name>
-        caja4_selecionada =  request.POST.get('caja4-seleccionada')    # valor desde el template el identificatorio es el <name>
+        caja4_seleccionada =  request.POST.get('caja4-seleccionada')    # valor desde el template el identificatorio es el <name>
         #
         adicionales = Adicionales.objects.all().order_by('cod')
         z=1
@@ -129,6 +129,8 @@ def principal(request):
         relle7_2  =  Rellenos.objects.filter(cod=0,roll=0)
 
         # TODOS LOS RELLENOS DISPONIBLES PARA SELECCIONAR CAMBIAR
+        caja3_seleccionada = ""
+        caja4_seleccionada = ""        
         relle_tot = Rellenos.objects.filter(cod="RE")
         #PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA
         if  caja1_seleccionada != "":
@@ -195,8 +197,8 @@ def principal(request):
                    envolt7_2 = itera_envolt.envolt
 
                 kontador2 = kontador2 + 1    
-        caja3_seleccionada = ""
-        caja4_seleccionada = ""        
+
+
         #if caja3 != "":
         #    pr3 = Promos.objects.filter(Q(descrip__icontains=caja3))         
         #    nRoll = 1   
@@ -318,8 +320,6 @@ def principal(request):
         vtot =  valor1_x + valor2_x + valor3_x + valor4_x
         vtot3 = vtot
 
-        return HttpResponse(caja3_seleccionada)
-
         context = {
                 "logo_corp_chico":logo2,
                 "descrip_adi1":descrip_adi1,
@@ -330,8 +330,8 @@ def principal(request):
                 "aSubtotal3_adic":aSubtotal3_adic,
                 "caja1_seleccionada":caja1_seleccionada,
                 "caja2_seleccionada":caja2_seleccionada,
-                "caja3_selecionada":caja3_seleccionada,
-                "caja4_selecionada":caja4_selecionada,
+                "caja3_seleccionada":caja3_seleccionada,
+                "caja4_seleccionada":caja4_seleccionada,
                 "cod1_x"    : cod1_x     ,
                 "descrip1_x": descrip1_x ,
                 "valor1_x"  : valor1_x   ,

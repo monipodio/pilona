@@ -135,7 +135,7 @@ p {
    color: blue;
 }
 
-/* 550 */
+/* 600 */
 @media only screen and (max-width: 600px) {
     .menu-icon{
         display: block;
@@ -348,7 +348,7 @@ p {
         display: flex;             /* para centrar el boton */
         align-items: center;       /* para centrar verticalmente el boton */
         justify-content: center;   /* para centrar horizontalmente el boton */
-        background-color: #C3E3AA; /* verde claro */ 
+        /*background-color: #C3E3AA; /* verde claro */ 
         grid-column: 1 /  3;   
         height: 100px;             /*alto de la caja verdecita que contiene el boton*/
         margin-top: 0.5rem;        /* separacion del contend. c/respecto a la fila ant. de cuadriculas */
@@ -386,6 +386,18 @@ p {
         /*background-color: #C3E3AA;  /* verde claro */ 
         width:100%;
       }
+
+      .form-register {
+        width: 320px;
+        /*background: #24303c;*/
+        padding: 30px;
+        margin:auto;
+        border-radius: 6px;
+        font-family: 'calibri';
+        color:white;
+        box-shadow: 7px 13px 37px #000;
+      }
+
 }
 /* fin responsivo 600 px */
 
@@ -530,6 +542,19 @@ p {
         text-align: right;
         /*background-color: #C3E3AA;  /* verde claro */ 
     }
+
+  .form-register {
+      width: 350px;
+      background: #24303c;
+      padding: 30px;
+      margin:auto;
+      /*margin-top: 4rem;   */
+      border-radius: 6px;
+      font-family: 'calibri';
+      color:white;
+      box-shadow: 7px 13px 37px #000;
+  }
+
 }
 /* fin responsive 1025px*/
 
@@ -575,8 +600,8 @@ p {
 
 
 /* FORMULARIO DE REGISTRO  caja contenedora */
-.form-register {
-  width: 400px;
+.form-register_ {
+  width: 350px;
   background: #24303c;
   padding: 30px;
   margin:auto;
@@ -1076,16 +1101,16 @@ p {
     height: 300px; 
     width: 80%; 
     padding:1.5rem; /* contorno c/respecto al contenedor */ 
-    grid-gap: 5px;
+    grid-gap: 3px;
     background-color: #E7E7BE; /* gris */
     border-radius: 15px;
 }
 
 .cont-boton-seguir {
-   grid-column: 1 / 3;        /* parte en la 1 y termina en la 3*/
+   grid-column: 1 / 3;        /* parte en el eje1 1 y termina en el 3*/
    /*background-color: #C3E3AA; /* verde claro */ 
    height: 60px;              /*alto de la caja verdecita que contiene el boton*/
-   width:83%;
+   width:100%;
    border: none;
    margin:0;
 }
