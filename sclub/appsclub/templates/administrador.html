@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %} 
 
-<form method="POST" action=""> 
+<form method="POST" action="" name='f1'> 
 {% csrf_token %}
 <section class="administrador"> <!-- grid principal -->
 
@@ -10,10 +10,26 @@
 		<div>Opciones del administrador del sistema</div> 
 	</div>
 
+	<!-- obs: en la view es request.POST.get('laburohoy') -->
+	<div class="radiolaburo">
+		{% if trabajo == 1 %}
+			<div><input type="radio" name="laburohoy" value="1" checked> Se trabaja hoy <br></div>
+			<div> </div>
+			<div><input type="radio" name="laburohoy" value="2"> NO se trabaja hoy<br></div>
+		{% endif %}
+
+		{% if trabajo == 2 %}
+			<div><input type="radio" name="laburohoy" value="1" >Se trabaja hoy<br></div>
+			<div> </div>
+			<div><input type="radio" name="laburohoy" value="2" checked> NO se trabaja hoy<br></div>
+		{% endif %}
+	</div> 
+
+
     <div class="administrador-titulo-opciones">
     	<p>Opciones de Horario:</p>
-        <u><a id= "inicializa" onclick="return actualiza_horas();">Inicializa dia</a></u>
-      </div>
+        <u><a id= "inicializa" onclick="return actualiza_horas('{{aHrs_def}}');">Inicializa dia</a></u>
+    </div>
 
 	<div class="grid-cabeceras"> <!-- subgrid -->
 		<div class="col1">
@@ -32,8 +48,8 @@
 		   <p>Vigente hoy</p>
 		</div>
 
+	<!-- HORAS DISPONIBLES -->	
 	</div>
-
  	{% for hrs in horas %}
  		<div class="celdas-sub-grid">
  			<div class="col-grid1">
@@ -44,19 +60,21 @@
 				{{hrs.descrip}}
 			</div>
 
+			<!-- HORAS DEFINIDAS PARA USO -->
 			<div class="col-grid3">
 				{% if hrs.switch1 == 0 %}
-					<input type="checkbox"  name="{{hrs.codigo}}"  value='{{ 0 }}'>
+					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.codigo}}"  value='{{ 0 }}'>
 				{% else %}
-					<input type="checkbox"  name="{{hrs.codigo}}"  value='{{ 1 }}' checked>	
+					<input type="checkbox"  id="{{hrs.codigo}}" name="{{hrs.codigo}}"  value='{{ 1 }}' checked>	
 				{% endif %}
 			</div>
 
+			<!-- HORAS VIGENTES HOY -->
 			<div class="col-grid4">
 				{% if hrs.switch2 == 0 %}
-					<input type="checkbox" name="{{hrs.corr}}"  value='{{ 0 }}'>
+					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}"  value='{{ 0 }}'>
 				{% else %}
-					<input type="checkbox" name="{{hrs.corr}}"  value='{{ 1 }}' checked>	
+					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}"  value='{{ 1 }}' checked>	
 				{% endif %}
 			</div>
 
@@ -116,12 +134,11 @@
 					<input type="checkbox" name="{{ct.corr}}"  value="{{ 1 }}" checked>	
 				{% endif %}
 			</div>
-
 		</div>	
 	{% endfor %} 
 
 	<div class="boton-graba">
-  		<input type="submit" value="Graba cambios"  style="height:60px;"  class="btn btn-primary login-btn btn-block"></input>  
+  		<input type="submit" value="Graba todos los cambios"  style="height:60px;" class="btn btn-primary login-btn btn-block"></input>  
 	</div>
 
 </section> 

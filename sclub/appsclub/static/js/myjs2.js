@@ -1012,7 +1012,6 @@ function elimina(id) {
 }
 
 
-
 $(document).ready(function () {
     $("#id_promo").on('change', function () {            
         var pr = $(this).val();
@@ -1023,8 +1022,8 @@ $(document).ready(function () {
         else if ($('#caja2-seleccionada').val().length == 0 && pr != "SELECCIONE PROMO...") 
         	document.getElementById("caja2-seleccionada").value = pr;
         
-        else if  ($('#caja3').val().length == 0 && pr != "SELECCIONE PROMO...") 
-        	document.getElementById("caja3").value = pr;
+        else if  ($('#caja3-seleccionada').val().length == 0 && pr != "SELECCIONE PROMO...") 
+        	document.getElementById("caja3-seleccionada").value = pr;
 
         else if  ($('#caja4').val().length == 0 && pr != "SELECCIONE PROMO...") 
         	document.getElementById("caja4").value = pr;
@@ -1038,6 +1037,9 @@ $(document).ready(function () {
 
 /* ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS */
 /* Puebla ultimas cajas de sub-totales */
+
+
+/* SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO1 */
 $(document).ready(function () {
     $("#id_env1").on('change', function () { 
         var cmb = $(this).val();
@@ -1202,6 +1204,9 @@ $(document).ready(function () {
  		suma_cambios();
 	});
 
+
+
+
     /* ADICIONALES */
     $("#cant1_adicio").on('change', function () {            
         var adic = $(this).val();
@@ -1287,7 +1292,7 @@ function suma_cambios() {
 		parseInt(rell1_2) + parseInt(rell2_2) + parseInt(rell3_2)+ parseInt(rell4_2) +
 		parseInt(rell5_2) + parseInt(rell6_2) + parseInt(rell7_2);
 
-		new_tot = new_tot1 + new_tot2;	
+		new_tot = new_tot1 + new_tot2 + new_tot3;	
 	}	
 
 	var new_tot = new_tot + parseInt(adicio1) + parseInt(adicio2) + parseInt(adicio3); 
@@ -1466,14 +1471,24 @@ function seguir_comoadmin() {
 	return false;
 }
 
-function actualiza_horas() {
-	swal.fire ({
-	title:"Todas las horas definidas, pasarán a estar vigentes. ¿Procede?",
-	showconfirmButton: true,
-  	showCancelButton: true,
-	confirmButtonText: "Sí",
-	CancelButtonText: "No",
-	footer: 'A partir de la presente hora',
-	})
+
+function actualiza_horas(v) {
+	var id1 = document.getElementById("320").value;
+
+	var xx = confirm("Todas las horas definidas ya seleccionadas, pasarán a estar vigentes. ¿Procede? "+id1);
+	if(xx==true){
+		/*alert("Procederá"+id1);  */
+		document.getElementById('44').checked = 1; 
+		/* document.getElementById('vtot').value = new_tot.toString(); */
+	}else{
+		/* alert("No procede");	*/
+	}	
 }
 
+
+
+function selecc_todas_definidas(){
+   for (i=0;i<document.f1.elements.length;i++)
+      if(document.f1.elements[i].type == "checkbox")
+         document.f1.elements[i].checked=1
+}

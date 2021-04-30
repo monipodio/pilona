@@ -9,21 +9,26 @@
   <div  class = "personas"> 
       <div class = "capa-titulo">    
           <div id="fantasma"></div> 
-          <div id="disponibilidad">
-            <spam>Disponibilidad</spam>
-          </div>
+            {% if nosetrabaja == '1' %}              
+            <div id="disponibilidad">
+                <spam>Disponibilidad</spam>
+            </div>
+            {% endif %}
 
-          {%if request.user.is_staff %}
-          <div id="cerrar">
-              <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
-          </div>
-          {%else%}
+          {% if request.user.is_staff %}
+            <div id="cerrar">
+                  <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
+            </div>
+          {% else %}
               <a></a>
+          {% endif %}
+
+          {% if nosetrabaja == '1' %}              
+            <div id="horas">
+               <p>{{string_horas}}</p>
+            </div>
           {%endif%}
 
-          <div id="horas">
-             <p>{{string_horas}}</p>
-          </div>
       </div>
   
       <div class="contenedor">  
@@ -93,7 +98,7 @@
       <div class="contenedor-seleccion">
           <div class ="contenedor-subgrid">
             <div class="combo-promos">
-                <p>Seleccione promos (dos máximo)</p>
+                <p>Seleccione promos</p>
                 <select name="promos" class="items-combo-promos" id="id_promo">
                   {% for c in prs %}
                     <option value ="{{c.descrip}}">{{c.descrip}}</option>
@@ -115,13 +120,21 @@
                 <!-- <input type="text" name="fname" id="codigo1" class="codigo1" readonly> -->
             </div>
 
-
             <div class = "div-caja2-seleccionada">
               <input type="text" name="caja2-seleccionada" size="25" id="caja2-seleccionada" readonly> 
             </div>
             <div class="boton-elimina2">
               <button title="Elimina selección" type="submit" id="elimina2" onclick="return elimina(this.id);" name="submit" class="btn btn-danger btn-xs">X</button> 
             </div>
+
+            <div class = "div-caja3-seleccionada">
+              <input type="text" name="caja3-seleccionada" size="25" id="caja3-seleccionada" readonly> 
+            </div>
+            <div class="boton-elimina3">
+              <button title="Elimina selección" type="submit" id="elimina3" onclick="return elimina(this.id);" name="submit" class="btn btn-danger btn-xs">X</button> 
+            </div>
+
+
             <!-- Las cajas de la 3 y 4 han sido momentaneamente ocultadas (type="hidden")-->
             <!-- Para revertir esto, en la caja se cambia el type="hidden" por el type="text", -->
             <!-- y en el button se descomentan 
@@ -143,7 +156,7 @@
             -->
             <div class="cont-boton-seguir"> 
               <button  class="btn btn-success" type="submit" id="btn-seguir">
-                     Cambios adicionales y val
+                     Cambios adicionales y valorización
               </button>
             </div>
           </div> <!--contenedor-subgrid -->

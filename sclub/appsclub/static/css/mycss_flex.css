@@ -27,7 +27,6 @@ p {
   margin: 0 auto; 
 }
 
-
 .header {
   background: #24303c; /**/  
   color: white; 
@@ -207,25 +206,18 @@ p {
       }
 
       /* marco que contiene la grid (imagenes) */
-      .contenedor_ {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 1px;
-        margin-top: 0rem;
-        /*background: #F20707;*/
-        /*With:100%;*/
-      }
-        
       .contenedor {
         display: grid;
         grid-template-columns: 1fr;
-        grid-gap: 1px;
+        grid-gap: 3px;
         text-align: center;   /* alinea horizontalmente*/
-        padding-top: 2rem;    /* margen sup. de la grid con respecto a su contenedor */ 
         margin: auto;         /* alinea y centra respecto al HTML*/
         margin-bottom: 5px;
-        /*background-color: #EDEDED;*/  /*rojo*/
         border: 1px;
+        padding-top: 3rem;    /* margen sup. de la grid con respecto a su  */ 
+        padding-bottom: 3rem;
+        background-color: #EAE9E4;
+        border-radius: 10px 10px 10px 10px;
       }
 
       /* PRINCIPAL - promos */
@@ -398,6 +390,12 @@ p {
         box-shadow: 7px 13px 37px #000;
       }
 
+      .radiolaburo {
+        display: flex;
+        flex-direction:row;
+        background-color: #899EF3;
+        width: 100%; 
+      }
 }
 /* fin responsivo 600 px */
 
@@ -482,6 +480,10 @@ p {
       width:85%; 
       margin: auto;   /* alinea y centra equitativamente respecto al HTML*/
       justify-item: center;
+      background-color: #EAE9E4;
+      padding-top: 3rem;    /* margen sup. de la grid con respecto a su  */ 
+      padding-bottom: 3rem;
+      border-radius: 10px 10px 10px 10px;
     }
      
     .capa-titulo {
@@ -553,6 +555,15 @@ p {
       font-family: 'calibri';
       color:white;
       box-shadow: 7px 13px 37px #000;
+  }
+
+  .radiolaburo {
+    display: flex;
+    flex-direction:row;
+    padding:5px;
+    background-color: #899EF3;
+    flex:1 1 auto;
+    border:1px blue solid;
   }
 
 }
@@ -673,7 +684,6 @@ p {
     width: 80%;  /*gag */
  }
 
-
 .boton-seguir {
     border: none;
     color: white;
@@ -689,7 +699,7 @@ p {
 .combo-promos {
     display:flex;
     flex-direction:column;
-    /*grid-column: 1 / 3;   /* parte en la 1 y termina en la 3*/
+    grid-column: 1 / 3;   /* parte en la 1 y termina en la 3*/
     text-align: left; 
     /*background-color: orange; */
     align-items: center;
@@ -741,7 +751,7 @@ p {
   border-radius: 8px;
 }
 
-.celda2 {
+.celda2, .celda3  {
   background-color: #AEAFAC; 
   text-align: center; /* centra texto respecto a los limites de la celda */
   padding:15px;  /* espacio entre el texto (o foto) y el borde de la celada */
@@ -804,10 +814,20 @@ p {
     border-radius: 7px;
 }
 
+.cont-subgrid-celda1_3 {
+    display: grid; 
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 1px;
+    background-color: #F8F5A9;  
+    align-items: top; /* para centrar verticalmente */
+    text-align: center;
+    max-width: 100%;  /* determina el ancho del contenedor */
+    border-radius: 7px;
+}
 
 /* EMVOLTURAS ORIGINALES promo1 y promo2*/
 .caja1, .caja2,.caja3,.caja4,.caja5,.caja6, .caja7,
- .caja1_2, .caja2_2,.caja3_2,.caja4_2,.caja5_2,.caja6_2, .caja7_2, .caja_adi1, .caja_adi2, .caja_adi3 {
+ .caja1_2,.caja2_2,.caja3_2,.caja4_2,.caja5_2,.caja6_2, .caja7_2, .caja_adi1, .caja_adi2, .caja_adi3 {
    height: 26px;
    width: 70%;
    margin: 0 2px 3 1px;   
@@ -815,15 +835,16 @@ p {
 }
 
 
-#caja1-seleccionada, #caja2-seleccionada{
+#caja1-seleccionada, #caja2-seleccionada, #caja3-seleccionada{
    width: 100%;
    /*border: none; */
    justify-self: stretch;
 }
 
-/* COMBO ENVOLTURAS PARA CAMBIAR PROMO1 Y PROMO2 */
+/* COMBO ENVOLTURAS PARA CAMBIAR PROMO1 - PROMO2 - PROMO3 */
 #id_env1, #id_env2, #id_env3, #id_env4, #id_env5, #id_env6, #id_env7,
- #id_env1_2, #id_env2_2, #id_env3_2, #id_env4_2, #id_env5_2, #id_env6_2, #id_env7_2{
+ #id_env1_2, #id_env2_2, #id_env3_2, #id_env4_2, #id_env5_2, #id_env6_2, #id_env7_2,
+ #id_env1_3, #id_env2_3, #id_env3_3, #id_env4_3, #id_env5_3, #id_env6_3, #id_env7_3 {
    height: 26px;
    width: 70%;
    margin: 0 2px 3 1px;   
@@ -915,6 +936,19 @@ p {
     max-width: 100%;  /* determina el ancho del contenedor */   
 }
 
+/*caja contenderora de la subgrid - RELLENOS PROMO3 */
+.cont-subgrid-celda2-3 {
+    display: grid; 
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 7fr; 
+    max-width: 100%;  /* determina el ancho del contenedor */
+    background-color: #F8F5A9;   /* verde claro */  
+    align-items: top; /* para centrar verticalmente */
+    text-align: center;
+    padding-top: 2rem; /* borde superior de la grid (o subgrid) c/respecto a su contenedor*/
+    max-width: 100%;  /* determina el ancho del contenedor */   
+}
+
 
 /* TITULO "PRIMERA PROMO" */
 .celda1 {
@@ -935,6 +969,16 @@ p {
   font-size: 1.5em;
   border-radius: 20px 20px 0px 0px;  
 }
+
+.celda3 {
+  text-align: center;    
+  background: linear-gradient(#EAE10F,#FCFACB);  
+  padding:15px;  /* espacio entre el texto (o foto) y el borde de la celada*/
+  letter-spacing: 3px;
+  font-size: 1.5em;
+  border-radius: 20px 20px 0px 0px;  
+}
+
 
 
 /* ENVOLTORIOS PROMOS ORIGINALES */
@@ -1028,11 +1072,20 @@ p {
 }  
 
 /* SEGUNDA PROMO */
-.celdagrande-segundapromo {
+.celdagrande-segundapromo, .celdagrande-tercerapromo {
   text-align: left; /* centra texto horizontalmente respecto a los limites de la celda */   
   padding:3px;  /* espacio entre el texto (o foto) y el borde de la celada*/
   margin-top: 0.5rem;   /* posiciona verticalmente la grid respecto al borde de este contenedor */  
 }
+
+/* SEGUNDA PROMO */
+.celdagrande-tercerapromo {
+  text-align: left; /* centra texto horizontalmente respecto a los limites de la celda */   
+  padding:3px;     /* espacio entre el texto (o foto) y el borde de la celada*/
+  margin-top: 0.5rem;   /* posiciona verticalmente la grid respecto al borde de este contenedor */  
+}
+
+
 
 
 .celda-adicionales {
@@ -1095,7 +1148,7 @@ p {
 .contenedor-subgrid {
     display: grid;
     grid-template-columns: 1fr 15%;
-    grid-template-rows: 1fr 40px 30px 1fr 1fr;
+    grid-template-rows: 1fr 40px 30px 1fr 1fr 1fr;
     align-items: top;     /* para centrar verticalmente */
     text-align: center;   /* centra texto horizontalmente respecto a los limites de la celda */   
     height: 300px; 
@@ -1166,15 +1219,6 @@ p {
 .recuerda p {
   background-color: rgba(255,0, 0, 0);  /* fondo transparente */
 }
-
-.contenedor-aque-hora__ {
-  display: flex;
-  flex-direction: column;
-  text-align: center; 
-  margin-top: 1rem;  
-  margin:auto;  /* significa que ambos margenes son iguales por defecto*/
-}
-
 
 .combo-aque-hora {
   max-width: 50%;
@@ -1331,5 +1375,4 @@ p {
   justify-self: center;
   width: 60%; /* ancho de la caja de texto */
 }
-
 

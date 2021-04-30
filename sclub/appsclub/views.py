@@ -11,6 +11,8 @@ from django.db.models import Q
 from sclub.appsclub.models import Param, Diario, Pedidos,Promos, Envolturas
 from sclub.appsclub.models import Rellenos, Adicionales, Otrospermisos
 
+import json
+import requests
 #from misitio.ai.forms import cambios
 
 def login_ini(request):
@@ -39,6 +41,7 @@ def log_out(request):
 def principal(request):
     #return HttpResponse(str(request.user.is_staff))
     variable1 = 'PAGINA PRINCIPAL'
+    nosetrabaja = '1'
     logo2 = "/static/img/Logo_sc.jpg"
     #logo = "/staticfiles/img/Logo_AsistenciaIntegral.jpg" # for PythonAnyWhere
     hrs =  Param.objects.filter(tipo="HORA",switch1=1,switch2=1).order_by('codigo')
@@ -49,14 +52,16 @@ def principal(request):
     for j in hrs:
         aDisponibles.append(j.descrip) # llena arreglo con valor del campo
         string_horas = string_horas + j.descrip+", "
+
+    if string_horas == "":
+        nosetrabaja = '0'
+
     string_horas = string_horas[:-2]  # quita los 2 últimos caracteres (lado derecho quita la coma y el pespacio)
     string_horas = string_horas + " hrs."  
 
     ctas = []
     for ct in cta:
         ctas.append(ct.descrip)
-    
-    #return HttpResponse(str(ctas))
 
     context ={
         "string_horas":string_horas,
@@ -64,11 +69,13 @@ def principal(request):
     	"variable1":variable1,
     	"logo_corp_chico":logo2,
         "cta":cta, 
+        "nosetrabaja":nosetrabaja,
         }
 
     npromo = 1
     kontador = 0      
     kontador2 = 0
+    kontador3 = 0
 
     if request.method == "POST":   # va a: CAMBIOS.HTML
         #inicializa variales
@@ -78,11 +85,11 @@ def principal(request):
         cod4_x,descrip4_x,valor4_x,incluye4_x='','',0,''
         envolt1,envolt2,envolt3,envolt4,envolt5,envolt6,envolt7 = "","","","","","",""
         envolt1_2,envolt2_2,envolt3_2,envolt4_2,envolt5_2,envolt6_2,envolt7_2 = "","","","","","",""
-
+        envolt1_3,envolt2_3,envolt3_3,envolt4_3,envolt5_3,envolt6_3,envolt7_3 = "","","","","","",""
         caja1_seleccionada = request.POST.get('caja1-seleccionada')    # valor desde el template el identificatorio es el <name>
         caja2_seleccionada = request.POST.get('caja2-seleccionada')    # valor desde el template el identificatorio es el <name>
         caja3_seleccionada = request.POST.get('caja3-seleccionada')    # valor desde el template el identificatorio es el <name>
-        caja4_seleccionada =  request.POST.get('caja4-seleccionada')    # valor desde el template el identificatorio es el <name>
+        caja4_seleccionada = request.POST.get('caja4-seleccionada')    # valor desde el template el identificatorio es el <name>
         #
         adicionales = Adicionales.objects.all().order_by('cod')
         z=1
@@ -128,11 +135,20 @@ def principal(request):
         relle6_2  =  Rellenos.objects.filter(cod=0,roll=0)
         relle7_2  =  Rellenos.objects.filter(cod=0,roll=0)
 
+        relle1_3  =  Rellenos.objects.filter(cod=0,roll=0)
+        relle2_3  =  Rellenos.objects.filter(cod=0,roll=0)
+        relle3_3  =  Rellenos.objects.filter(cod=0,roll=0)
+        relle4_3  =  Rellenos.objects.filter(cod=0,roll=0)
+        relle5_3  =  Rellenos.objects.filter(cod=0,roll=0)
+        relle6_3  =  Rellenos.objects.filter(cod=0,roll=0)
+        relle7_3  =  Rellenos.objects.filter(cod=0,roll=0)
+
         # TODOS LOS RELLENOS DISPONIBLES PARA SELECCIONAR CAMBIAR
-        caja3_seleccionada = ""
         caja4_seleccionada = ""        
         relle_tot = Rellenos.objects.filter(cod="RE")
-        #PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA
+
+
+        # PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA
         if  caja1_seleccionada != "":
             pr1 = Promos.objects.filter(Q(descrip__icontains=caja1_seleccionada))
             for sal in pr1:
@@ -141,8 +157,12 @@ def principal(request):
                 valor1_x = sal.valor
                 incluye1_x = sal.incluye
 
-            #ENVOLTURAS    
+            #ENVOLTURAS - promo1    
             envolt1 = Envolturas.objects.filter(cod=cod1_x).order_by('roll')
+            ene_rolls = envolt1.count()  # cuantas envolturas tiene 
+
+            #return HttpResponse(str(ene_rolls))
+
             kontador = 1
             for itera_envolt in envolt1:
                 if kontador == 1:
@@ -159,8 +179,47 @@ def principal(request):
                    envolt6 = itera_envolt.envolt 
                 if kontador == 7: 
                    envolt7 = itera_envolt.envolt 
-
                 kontador = kontador + 1    
+
+            #para mostrar rellenos disponibles - promo3 - columna 1
+            if ene_rolls == 2:    
+                relle1  =  Rellenos.objects.filter(cod=20,roll=1)
+                relle2  =  Rellenos.objects.filter(cod=20,roll=2)
+            
+            if ene_rolls == 3:    
+                relle1  =  Rellenos.objects.filter(cod=30,roll=1)
+                relle2  =  Rellenos.objects.filter(cod=30,roll=2)
+                relle3  =  Rellenos.objects.filter(cod=30,roll=3)
+            
+            if ene_rolls == 4:    
+                relle1  =  Rellenos.objects.filter(cod=40,roll=1)
+                relle2  =  Rellenos.objects.filter(cod=40,roll=2)
+                relle3  =  Rellenos.objects.filter(cod=40,roll=3)
+                relle4  =  Rellenos.objects.filter(cod=40,roll=4)
+            if ene_rolls == 5:    
+                relle1  =  Rellenos.objects.filter(cod=50,roll=1)
+                relle2  =  Rellenos.objects.filter(cod=50,roll=2)
+                relle3  =  Rellenos.objects.filter(cod=50,roll=3)
+                relle4  =  Rellenos.objects.filter(cod=50,roll=4)
+                relle5  =  Rellenos.objects.filter(cod=50,roll=5)
+            
+            if ene_rolls == 6:    
+                relle1  =  Rellenos.objects.filter(cod=60,roll=1)
+                relle2  =  Rellenos.objects.filter(cod=60,roll=2)
+                relle3  =  Rellenos.objects.filter(cod=60,roll=3)
+                relle4  =  Rellenos.objects.filter(cod=60,roll=4)
+                relle5  =  Rellenos.objects.filter(cod=60,roll=5)
+                relle6  =  Rellenos.objects.filter(cod=60,roll=6)
+                
+            if ene_rolls == 7:    
+                relle1  =  Rellenos.objects.filter(cod=70,roll=1)
+                relle2  =  Rellenos.objects.filter(cod=70,roll=2)
+                relle3  =  Rellenos.objects.filter(cod=70,roll=3)
+                relle4  =  Rellenos.objects.filter(cod=70,roll=4)
+                relle5  =  Rellenos.objects.filter(cod=70,roll=5)
+                relle6  =  Rellenos.objects.filter(cod=70,roll=6)
+                relle7  =  Rellenos.objects.filter(cod=70,roll=7)
+    
 
         #SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA 
         if  caja2_seleccionada != "" or  caja2_seleccionada == None:
@@ -171,10 +230,11 @@ def principal(request):
                 descrip2_x = sal.descrip
                 valor2_x = sal.valor
                 incluye2_x = sal.incluye
-            #ENVOLTURAS    
-            qr_envolt2  =  Envolturas.objects.filter(cod=cod2_x).order_by('roll')
+            #ENVOLTURAS - segunda promo  
+            qry_envolt2  =  Envolturas.objects.filter(cod=cod2_x).order_by('roll')
+            ene_rolls = qry_envolt2.count()  # cuantas envolturas tiene
             kontador2 = 1
-            for itera_envolt in qr_envolt2:
+            for itera_envolt in qry_envolt2:
                 if kontador2 == 1:
                    envolt1_2 = itera_envolt.envolt
 
@@ -186,7 +246,6 @@ def principal(request):
 
                 if kontador2 == 4: 
                    envolt4_2 = itera_envolt.envolt
-
                 if kontador2 == 5: 
                    envolt5_2 = itera_envolt.envolt
 
@@ -198,125 +257,122 @@ def principal(request):
 
                 kontador2 = kontador2 + 1    
 
+             #para mostrar rellenos disponibles - promo2 columna1
+            if  ene_rolls == 2:    
+                relle1_2  =  Rellenos.objects.filter(cod=20,roll=1)
+                relle2_2  =  Rellenos.objects.filter(cod=20,roll=2)
+            
+            if  ene_rolls == 3:    
+                relle1_2  =  Rellenos.objects.filter(cod=30,roll=1)
+                relle2_2  =  Rellenos.objects.filter(cod=30,roll=2)
+                relle3_2  =  Rellenos.objects.filter(cod=30,roll=3)
+            
+            if  ene_rolls == 4:    
+                relle1_2  =  Rellenos.objects.filter(cod=40,roll=1)
+                relle2_2  =  Rellenos.objects.filter(cod=40,roll=2)
+                relle3_2  =  Rellenos.objects.filter(cod=40,roll=3)
+                relle4_2  =  Rellenos.objects.filter(cod=40,roll=4)
+            
+            if  ene_rolls == 5:    
+                relle1_2  =  Rellenos.objects.filter(cod=50,roll=1)
+                relle2_2  =  Rellenos.objects.filter(cod=50,roll=2)
+                relle3_2  =  Rellenos.objects.filter(cod=50,roll=3)
+                relle4_2  =  Rellenos.objects.filter(cod=50,roll=4)
+                relle5_2  =  Rellenos.objects.filter(cod=50,roll=5)
+            
+            if  ene_rolls == 6:    
+                relle1_2  =  Rellenos.objects.filter(cod=60,roll=1)
+                relle2_2  =  Rellenos.objects.filter(cod=60,roll=2)
+                relle3_2  =  Rellenos.objects.filter(cod=60,roll=3)
+                relle4_2  =  Rellenos.objects.filter(cod=60,roll=4)
+                relle5_2  =  Rellenos.objects.filter(cod=60,roll=5)
+                relle6_2  =  Rellenos.objects.filter(cod=60,roll=6)
+            if ene_rolls == 7:    
+                relle1_2  =  Rellenos.objects.filter(cod=70,roll=1)
+                relle2_2  =  Rellenos.objects.filter(cod=70,roll=2)
+                relle3_2  =  Rellenos.objects.filter(cod=70,roll=3)
+                relle4_2  =  Rellenos.objects.filter(cod=70,roll=4)
+                relle5_2  =  Rellenos.objects.filter(cod=70,roll=5)
+                relle6_2  =  Rellenos.objects.filter(cod=70,roll=6)
+                relle7_2  =  Rellenos.objects.filter(cod=70,roll=7)
 
-        #if caja3 != "":
-        #    pr3 = Promos.objects.filter(Q(descrip__icontains=caja3))         
-        #    nRoll = 1   
-        #    for sal in pr3:
-        #        cod3_x = sal.cod
-        #        descrip3_x = sal.descrip
-        #        valor3_x = sal.valor
-        #        incluye3_x = sal.incluye
+        #TERCERA PROMO SELECCIONADA TERCERA PROMO SELECCIONADA TERCERA PROMO SELECCIONADA TERCERA PROMO SELECCIONADA
+        if  caja3_seleccionada != "" or  caja3_seleccionada == None:
+                pr3 = Promos.objects.filter(Q(descrip__icontains=caja3_seleccionada))         
+                for sal in pr3:
+                    cod3_x = sal.cod
+                    descrip3_x = sal.descrip
+                    valor3_x = sal.valor
+                    incluye3_x = sal.incluye
+    
+                qry_envolt3  =  Envolturas.objects.filter(cod=cod3_x) # numero de rolls
+                ene_rolls = qry_envolt3.count()  # cuantas envolturas tiene (para pruebas)
+                kontador3 = 1
+                for envolt in qry_envolt3:
+                    if kontador3 == 1:
+                       envolt1_3 = envolt.envolt 
 
-        #    envolt3  =  Envolturas.objects.filter(cod=cod3_x)
-        #    kontador = 1
-        #    for envolt in envolt3:
-        #        if kontador == 1:
-        #           envolt1_3 = envolt.envolt 
+                    if kontador3 == 2: 
+                       envolt2_3 = envolt.envolt 
 
-        #        if kontador == 2: 
-        #           envolt2_3 = envolt.envolt 
+                    if kontador3 == 3: 
+                       envolt3_3 = envolt.envolt 
 
-        #        if kontador == 3: 
-        #           envolt3_3 = envolt.envolt 
+                    if kontador3 == 4: 
+                       envolt4_3 = envolt.envolt 
 
-        #        if kontador == 4: 
-        #           envolt4_3 = envolt.envolt 
+                    if kontador3 == 5: 
+                       envolt5_3 = envolt.envolt 
 
-        #        if kontador == 5: 
-        #           envolt5_3 = envolt.envolt 
+                    if kontador3 == 6: 
+                       envolt6_3 = envolt.envolt 
 
-        #        if kontador == 6: 
-        #           envolt6_3 = envolt.envolt 
+                    if kontador3 == 7: 
+                       envolt7_3 = envolt.envolt
 
-        #        if kontador == 7: 
-        #           envolt7_3 = envolt.envolt
-
-        #        kontador = kontador + 1    
-
-        #para mostrar rellenos disponibles - promo1 - columna 1
-
-        kontador = kontador - 1
-        if kontador == 2:    
-             relle1  =  Rellenos.objects.filter(cod=20,roll=1)
-             relle2  =  Rellenos.objects.filter(cod=20,roll=2)
+                    kontador3 = kontador3 + 1
         
-        if kontador == 3:    
-             relle1  =  Rellenos.objects.filter(cod=30,roll=1)
-             relle2  =  Rellenos.objects.filter(cod=30,roll=2)
-             relle3  =  Rellenos.objects.filter(cod=30,roll=3)
+                #para mostrar rellenos disponibles - promo3 - columna1
+                if ene_rolls == 2:    
+                     relle1_3  =  Rellenos.objects.filter(cod=20,roll=1)
+                     relle2_3  =  Rellenos.objects.filter(cod=20,roll=2)
+                
+                if ene_rolls == 3:    
+                     relle1_3  =  Rellenos.objects.filter(cod=30,roll=1)
+                     relle2_3  =  Rellenos.objects.filter(cod=30,roll=2)
+                     relle3_3  =  Rellenos.objects.filter(cod=30,roll=3)
+                
+                if ene_rolls == 4:    
+                     relle1_3  =  Rellenos.objects.filter(cod=40,roll=1)
+                     relle2_3  =  Rellenos.objects.filter(cod=40,roll=2)
+                     relle3_3  =  Rellenos.objects.filter(cod=40,roll=3)
+                     relle4_3  =  Rellenos.objects.filter(cod=40,roll=4)
+                
+                if ene_rolls == 5:    
+                     relle1_3  =  Rellenos.objects.filter(cod=50,roll=1)
+                     relle2_3  =  Rellenos.objects.filter(cod=50,roll=2)
+                     relle3_3  =  Rellenos.objects.filter(cod=50,roll=3)
+                     relle4_3  =  Rellenos.objects.filter(cod=50,roll=4)
+                     relle5_3  =  Rellenos.objects.filter(cod=50,roll=5)
+                
+                if ene_rolls == 6:    
+                    relle1_3  =  Rellenos.objects.filter(cod=60,roll=1)
+                    relle2_3  =  Rellenos.objects.filter(cod=60,roll=2)
+                    relle3_3  =  Rellenos.objects.filter(cod=60,roll=3)
+                    relle4_3  =  Rellenos.objects.filter(cod=60,roll=4)
+                    relle5_3  =  Rellenos.objects.filter(cod=60,roll=5)
+                    relle6_3  =  Rellenos.objects.filter(cod=60,roll=6)
+            
+                if ene_rolls == 7:    
+                    relle1_3  =  Rellenos.objects.filter(cod=70,roll=1)
+                    relle2_3  =  Rellenos.objects.filter(cod=70,roll=2)
+                    relle3_3  =  Rellenos.objects.filter(cod=70,roll=3)
+                    relle4_3  =  Rellenos.objects.filter(cod=70,roll=4)
+                    relle5_3  =  Rellenos.objects.filter(cod=70,roll=5)
+                    relle6_3  =  Rellenos.objects.filter(cod=70,roll=6)
+                    relle7_3  =  Rellenos.objects.filter(cod=70,roll=7)
         
-        if kontador == 4:    
-             relle1  =  Rellenos.objects.filter(cod=40,roll=1)
-             relle2  =  Rellenos.objects.filter(cod=40,roll=2)
-             relle3  =  Rellenos.objects.filter(cod=40,roll=3)
-             relle4  =  Rellenos.objects.filter(cod=40,roll=4)
         
-        if kontador == 5:    
-             relle1  =  Rellenos.objects.filter(cod=50,roll=1)
-             relle2  =  Rellenos.objects.filter(cod=50,roll=2)
-             relle3  =  Rellenos.objects.filter(cod=50,roll=3)
-             relle4  =  Rellenos.objects.filter(cod=50,roll=4)
-             relle5  =  Rellenos.objects.filter(cod=50,roll=5)
-        
-        if kontador == 6:    
-             relle1  =  Rellenos.objects.filter(cod=60,roll=1)
-             relle2  =  Rellenos.objects.filter(cod=60,roll=2)
-             relle3  =  Rellenos.objects.filter(cod=60,roll=3)
-             relle4  =  Rellenos.objects.filter(cod=60,roll=4)
-             relle5  =  Rellenos.objects.filter(cod=60,roll=5)
-             relle6  =  Rellenos.objects.filter(cod=60,roll=6)
-        
-        if kontador == 7:    
-             relle1  =  Rellenos.objects.filter(cod=70,roll=1)
-             relle2  =  Rellenos.objects.filter(cod=70,roll=2)
-             relle3  =  Rellenos.objects.filter(cod=70,roll=3)
-             relle4  =  Rellenos.objects.filter(cod=70,roll=4)
-             relle5  =  Rellenos.objects.filter(cod=70,roll=5)
-             relle6  =  Rellenos.objects.filter(cod=70,roll=6)
-             relle7  =  Rellenos.objects.filter(cod=70,roll=7)
-
-        #para mostrar rellenos disponibles - promo2
-        kontador2 = kontador2 - 1
-        if kontador2 == 2:    
-             relle1_2  =  Rellenos.objects.filter(cod=20,roll=1)
-             relle2_2  =  Rellenos.objects.filter(cod=20,roll=2)
-        
-        if kontador2 == 3:    
-             relle1_2  =  Rellenos.objects.filter(cod=30,roll=1)
-             relle2_2  =  Rellenos.objects.filter(cod=30,roll=2)
-             relle3_2  =  Rellenos.objects.filter(cod=30,roll=3)
-        
-        if kontador2 == 4:    
-             relle1_2  =  Rellenos.objects.filter(cod=40,roll=1)
-             relle2_2  =  Rellenos.objects.filter(cod=40,roll=2)
-             relle3_2  =  Rellenos.objects.filter(cod=40,roll=3)
-             relle4_2  =  Rellenos.objects.filter(cod=40,roll=4)
-        
-        if kontador2 == 5:    
-             relle1_2  =  Rellenos.objects.filter(cod=50,roll=1)
-             relle2_2  =  Rellenos.objects.filter(cod=50,roll=2)
-             relle3_2  =  Rellenos.objects.filter(cod=50,roll=3)
-             relle4_2  =  Rellenos.objects.filter(cod=50,roll=4)
-             relle5_2  =  Rellenos.objects.filter(cod=50,roll=5)
-        
-        if kontador2 == 6:    
-             relle1_2  =  Rellenos.objects.filter(cod=60,roll=1)
-             relle2_2  =  Rellenos.objects.filter(cod=60,roll=2)
-             relle3_2  =  Rellenos.objects.filter(cod=60,roll=3)
-             relle4_2  =  Rellenos.objects.filter(cod=60,roll=4)
-             relle5_2  =  Rellenos.objects.filter(cod=60,roll=5)
-             relle6_2  =  Rellenos.objects.filter(cod=60,roll=6)
-        
-        if kontador2 == 7:    
-             relle1_2  =  Rellenos.objects.filter(cod=70,roll=1)
-             relle2_2  =  Rellenos.objects.filter(cod=70,roll=2)
-             relle3_2  =  Rellenos.objects.filter(cod=70,roll=3)
-             relle4_2  =  Rellenos.objects.filter(cod=70,roll=4)
-             relle5_2  =  Rellenos.objects.filter(cod=70,roll=5)
-             relle6_2  =  Rellenos.objects.filter(cod=70,roll=6)
-             relle7_2  =  Rellenos.objects.filter(cod=70,roll=7)
-
         vtot =  valor1_x + valor2_x + valor3_x + valor4_x
         vtot3 = vtot
 
@@ -362,6 +418,13 @@ def principal(request):
                 "envolt5_2":envolt5_2,
                 "envolt6_2":envolt6_2,
                 "envolt7_2":envolt7_2,
+                "envolt1_3":envolt1_3,
+                "envolt2_3":envolt2_3,
+                "envolt3_3":envolt3_3,
+                "envolt4_3":envolt4_3,
+                "envolt5_3":envolt5_3,
+                "envolt6_3":envolt6_3,
+                "envolt7_3":envolt7_3,
                 "para_envol":para_envol,
                 "relle1":relle1,
                 "relle2":relle2,
@@ -377,6 +440,13 @@ def principal(request):
                 "relle5_2":relle5_2,
                 "relle6_2":relle6_2,
                 "relle7_2":relle7_2,
+                "relle1_3":relle1_3,
+                "relle2_3":relle2_3,
+                "relle3_3":relle3_3,
+                "relle4_3":relle4_3,
+                "relle5_3":relle5_3,
+                "relle6_3":relle6_3,
+                "relle7_3":relle7_3,
                 "relle_tot":relle_tot,
                 "vtot":vtot,
                 "vtot3":vtot3,
@@ -448,13 +518,29 @@ def registrarse(request,pr):
 @login_required(login_url='login_ini')
 def administrador(request):
     horas = Param.objects.filter(tipo="HORA").exclude(descrip='hora').order_by('codigo')
+    hrs_def = Param.objects.filter(tipo="HORA").order_by('codigo')
     cta  =  Param.objects.filter(tipo="CTA").order_by('codigo')    
-    ene_registros = horas.count() # total registros de la tabla
-    ene_regis_cta = cta.count() # total registros de la tabla
+    trabajo =  Param.objects.filter(tipo="TRA").order_by('codigo')
+
+    aHrs_def = {}
+    for h in hrs_def:
+        if h.descrip != 'hora':
+            aHrs_def.update({h.codigo:h.corr})
+
+    #return HttpResponse(str(aHrs_def))
+
+    for t in trabajo:
+        tr = t.switch1
+
+    ene_registros = horas.count()   # total registros de la tabla
+    ene_regis_cta = cta.count()     # total registros de la tabla
+    ene_horas_def = hrs_def.count() 
 
     context = {
         "horas":horas,
         "cta":cta,
+        "trabajo":tr,
+        "aHrs_def":aHrs_def,
         }  
 
     if request.method == "POST":
@@ -534,7 +620,15 @@ def administrador(request):
             cursor.execute(
             "update appsclub_param set switch1=%s,switch2=%s  where id=%s",
             [valor_xx,valor_yy,id_x]
-            )     
+            )
+
+        trabajo = request.POST.get('laburohoy') # trae campo value del check directamente desde template            
+
+        cursor.execute(
+            "update appsclub_param set switch1=%s where tipo=%s",
+            [trabajo,"TRA"]
+        )     
+         
     
         return redirect("principal")  # redirecciona a la url 'principal'
     return render(request,'administrador.html',context)

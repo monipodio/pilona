@@ -148,6 +148,7 @@
 		       			</select>
 		       		</div>		
         	</div>	
+
         	<!-- SUBTOTALES ENVOLTORIOS PROMO1 (columna de la derecha)-->
 	        <div class="celda1-3">
 	            	<div>
@@ -179,7 +180,7 @@
 	        </div>
 	 	</div>  
 
-		<!-- RELLENOS PROMO1-->
+		<!-- RELLENOS PROMO1 columna2-->
 		<div class="cont-subgrid-celda2">
 	 		<!--
 	 		<div>
@@ -196,7 +197,7 @@
 	           	<p class="franja-horiz">Sub-Total $:</p>
 	        </div>
 
-	        <!-- RELLEMOS x roll columna1 PROMO1 -->
+	        <!-- RELLEMOS x roll columna1 PROMO1 (solo muestra)-->
 		 	<div class="celda2-2">
    				<div>
 					<select name="relle1" class="relle1" id="relle1">
@@ -255,7 +256,7 @@
 			    </div>
 		 	</div>
 
-		 	<!-- RELLENOS DISPONIBLES para cambiar PROMO1-->
+		 	<!-- RELLENOS DISPONIBLES para cambiar PROMO1 columna2-->
 		 	<div class="celda2-3">
    					<div>
 						<select name="relle1_tot" class="relle1_tot" id="relle1_tot">
@@ -314,7 +315,7 @@
 			       	</div>
 		 	</div>
 
-		 	<!-- SUBTOTALES CAMBIOS RELLENOS PROMO1-->
+		 	<!-- SUBTOTALES CAMBIOS RELLENOS PROMO1 columna3-->
 	 		<div class="celda2-4">
 	            	<div>
 	              		<input type="text" name="sub1_rell" size="17" id="sub1_rell" class="sub1_rell" value="0" readonly> 
@@ -346,11 +347,9 @@
 	            	</div>
 	 		</div>	
 		</div> <!--FIN cont-subgrid-celda2 RELLENOS -->
-	 	
     </div> 
 
-
- 	<!-- SEGUNDA PROMO-SEGUNDA PROMO SEGUNDA PROMO SEGUNDA PROMO SEGUNDA PROMO SEGUNDA PROMO  SEGUNDA PROMO  SEGUNDA PROMO -->
+ 	<!-- SEGUNDA PROMO-SEGUNDA PROMO SEGUNDA PROMO SEGUNDA PROMO SEGUNDA  PROMO  SEGUNDA PROMO -->
 	{% if descrip2_x != "" %}  
 	<div class="celdagrande-segundapromo">
 		<div class="celda2">Segunda promo</div>	<!-- titulo -->
@@ -367,7 +366,7 @@
 	      	</div>
 
 	      	<!-- SUB GRID2 -->
-			<!--MUESTRA ENVOLTORIOS PROMO2 -->
+			<!--MUESTRA ENVOLTORIOS PROMO2 columna1-->
 	    	<div class="celda1-1">
 		   		<div>
 		    	    <input type="text" name="caja1_2" size="17" id="caja1_2" class="caja1_2" value={{envolt1_2}} readonly> 
@@ -396,7 +395,7 @@
 	        	</div>
 	    	</div>	
 
-	        <!-- SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO2-->
+	        <!-- SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO2 columna2-->
 	        <div class="celda1-2">
 					<div>
 						<select name="envolt" class="id_env1_2" id="id_env1_2">
@@ -455,7 +454,8 @@
 		       		</div>		
         	</div>	
 
-        	<!-- SUBTOTALES ENVOLTURAS PROMO2 -->
+
+        	<!-- SUBTOTALES ENVOLTURAS PROMO2 columna3-->
 	        <div class="celda1-3">
 	            	<div>
 	            	  <input type="text" name="subtot1_2" size="17" id="subtot1_2" class="subtot1_2" value="0" readonly> 
@@ -498,7 +498,7 @@
 	           	<p class="franja-horiz">Sub-Total $:</p>
 	        </div>
 
-	        <!-- RELLEMOS PROMO2 x roll columna1-->
+	        <!-- RELLEMOS PROMO2 x roll - columna1-->
 		 	<div class="celda2-2">
    				<div>
 					<select name="relle1_2" class="relle1_2" id="relle1_2">
@@ -557,7 +557,7 @@
 			    </div>
 		 	</div>
 
-		 	<!-- SELECCIONA RELLENO DISPONIBLES PARA CAMBIAR PROMO2 columna2-->
+		 	<!-- SELECCIONA RELLENO DISPONIBLES PARA CAMBIAR PROMO2 - columna2-->
 		 	<div class="celda2-3">
    					<div>
 						<select name="relle1_tot2" class="relle1_tot2" id="relle1_tot2">
@@ -650,6 +650,309 @@
 	</div> <!-- FIN SEGUNDA PROMO-->
 	{% endif %}
 
+
+ 	<!-- TERCERA PROMO-TERCERA PROMO-TERCERA PROMO-TERCERA PROMO-TERCERA  PROMO-TERCERA PROMO- -->
+	{% if descrip3_x != "" %}  
+	<div class="celdagrande-tercerapromo">
+		<div class="celda3">Tercera promo</div>	
+		<!-- ENVOLTURAS CAMBiOS SUBTOTAL -->
+		<div class="cont-subgrid-celda1_3"> 
+	 		<div>
+	      		<p  class="franja-horiz">Envolt. {{descrip3_x}}:</p>
+	      	</div>
+	 		<div>
+	      	   	<p  class="franja-horiz">Cambios envolturas:</p>
+	      	</div>
+	 		<div>
+	      		<p  class="franja-horiz">Sub-Total $:</p>
+	      	</div>
+
+	      	<!-- SUB GRID2 -->
+			<!--MUESTRA ENVOLTORIOS PROMO3 columna1-->
+	    	<div class="celda1-1">
+		   		<div>
+		    	    <input type="text" name="caja1_3" size="17" id="caja1_3" class="caja1_3" value={{envolt1_3}} readonly> 
+	        	</div>
+		    	<div>
+		    	    <input type="text" name="caja2_3" size="17" id="caja2_3" class="caja2_3" value={{envolt2_3}} readonly> 
+	        	</div>
+		    	<div>
+		    	    <input type="text" name="caja3_3" size="17" id="caja3_3" class="caja3_3" value={{envolt3_3}} readonly> 
+	        	</div>
+
+		    	<div>
+		    	    <input type="text" name="caja4_3" size="17" id="caja4_3" class="caja4_3" value={{envolt4_3}} readonly> 
+	        	</div>
+
+		    	<div>
+		    	    <input type="text" name="caja5_3" size="17" id="caja5_3" class="caja5_3" value={{envolt5_3}} readonly> 
+	        	</div>
+
+		    	<div>
+		    	    <input type="text" name="caja6_3" size="17" id="caja6_3" class="caja6_3" value={{envolt6_3}} readonly> 
+	        	</div>
+
+		    	<div>
+		    	    <input type="text" name="caja7_3" size="17" id="caja7_3" class="caja7_3" value={{envolt7_3}} readonly> 
+	        	</div>
+	    	</div>	
+
+	        <!-- SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO3 columna2-->
+	        <div class="celda1-3">
+					<div>
+						<select name="envolt" class="id_env1_3" id="id_env1_3">
+		       			{% for c in para_envol %}
+	          				<option value ={{c.valor}}>{{c.envolt}}</option>
+		       			{% endfor %}      
+		       			</select>
+		       		</div>
+			
+					<div>
+						<select name="envolt" class="id_env2_3" id="id_env2_3">
+		       			{% for c in para_envol %}
+	          				<option value ="{{c.valor}}">{{c.envolt}}</option>
+		       			{% endfor %}      
+		       			</select>
+		       		</div>		
+	
+					<div>
+						<select name="envolt" class="id_env3_3" id="id_env3_3">
+		       			{% for c in para_envol %}
+	          				<option value ="{{c.valor}}">{{c.envolt}}</option>
+		       			{% endfor %}      
+		       			</select>
+		       		</div>
+	
+					<div>
+						<select name="envolt" class="id_env4_3" id="id_env4_3">
+		       			{% for c in para_envol %}
+	          				<option value ="{{c.valor}}">{{c.envolt}}</option>
+		       			{% endfor %}      
+		       			</select>
+		       		</div>
+	
+					<div>
+						<select name="envolt" class="id_env5_3" id="id_env5_3">
+		       			{% for c in para_envol %}
+	          				<option value ="{{c.valor}}"> {{c.envolt}}</option>
+		       			{% endfor %}      
+		       			</select>
+		       		</div>		
+	
+					<div>
+						<select name="envolt" class="id_env6_3" id="id_env6_3">
+		       			{% for c in para_envol %}
+	          				<option value ="{{c.valor}}">{{c.envolt}}</option>
+		       			{% endfor %}      
+		       			</select>
+		       		</div>		
+	
+					<div>
+						<select name="envolt" class="id_env7_3" id="id_env7_3">
+		       			{% for c in para_envol %}
+	          				<option value ="{{c.valor}}">{{c.envolt}}</option>
+		       			{% endfor %}      
+		       			</select>
+		       		</div>		
+        	</div>	
+
+
+        	<!-- SUBTOTALES ENVOLTURAS PROMO3 columna3-->
+	        <div class="celda1-3">
+	            	<div>
+	            	  <input type="text" name="subtot1_3" size="17" id="subtot1_3" class="subtot1_3" value="0" readonly> 
+	            	</div>
+	            	<div>
+	            	  <input type="text" name="subtot2_3" size="17" id="subtot2_3" class="subtot2_3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	            	  <input type="text" name="subtot3_3" size="17" id="subtot3_3" class="subtot3_3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	            	  <input type="text" name="subtot4_3"size="17" id="subtot4_3" class="subtot4_3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	            	  <input type="text" name="subtot5_3" size="17" id="subtot5_3" class="subtot5_3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	            	  <input type="text" name="subtot6_3" size="17" id="subtot6_3" class="subtot6_3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	            	  <input type="text" name="subtot7_3" size="17" id="subtot7_3" class="subtot7_3" value="0" readonly> 
+	            	</div>
+	        </div>
+		</div>
+
+		<!-- RELLENOS PROMO3 -->
+		<div class="cont-subgrid-celda2-3">
+	 		<div>
+	           	<p class="franja-horiz">Revisa rellenos:</p>
+	        </div>
+	 		<div>
+	 			<p class="franja-horiz">Cambia relleno por:</p>
+	 		</div>
+	 		<div>
+	           	<p class="franja-horiz">Sub-Total $:</p>
+	        </div>
+
+	        <!-- RELLEMOS PROMO3 x roll (solo muestra) - columna1-->
+		 	<div class="celda2-2">
+   				<div>
+					<select name="relle1_3" class="relle1_3" id="relle1_3">
+		       			{% for c in relle1_3 %}
+	          				<option value ={{c.valor}}>{{c.relle}}</option>
+		       			{% endfor %}      
+		       		</select>
+			    </div>
+
+   				<div>
+					<select name="relle2_3" class="relle2_3" id="relle2_3">
+		       			{% for c in relle2_3 %}
+	          				<option value ={{c.valor}}>{{c.relle}}</option>
+		       			{% endfor %}      
+		       		</select>
+			    </div>
+
+   				<div>
+					<select name="relle3_3" class="relle3_3" id="relle3_3">
+		       			{% for c in relle3_3 %}
+	          				<option value ={{c.valor}}>{{c.relle}}</option>
+		       			{% endfor %}      
+		       		</select>
+			    </div>
+
+   				<div>
+					<select name="relle4_3" class="relle4_3" id="relle4_3">
+		       			{% for c in relle4_3 %}
+	          				<option value ={{c.valor}}>{{c.relle}}</option>
+		       			{% endfor %}      
+		       		</select>
+			    </div>
+
+   				<div>
+					<select name="relle5_3" class="relle5_3" id="relle5_3">
+		       			{% for c in relle5_3 %}
+	          				<option value ={{c.valor}}>{{c.relle}}</option>
+		       			{% endfor %}      
+		       		</select>
+			    </div>
+
+   				<div>
+					<select name="relle6_3" class="relle6_3" id="relle6_3">
+		       			{% for c in relle6_3 %}
+	          				<option value ={{c.valor}}>{{c.relle}}</option>
+		       			{% endfor %}      
+		       		</select>
+			    </div>
+
+   				<div>
+					<select name="relle7_3" class="relle7_3" id="relle7_3">
+		       			{% for c in relle7_3 %}
+	          				<option value ={{c.valor}}>{{c.relle}}</option>
+		       			{% endfor %}      
+		       		</select>
+			    </div>
+		 	</div>
+
+		 	<!-- SELECCIONA RELLENO DISPONIBLES PARA CAMBIAR PROMO3 - columna2-->
+		 	<div class="celda2-3">
+   					<div>
+						<select name="relle1_tot3" class="relle1_tot3" id="relle1_tot3">
+		       				{% for c in relle_tot %}
+	          					<option value = {{c.valor}}>{{c.relle}}</option>
+		       				{% endfor %}      
+		       			</select>
+			       	</div>
+
+   					<div>
+						<select name="relle2_tot3" class="relle2_tot3" id="relle2_tot3">
+		       				{% for c in relle_tot %}
+	          					<option value ={{c.valor}}>{{c.relle}}</option>
+		       				{% endfor %}      
+		       			</select>
+			       	</div>
+
+   					<div>
+						<select name="relle3_tot3" class="relle3_tot3" id="relle3_tot3">
+		       				{% for c in relle_tot %}
+	          					<option value ={{c.valor}}>{{c.relle}}</option>
+		       				{% endfor %}      
+		       			</select>
+			       	</div>
+
+   					<div>
+						<select name="relle4_tot3" class="relle4_tot3" id="relle4_tot3">
+		       				{% for c in relle_tot %}
+	          					<option value ={{c.valor}}>{{c.relle}}</option>
+		       				{% endfor %}      
+		       			</select>
+			       	</div>
+
+  					<div>
+						<select name="relle5_tot3" class="relle5_tot3" id="relle5_tot3">
+		       				{% for c in relle_tot %}
+	          					<option value ={{c.valor}}>{{c.relle}}</option>
+		       				{% endfor %}      
+		       			</select>
+			       	</div>
+
+   					<div>
+						<select name="relle6_tot3" class="relle6_tot3" id="relle6_tot3">
+		       				{% for c in relle_tot %}
+	          					<option value ={{c.valor}}>{{c.relle}}</option>
+		       				{% endfor %}      
+		       			</select>
+			       	</div>
+
+   					<div>
+						<select name="relle7_tot3" class="relle7_tot3" id="relle7_tot3">
+		       				{% for c in relle_tot %}
+	          					<option value ={{c.valor}}>{{c.relle}}</option>
+		       				{% endfor %}      
+		       			</select>
+			       	</div>
+		 	</div>
+
+		 	<!-- VALORIZACION CAMBIOS DE RELLENOS PROMO2 columna3-->
+	 		<div class="celda2-3">
+	            	<div>
+	              		<input type="text" name="sub1_rell3" size="17" id="sub1_rell3" class="sub1_rell3" value=0 readonly> 
+	            	</div>
+
+	            	<div>
+	              		<input type="text" name="sub2_rell3" size="17" id="sub2_rell3" class="sub2_rell3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	              		<input type="text" name="sub3_rell3" size="17" id="sub3_rell3" class="sub3_rell3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	              		<input type="text" name="sub4_rell3" size="17" id="sub4_rell3" class="sub4_rell3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	              		<input type="text" name="sub5_rell3" size="17" id="sub5_rell3" class="sub5_rell3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	              		<input type="text" name="sub6_rell3" size="17" id="sub6_rell3" class="sub6_rell3" value="0" readonly> 
+	            	</div>
+
+	            	<div>
+	              		<input type="text" name="sub7_rell3" size="17" id="sub7_rell3" class="sub7_rell3" value="0" readonly> 
+	            	</div>
+	 		</div>	
+		</div> 
+	</div> <!-- FIN TERCERA PROMO-->
+	{% endif %}
+
+
 	<!--ADICIONALES OPTATIVOS -->
 	<div class="celda-adicionales">	<!-- Quinta promo (quinta fila de grid grande)-->
 		<div class="titulo_adicionales">Seleccion de Adicionales</div>
@@ -671,7 +974,6 @@
 			<!-- fin primera columna -->
 
 			<div>  <!-- cantidad a seleccionar adicionales - segunda columna de la subgrid-->
-
 				<!-- valorizacion del combo con el precio del primer adicional -->
 				<select name="cant1_adicio" class="cant1_adicio" id="cant1_adicio">
 				  <option value = "--seleccione--" selected> --seleccione-- </option>	
@@ -741,7 +1043,7 @@
 
 	<div class="recuerda">
 	    <p class="recordatorio-transf">
-	    	¡¡ Recuerda que antes de la entrega o retiro, debes efectuar la transferencia de $: {{vtot3}} !!
+	    	¡¡ Recuerda que antes de la entrega o retiro, debes efectuar la transferencia de $: {{vtot_recuerda}} !!
 	    </p>
 
 		<div class ="cuentas">

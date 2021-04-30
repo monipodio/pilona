@@ -57,18 +57,13 @@
 
 <body class="body">
     <header class="header">{% csrf_token %}
-        
         <div class="container logo-nav-container">  
-            
             <a href="#" class="logo"><img  src="{{ logo_corp_chico }}"></a>
-            
             <span class="menu-icon"><i class="fa fa-bars"></i></span>           
             <span class="menu-cruz"><i class="fa fa-times"></i></span>    
-
             <div class = "titulo">
                 <div class="grid-item1"><p>La excelencia en sushi</p></div>
             </div>
-
             <div class = "navigation">    
                 <ul> 
                     <li><a href="{% url 'principal' %}">Inicio</a></li>
@@ -82,7 +77,6 @@
                 </ul>
             </div>
         </div>        
-        
     </header>
 
     <div> 
