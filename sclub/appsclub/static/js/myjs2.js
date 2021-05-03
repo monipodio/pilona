@@ -1039,7 +1039,7 @@ $(document).ready(function () {
 /* Puebla ultimas cajas de sub-totales */
 
 
-/* SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO1 */
+/* SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO1  - pone el subtotal en la columna3 */
 $(document).ready(function () {
     $("#id_env1").on('change', function () { 
         var cmb = $(this).val();
@@ -1083,7 +1083,7 @@ $(document).ready(function () {
  		suma_cambios();
 	});
 
-    /* RELLENOS PROMO1 - RELLENOS PROMO1 - RELLENOS PROMO1 - RELLENOS PROMO1 */
+    /* RELLENOS PROMO1 -  pone el subtotal en la columna3 */
     $("#relle1_tot").on('change', function () {            
         var rell = $(this).val();
     	document.getElementById("sub1_rell").value = rell;
@@ -1127,7 +1127,7 @@ $(document).ready(function () {
 	});
 
 
-    /* ENVOLTORIOS PROMO2  <<===================================================================================================*/
+    /* ENVOLTURAS PROMO2   - pone el subtotal en la columna3 */
     $("#id_env1_2").on('change', function () {            
         var cmb = $(this).val();
     	document.getElementById("subtot1_2").value = cmb;
@@ -1167,7 +1167,7 @@ $(document).ready(function () {
  		suma_cambios();
 	});
 
-    /* RELLENOS PROMO2 */
+    /* RELLENOS PROMO2  - pone el subtotal en la columna3 */
     $("#relle1_tot2").on('change', function () {            
         var rell = $(this).val();
     	document.getElementById("sub1_rell2").value = rell;
@@ -1205,6 +1205,83 @@ $(document).ready(function () {
 	});
 
 
+    /* ENVOLTURAS PROMO3   - pone el subtotal en la columna3 */
+    $("#id_env1_3").on('change', function () {            
+        var cmb = $(this).val();
+    	document.getElementById("subtot1_3").value = cmb;
+  		suma_cambios();
+	});
+    $("#id_env2_3").on('change', function () {            
+        var cmb = $(this).val();
+    	document.getElementById("subtot2_3").value = cmb;
+ 		suma_cambios();
+	});
+    $("#id_env3_3").on('change', function () {            
+        var cmb = $(this).val();
+    	document.getElementById("subtot3_3").value = cmb;
+ 		suma_cambios();
+	});
+
+    $("#id_env4_3").on('change', function () {            
+        var cmb = $(this).val();
+    	document.getElementById("subtot4_3").value = cmb;
+ 		suma_cambios();
+	});
+
+    $("#id_env5_3").on('change', function () {            
+        var cmb = $(this).val();
+    	document.getElementById("subtot5_3").value = cmb;
+ 		suma_cambios();
+	});
+    $("#id_env6_3").on('change', function () {            
+        var cmb = $(this).val();
+    	document.getElementById("subtot6_3").value = cmb;
+ 		suma_cambios();
+	});
+
+    $("#id_env7_3").on('change', function () {            
+        var cmb = $(this).val();
+    	document.getElementById("subtot7_3").value = cmb;
+ 		suma_cambios();
+	});
+
+
+    /* RELLENOS PROMO3 - pone el subtotal en la columna3 */
+    $("#relle1_tot3").on('change', function () {            
+        var rell = $(this).val();
+    	document.getElementById("sub1_rell3").value = rell;
+ 		suma_cambios();
+	});
+    $("#relle2_tot3").on('change', function () {            
+        var rell = $(this).val();
+    	document.getElementById("sub2_rell3").value = rell;
+ 		suma_cambios();
+	});
+    $("#relle3_tot3").on('change', function () {            
+        var rell = $(this).val();
+    	document.getElementById("sub3_rell3").value = rell;
+ 		suma_cambios();
+	});
+    $("#relle4_tot3").on('change', function () {            
+        var rell = $(this).val();
+    	document.getElementById("sub4_rell3").value = rell;
+ 		suma_cambios();
+	});
+    $("#relle5_tot3").on('change', function () {            
+        var rell = $(this).val();
+    	document.getElementById("sub5_rell3").value = rell;
+ 		suma_cambios();
+	});
+    $("#relle6_tot3").on('change', function () {            
+        var rell = $(this).val();
+    	document.getElementById("sub6_rell3").value = rell;
+ 		suma_cambios();
+	});
+    $("#relle7_tot3").on('change', function () {            
+        var rell = $(this).val();
+    	document.getElementById("sub7_rell3").value = rell;
+ 		suma_cambios();
+	});
 
 
     /* ADICIONALES */
@@ -1268,9 +1345,9 @@ function suma_cambios() {
 		parseInt(rell1) + parseInt(rell2) + parseInt(rell3)+ parseInt(rell4) +
 		parseInt(rell5) + parseInt(rell6) + parseInt(rell7) ;
 
-		new_tot = new_tot1;	
-	
-	if(npromo === '2') { 
+		var new_tot = new_tot1;	
+		
+	if(parseInt(npromo) >= 2) { 
 		var cmb1_2  = document.getElementById("subtot1_2").value; 
 		var cmb2_2  = document.getElementById("subtot2_2").value;
 		var cmb3_2  = document.getElementById("subtot3_2").value; 
@@ -1292,19 +1369,45 @@ function suma_cambios() {
 		parseInt(rell1_2) + parseInt(rell2_2) + parseInt(rell3_2)+ parseInt(rell4_2) +
 		parseInt(rell5_2) + parseInt(rell6_2) + parseInt(rell7_2);
 
-		new_tot = new_tot1 + new_tot2 + new_tot3;	
+		var new_tot = new_tot1 + new_tot2;	
+	}	
+
+	if(parseInt(npromo) >= 3) { 
+		var cmb1_3  = document.getElementById("subtot1_3").value; 
+		var cmb2_3  = document.getElementById("subtot2_3").value;
+		var cmb3_3  = document.getElementById("subtot3_3").value; 
+		var cmb4_3  = document.getElementById("subtot4_3").value; 
+		var cmb5_3  = document.getElementById("subtot5_3").value; 
+		var cmb6_3  = document.getElementById("subtot6_3").value; 
+		var cmb7_3  = document.getElementById("subtot7_3").value; 
+
+    	var rell1_3   = document.getElementById("sub1_rell3").value;
+    	var rell2_3   = document.getElementById("sub2_rell3").value;
+    	var rell3_3   = document.getElementById("sub3_rell3").value;
+    	var rell4_3   = document.getElementById("sub4_rell3").value;
+    	var rell5_3   = document.getElementById("sub5_rell3").value;
+    	var rell6_3   = document.getElementById("sub6_rell3").value;
+    	var rell7_3   = document.getElementById("sub7_rell3").value;
+
+ 		var new_tot3 = parseInt(cmb1_3) + parseInt(cmb2_3) +
+ 		parseInt(cmb3_3) + parseInt(cmb4_3) + parseInt(cmb5_3) + parseInt(cmb6_3) + parseInt(cmb7_3)+
+		parseInt(rell1_3) + parseInt(rell2_3) + parseInt(rell3_3)+ parseInt(rell4_3) +
+		parseInt(rell5_3) + parseInt(rell6_3) + parseInt(rell7_3);
+
+		var new_tot = new_tot1 + new_tot2 + new_tot3;	
 	}	
 
 	var new_tot = new_tot + parseInt(adicio1) + parseInt(adicio2) + parseInt(adicio3); 
 
-	/*var new_tot = parseInt(tot_promo1); */
+	/* mensaje swalert */
   	valor_totalizando(vtot_aux,new_tot);
+
 	document.getElementById('vtot').value = new_tot.toString();
 	document.getElementById('tot_final').value = new_tot.toString();
 }
 
 
-/* OCULTA ROLLS (que no proceden) */
+/* OCULTA ROLLS (que no lacanzan los 7) */
 $(document).ready(function () {
 	if(document.getElementById("caja3").value === "readonly") {
 		document.getElementById('caja3').style.display = 'none';
@@ -1333,9 +1436,6 @@ $(document).ready(function () {
 		document.getElementById('id_env7').style.display = 'none';
 		document.getElementById('subtot7').style.display = 'none';
 	}
-
-	/*var texto = $("#relle1:selected").text();  */
-	/*var texto = $( "#rrelle1 option:selected" ).text();*/
 	
 	/* RELLENOS */
 	if(document.getElementById("caja3").value === "readonly") {
@@ -1369,11 +1469,8 @@ $(document).ready(function () {
 
 	/* PROMO2 ENVOLTURAS */
 	if(document.getElementById("caja3_2").value === "readonly") {
-		/*esconde envoltura */
 		document.getElementById('caja3_2').style.display = 'none';
-		/* esconde combo seleccionador de envolturas para cambiar */
 		document.getElementById('id_env3_2').style.display = 'none';
-		/* esconde caja de subtotal envoltura */
 		document.getElementById('subtot3_2').style.display = 'none';
 	}
 
@@ -1399,6 +1496,7 @@ $(document).ready(function () {
 		document.getElementById('id_env7_2').style.display = 'none';
 		document.getElementById('subtot7_2').style.display = 'none';
 	}
+
 	/* PROMO2 RELLENOS */
 	if(document.getElementById("caja3_2").value === "readonly") {
 		document.getElementById('relle3_2').style.display = 'none';
@@ -1424,6 +1522,33 @@ $(document).ready(function () {
 		document.getElementById('relle7_2').style.display = 'none';
 		document.getElementById('relle7_tot2').style.display = 'none';
 		document.getElementById('sub7_rell2').style.display = 'none';
+	}
+
+	/* PROMO3 RELLENOS */
+	if(document.getElementById("caja3_3").value === "readonly") {
+		document.getElementById('relle3_3').style.display = 'none';
+		document.getElementById('relle3_tot3').style.display = 'none';
+		document.getElementById('sub3_rell3').style.display = 'none';
+	}
+	if(document.getElementById("caja4_3").value === "readonly") {
+		document.getElementById('relle4_3').style.display = 'none';
+		document.getElementById('relle4_tot3').style.display = 'none';
+		document.getElementById('sub4_rell3').style.display = 'none';
+	}
+	if(document.getElementById("caja5_3").value === "readonly") {
+		document.getElementById('relle5_3').style.display = 'none';
+		document.getElementById('relle5_tot3').style.display = 'none';
+		document.getElementById('sub5_rell3').style.display = 'none';
+	}
+	if(document.getElementById("caja6_3").value === "readonly") {
+		document.getElementById('relle6_3').style.display = 'none';
+		document.getElementById('relle6_tot3').style.display = 'none';
+		document.getElementById('sub6_rell3').style.display = 'none';
+	}
+	if(document.getElementById("caja7_3").value === "readonly") {
+		document.getElementById('relle7_3').style.display = 'none';
+		document.getElementById('relle7_tot3').style.display = 'none';
+		document.getElementById('sub7_rell3').style.display = 'none';
 	}
 
 });
@@ -1490,5 +1615,5 @@ function actualiza_horas(v) {
 function selecc_todas_definidas(){
    for (i=0;i<document.f1.elements.length;i++)
       if(document.f1.elements[i].type == "checkbox")
-         document.f1.elements[i].checked=1
+         document.f1.elements[i].checked=1;
 }

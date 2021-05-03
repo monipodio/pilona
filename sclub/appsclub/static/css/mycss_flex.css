@@ -256,9 +256,10 @@ p {
       }
      
      .cont-subgrid-celda1 {
-       grid-gap: 1px;
-       align-items: top; /* para centrar verticalmente */
-       max-width: 100%;  /* determina el ancho del contenedor */
+        display: grid; 
+        grid-gap: 1px;
+        align-items: top; /* para centrar verticalmente */
+        max-width: 100%;  /* determina el ancho del contenedor */
       }
 
      .cont-subgrid-celda2 {
@@ -381,7 +382,7 @@ p {
 
       .form-register {
         width: 320px;
-        /*background: #24303c;*/
+        background: #24303c;
         padding: 30px;
         margin:auto;
         border-radius: 6px;
@@ -396,6 +397,7 @@ p {
         background-color: #899EF3;
         width: 100%; 
       }
+
 }
 /* fin responsivo 600 px */
 
@@ -523,14 +525,6 @@ p {
       margin: auto;  /* alinea y centra respecto al HTML*/
       flex-wrap: wrap;
       margin-top: 12rem;   /* posiciona verticalmente respecto a la pantalla */
-    }
-
-    .celdagrande-cambios {
-      /*CONTENEDORA DE LA SUBGRID*/
-     /*background-color: #E6E2E9; */ 
-      text-align: left; /* centra texto horizontalmente respecto a los limites de la celda */   
-      padding:3px;  /* espacio entre el texto (o foto) y el borde de la celada*/
-      margin-top: 8rem;   /* posiciona verticalmente la grid respecto al borde de este contenedor */  
     }
 
     .col-grid1-cuentas, .col-grid2-cuentas, .col-grid3-cuentas, .col-grid4-cuentas {
@@ -751,6 +745,8 @@ p {
   border-radius: 8px;
 }
 
+
+
 .celda2, .celda3  {
   background-color: #AEAFAC; 
   text-align: center; /* centra texto respecto a los limites de la celda */
@@ -793,12 +789,12 @@ p {
     display: grid; 
     grid-template-columns: repeat(3,1fr);
     grid-gap: 1px;
-    background-color: #F2D3F5;   /* morado claro */  
+    background-color: #ADF8F2;   /* morado claro */  
     /* background:linear-gradient(-90deg, red, white); */
     align-items: top; /* para centrar verticalmente */
     text-align: center;
     max-width: 100%;  /* determina el ancho del contenedor */
-    border-radius: 7px;
+    border-radius: 7px; 
 }
 
 /* SEGUNDA PROMO - caja contenderora de la subgrid */
@@ -826,7 +822,7 @@ p {
 }
 
 /* EMVOLTURAS ORIGINALES promo1 y promo2*/
-.caja1, .caja2,.caja3,.caja4,.caja5,.caja6, .caja7,
+/*caja1, .caja2,.caja3,.caja4,.caja5,.caja6, .caja7, */
  .caja1_2,.caja2_2,.caja3_2,.caja4_2,.caja5_2,.caja6_2, .caja7_2, .caja_adi1, .caja_adi2, .caja_adi3 {
    height: 26px;
    width: 70%;
@@ -841,17 +837,32 @@ p {
    justify-self: stretch;
 }
 
-/* COMBO ENVOLTURAS PARA CAMBIAR PROMO1 - PROMO2 - PROMO3 */
-#id_env1, #id_env2, #id_env3, #id_env4, #id_env5, #id_env6, #id_env7,
- #id_env1_2, #id_env2_2, #id_env3_2, #id_env4_2, #id_env5_2, #id_env6_2, #id_env7_2,
- #id_env1_3, #id_env2_3, #id_env3_3, #id_env4_3, #id_env5_3, #id_env6_3, #id_env7_3 {
+/* CAJAS MUESTRA ENVOLTURAS PROMO1-PROMO2 Y PROMO3  primeras columnas */
+#caja1, #caja2,#caja3,#caja4,#caja5,#caja6,#caja7,
+#caja1_3,#caja2_3,#caja3_3,#caja4_3,#caja5_3,#caja6_3,#caja7_3 {
    height: 26px;
    width: 70%;
    margin: 0 2px 3 1px;   
+   /*border-color: #F2D3F5;  /* PINTADO DE BORDE DE CADA COMBO*/ 
+   border: none;
 }
 
+/* COMBO ENVOLTURAS PARA CAMBIAR PROMO1 - PROMO2 - PROMO3 segundas columnas */
+#caja1_3,#caja2_3,#caja3_3,#caja4_3,#caja5_3,#caja6_3,#caja7_3,
+#id_env1_3, #id_env2_3, #id_env3_3, #id_env4_3, #id_env5_3, #id_env6_3, #id_env7_3,
+#id_env1, #id_env2, #id_env3, #id_env4, #id_env5, #id_env6, #id_env7,
+ #id_env1_2, #id_env2_2, #id_env3_2, #id_env4_2, #id_env5_2, #id_env6_2, #id_env7_2 {
+   height: 26px;
+   width: 70%;
+   margin: 0 2px 3 1px;   
+   border-color: #F2D3F5;  /* PINTADO DE BORDE DE CADA COMBO*/ 
+}
 
-/* SUBTOTAL CAMBIO ENVOLTURAS - ancho de la cajas input text */
+/* SUBTOTAL CAJAS -  PROMO1-PROMO2-PROMO3 Y SUBTOTAL ADICIONALES terceras columnas */
+.sub1_rell2, .sub2_rell2, .sub3_rell2, .sub4_rell2, .sub5_rell2, .sub6_rell2, .sub7_rell2,
+.sub1_rell, .sub2_rell, .sub3_rell, .sub4_rell, .sub5_rell, .sub6_rell, .sub7_rell,
+.sub1_rell3, .sub2_rell3, .sub3_rell3, .sub4_rell3, .sub5_rell3, .sub6_rell3, .sub7_rell3,  
+.subtot1_3,.subtot2_3,.subtot3_3,.subtot4_3,.subtot5_3,.subtot6_3,.subtot7_3,
 .subtot1, .subtot2,.subtot3,.subtot4,.subtot5, .subtot6,.subtot7,
 .subtot1_2, .subtot2_2,.subtot3_2,.subtot4_2,.subtot5_2, .subtot6_2,.subtot7_2,
 .sub1_adicio, .sub2_adicio, .sub3_adicio {
@@ -860,7 +871,9 @@ p {
    margin: 0 2px 3 1px;   
    border: none;
    text-align: right;
+   border-color: #F2D3F5;  /* PINTADO DE BORDE DE CADA COMBO*/   
 }
+
 
 .valor-final {
   padding-top: 1rem;  /* borde o distancia superior */
@@ -901,21 +914,17 @@ p {
   align:right;
 }
 
-/*caja contenderora de la subgrid  RELLENOS PROMO1 */
+/*caja contenderora de la subgrid RELLENOS PROMO1 */
 .cont-subgrid-celda2 {
     display: grid; 
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 7fr; 
-    max-width: 100%;  /* determina el ancho del contenedor */
-    /*grid-gap: 1px; */
-    background-color: #F2D3F5;   /* verde claro */  
-    /* background:linear-gradient(-90deg, red, white); */
-    align-items: top; /* para centrar verticalmente */
+    max-width: 100%;   /* determina el ancho del contenedor */
+    background-color: #ADF8F2;   /* CELESTE claro */  
+    align-items: top;   /* para centrar verticalmente */
     text-align: center;
     padding-top: 2rem; /* borde superior de la grid (o subgrid) c/respecto a su contenedor*/
-    /*flex-direction: column;
-    justify-content:space-between;*/
-    max-width: 100%;  /* determina el ancho del contenedor */   
+    max-width: 100%;    /* determina el ancho del contenedor */   
 }
 
 
@@ -998,18 +1007,31 @@ p {
 .celda1-1 {
     width:100%;
     align-items: center;
+    margin: 0;
+    /*background-color: #CEDBD8; */
 }
 
 /* COMBO ENVOLTORIOS PARA CAMBIO */
 .celda1-2 {
     width:100%;
     align-items: center;
+    /*background-color:red;    */
 }
 
-/* SUBTOTALES ENVOLTORIOS */
+/* COMBO RELLENOS PARA CAMBIO */
+.celda2-3 {
+    width:100%;
+    align-items: center;
+    /*background-color:orange; */
+}
+
+
+
+/* SUBTOTALES ENVOLTORIOS para todas las cajas */
 .celda1-3 {
     width:100%;
     align-items: center;
+    /*background-color: blue;  */
 }
 
 /*RELLENOS - RELLENOS - RELLENOS - RELLENOS - RELLENOS - RELLENOS - RELLENOS - RELLENOS - RELLENOS - RELLENOS - RELLENOS - */
@@ -1023,39 +1045,38 @@ p {
    border-color: #F2D3F5;
 }
 
+/*RELLENO DE CADA ROLL PROMO3 */
+#relle1_3, #relle2_3, #relle3_3, #relle4_3, #relle5_3, #relle6_3, #relle7_3,#relle_tot_3 {
+   height: 26px;
+   width: 70%;
+   margin: 0 2px 3 1px;  
+   border-color: #F2D3F5;
+}
 
 /* COMBO RELLENOS disponibles para cambiar PROMO1 Y PROMO2 */
+/* #id_env1,#id_env2,#id_env3,#id_env4,#id_env5,#id_env6,#id_env7, */
 #relle1_tot, #relle2_tot, #relle3_tot, #relle4_tot, #relle5_tot, #relle6_tot, #relle7_tot,
  #relle1_tot2, #relle2_tot2, #relle3_tot2, #relle4_tot2, #relle5_tot2, #relle6_tot2, #relle7_tot2,
  #cant1_adicio, #cant2_adicio, #cant3_adicio {
    height: 26px;
    width: 70%;
-   margin: 0 2px 3 1px;   
-   border-color: #F2D3F5;
+   margin: 0 2px 3 1px;  
+   border-color: #F2D3F5;  /* PINTADO DE BORDE DE CADA COMBO*/ 
 }
 
-
-/* SUBTOTAL CAMBIO DE RELLENOS */
-.sub1_rell, .sub2_rell, .sub3_rell, .sub4_rell, .sub5_rell, .sub6_rell, .sub7_rell,
- .sub1_rell2, .sub2_rell2, .sub3_rell2, .sub4_rell2, .sub5_rell2, .sub6_rell2, .sub7_rell2 {
+/* COMBO RELLENOS disponibles para cambiar PROMO3 */
+ #relle1_tot3, #relle2_tot3, #relle3_tot3, #relle4_tot3, #relle5_tot3, #relle6_tot3, #relle7_tot3 {
    height: 26px;
    width: 70%;
    margin: 0 2px 3 1px;   
    border-color: #F2D3F5;
-   text-align:right;
 }
+
 
 /*rellenos de cada roll*/
 .celda2-2 {
     width:100%;
     align-items: center;
-}
-
-/*rellenos disponibles*/
-.celda2-3 {
-    width:100%;
-    align-items: center;
-    /*background-color: #F4AC36;  /* color de fondo de la sub-celda */
 }
 
 /* subtotal cambios rellenos */
@@ -1117,7 +1138,6 @@ p {
 .subgrid_adicionales p {
     margin-top: 1rem;
 }
-
 
 .titulo_adicionales {
   text-align: center;    
@@ -1297,7 +1317,6 @@ p {
 }
 
 
-
 /* SUB GRID cabeceras de la grid */
 .grid-cabeceras {
     display: grid; 
@@ -1376,3 +1395,9 @@ p {
   width: 60%; /* ancho de la caja de texto */
 }
 
+.boton-graba, #btn-block {
+  padding-top: 2rem;
+  height:95px;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+}

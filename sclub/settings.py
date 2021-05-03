@@ -24,7 +24,8 @@ DEBUG = True
 #DEBUG = False
 
 # local
-ALLOWED_HOSTS = ['127.0.0.1','localhost','c252d7b4b09b.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','ad3303893f7f.ngrok.io']
+
 
 # Hosting web
 #ALLOWED_HOSTS = ['*']

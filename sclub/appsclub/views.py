@@ -147,7 +147,6 @@ def principal(request):
         caja4_seleccionada = ""        
         relle_tot = Rellenos.objects.filter(cod="RE")
 
-
         # PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA PRMERA PROMO SELECCIONADA
         if  caja1_seleccionada != "":
             pr1 = Promos.objects.filter(Q(descrip__icontains=caja1_seleccionada))
@@ -160,9 +159,6 @@ def principal(request):
             #ENVOLTURAS - promo1    
             envolt1 = Envolturas.objects.filter(cod=cod1_x).order_by('roll')
             ene_rolls = envolt1.count()  # cuantas envolturas tiene 
-
-            #return HttpResponse(str(ene_rolls))
-
             kontador = 1
             for itera_envolt in envolt1:
                 if kontador == 1:
@@ -222,7 +218,7 @@ def principal(request):
     
 
         #SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA 
-        if  caja2_seleccionada != "" or  caja2_seleccionada == None:
+        if  caja2_seleccionada != "" or caja2_seleccionada == None:
             npromo = npromo + 1
             pr2 = Promos.objects.filter(Q(descrip__icontains=caja2_seleccionada))      
             for sal in pr2:
@@ -298,6 +294,7 @@ def principal(request):
 
         #TERCERA PROMO SELECCIONADA TERCERA PROMO SELECCIONADA TERCERA PROMO SELECCIONADA TERCERA PROMO SELECCIONADA
         if  caja3_seleccionada != "" or  caja3_seleccionada == None:
+                npromo = npromo + 1
                 pr3 = Promos.objects.filter(Q(descrip__icontains=caja3_seleccionada))         
                 for sal in pr3:
                     cod3_x = sal.cod
@@ -373,7 +370,7 @@ def principal(request):
                     relle7_3  =  Rellenos.objects.filter(cod=70,roll=7)
         
         
-        vtot =  valor1_x + valor2_x + valor3_x + valor4_x
+        vtot =  valor1_x + valor2_x + valor3_x 
         vtot3 = vtot
 
         context = {
