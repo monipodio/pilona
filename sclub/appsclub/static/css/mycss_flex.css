@@ -105,26 +105,53 @@ p {
 
 /*PIE DE PAGINA*/
 .footer {
+  display: grid;
+  grid-template-columns: 35% 30% 1fr;
+  grid-template-rows: 80% 20%; 
   background: #24303c;
-  padding: 4rem 0;
-  text-align: center;
+  padding: 3rem 1; /* distancia con el borde superior*/
+  text-align:left;
   margin-top: 6rem;
-  /*grid-auto-rows: minmax(100px, auto);*/  
+  color: white;
 }
 
-.footer .footer-texto1 {
+.footer-texto1, .footer-texto2 {
+   margin-left: 1rem; 
+   margin-right: 1rem;
    color: white;
+   background: #476D6B;
+   padding:10px;
+   border-radius: 5px;
+ }
+ 
+.footer-texto3 {
+   margin-left: 1rem; 
+   margin-right: 1rem;
+   color: white;
+   background: #476D6B;
+   padding:10px;
+   border-radius: 5px;
+   text-align: center; 
  }
 
-.footer .footer-texto2 {
-   color: white;
-   font-size: 1rem;
+.footer-texto3 a img:hover { 
+  width: 100%;
+}
 
- }
-.footer .footer-texto3 {
+.footer-texto4 {
+    grid-column: 1 / 6;   /* parte en el eje 1 y termina en eje 6*/
     color: white;
     font-size: 1rem;
+    text-align: center; 
+    margin-top: 3rem;
+    margin-left: 1rem;  
+    margin-right: 1rem;
+    background: #24303c;
  }
+
+.v1_, .v2_ {
+  border-left: thick solid white;
+}
 
 .menu-link{
    color: black;
@@ -214,7 +241,7 @@ p {
         margin: auto;         /* alinea y centra respecto al HTML*/
         margin-bottom: 5px;
         border: 1px;
-        padding-top: 3rem;    /* margen sup. de la grid con respecto a su  */ 
+        padding-top: 3rem;    /* margen sup. de la grid con respecto a su contenedor*/ 
         padding-bottom: 3rem;
         background-color: #EAE9E4;
         border-radius: 10px 10px 10px 10px;
@@ -391,11 +418,25 @@ p {
         box-shadow: 7px 13px 37px #000;
       }
 
-      .radiolaburo {
+      .contendor-inicial {
         display: flex;
-        flex-direction:row;
-        background-color: #899EF3;
+        flex-direction:column;
+        border:1px #B8B8B8 solid;
         width: 100%; 
+        padding:1rem;
+        border-radius: 10px;
+        align-items: center;
+      }
+
+      .footer {
+        display: flex;
+        flex-direction:column;
+        background: #24303c;
+        padding: 3rem 1; /* distancia con el borde superior*/
+        text-align:left;
+        margin-top: 6rem;
+        color: white;
+        grid-gap: 2px; /* distancia entre celdas */
       }
 
 }
@@ -502,7 +543,16 @@ p {
       padding: 18px;  /* centra el texto verticalmente */
     }
 
+
+    .capa-titulo #disponibilidad {
+      text-align:center;
+      font-size: 1.8rem;
+      width:100%;
+      /*background-color: red; */
+    }
+
     .capa-titulo #cerrar {
+      /*background: blue;*/
       font-size: 17px; 
     }
 
@@ -510,7 +560,7 @@ p {
       grid-column-start: 1;
       grid-column-end: 4;
       text-align: center;
-      /*background-color: #EAE9E4; /* gris */
+      /*background-color: #EAE9E4;*/
     }
 
     /* contenedor de GRID GRANDE */
@@ -551,13 +601,14 @@ p {
       box-shadow: 7px 13px 37px #000;
   }
 
-  .radiolaburo {
-    display: flex;
-    flex-direction:row;
-    padding:5px;
-    background-color: #899EF3;
-    flex:1 1 auto;
-    border:1px blue solid;
+
+  .contendor-inicial {
+    display: grid; 
+    grid-template-columns: 30% auto 15%;
+    grid-template-rows: 1fr; 
+    padding:6px; /* espacio de los elementos con el contenedor*/
+    border:1px #B8B8B8 solid;
+    border-radius: 10px;
   }
 
 }
@@ -888,7 +939,7 @@ p {
   font-weight: bold;
 }
 
-.vtot, .vtot_aux {
+.vtot, .vtot_tot {
   background-color:transparent;
   text-align: center;
   border-radius: 80px 20px;
@@ -1308,7 +1359,7 @@ p {
   align-items: center; 
   /*background: #F46C8D;  /* rosado */
   padding:0.5px;  /* da margen superior e inferior al texto */
-  font-weight: bold;  
+  /*font-weight: bold;  */
 }
 
 #inicializa-dia {
@@ -1400,4 +1451,23 @@ p {
   height:95px;
   padding-bottom: 3rem;
   margin-bottom: 2rem;
+  border-radius: 20px 20px 20px 20px; 
 }
+
+.radiotrabajo {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.Inicializa-dia {
+  /*background-color: yellow;  */
+  padding: 4px;
+  text-align:center;
+}
+
+.revihora {
+  padding: 4px;
+}
+

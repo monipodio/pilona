@@ -41,17 +41,22 @@ def log_out(request):
 def principal(request):
     #return HttpResponse(str(request.user.is_staff))
     variable1 = 'PAGINA PRINCIPAL'
-    nosetrabaja = '1'
     logo2 = "/static/img/Logo_sc.jpg"
     #logo = "/staticfiles/img/Logo_AsistenciaIntegral.jpg" # for PythonAnyWhere
     hrs =  Param.objects.filter(tipo="HORA",switch1=1,switch2=1).order_by('codigo')
     cta =  Param.objects.filter(tipo="CTA",switch1=1,switch2=1).order_by('codigo')
+    obs = Param.objects.filter(tipo="OBS").order_by('codigo')
     prs =  Promos.objects.all().order_by('piezas')
+    trabajo =  Param.objects.filter(tipo="TRA").order_by('codigo') #
+
+    for traba in trabajo: 
+        nosetrabaja = traba.switch1
+
     string_horas =""
     aDisponibles = []
     for j in hrs:
         aDisponibles.append(j.descrip) # llena arreglo con valor del campo
-        string_horas = string_horas + j.descrip+", "
+        string_horas = string_horas + j.descrip+","
 
     if string_horas == "":
         nosetrabaja = '0'
@@ -70,6 +75,7 @@ def principal(request):
     	"logo_corp_chico":logo2,
         "cta":cta, 
         "nosetrabaja":nosetrabaja,
+        "obs":obs,
         }
 
     npromo = 1
@@ -216,7 +222,6 @@ def principal(request):
                 relle6  =  Rellenos.objects.filter(cod=70,roll=6)
                 relle7  =  Rellenos.objects.filter(cod=70,roll=7)
     
-
         #SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA SEGUNDA PROMO SELECCIONADA 
         if  caja2_seleccionada != "" or caja2_seleccionada == None:
             npromo = npromo + 1
@@ -451,6 +456,7 @@ def principal(request):
                 "hrs":hrs,
                 "cta":cta,
                 "ctas":ctas,
+                "obs":obs,
         }
         return render(request,'cambios.html',context)
     return render(request,'principal_flex2.html',context)
@@ -514,10 +520,15 @@ def registrarse(request,pr):
 
 @login_required(login_url='login_ini')
 def administrador(request):
+    logo2 = "/static/img/Logo_sc.jpg"
     horas = Param.objects.filter(tipo="HORA").exclude(descrip='hora').order_by('codigo')
     hrs_def = Param.objects.filter(tipo="HORA").order_by('codigo')
     cta  =  Param.objects.filter(tipo="CTA").order_by('codigo')    
-    trabajo =  Param.objects.filter(tipo="TRA").order_by('codigo')
+    trabajo =  Param.objects.filter(tipo="TRA").order_by('codigo') #
+    obs =  Param.objects.filter(tipo="OBS").order_by('codigo')
+
+    for ob in obs:
+        obstext = ob.observacion1
 
     aHrs_def = {}
     for h in hrs_def:
@@ -527,7 +538,7 @@ def administrador(request):
     #return HttpResponse(str(aHrs_def))
 
     for t in trabajo:
-        tr = t.switch1
+        tr = t.switch1  # 0=nose trabaja, 1=setrabaja
 
     ene_registros = horas.count()   # total registros de la tabla
     ene_regis_cta = cta.count()     # total registros de la tabla
@@ -538,6 +549,9 @@ def administrador(request):
         "cta":cta,
         "trabajo":tr,
         "aHrs_def":aHrs_def,
+        "obstext":obstext,        
+        "obs":obs,
+        "logo_corp_chico":logo2,
         }  
 
     if request.method == "POST":
@@ -618,6 +632,15 @@ def administrador(request):
             "update appsclub_param set switch1=%s,switch2=%s  where id=%s",
             [valor_xx,valor_yy,id_x]
             )
+
+        # Trae la glosa del textarea directamente desde template según lo que tenga en name    
+        for ob in obs:
+            name_x = request.POST.get(str(ob.codigo)) # el valor de "ob.codigo" es lo q' hay en 'name' del template
+            cursor.execute(
+            "update appsclub_param set observacion1=%s where codigo=%s",
+            [name_x,ob.codigo]
+            )
+
 
         trabajo = request.POST.get('laburohoy') # trae campo value del check directamente desde template            
 

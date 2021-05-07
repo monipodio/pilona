@@ -88,18 +88,40 @@
         baguetteBox.run('.tz-gallery');  
     </script>    
 
+
+    <!-- <div class="cajaflex"> -->
     <footer class="footer">
         <div class="footer-texto1">
-            <p>Entrega puntual en nuestro domicilio</p>
+            {% for ob1 in obs %}
+                {%if ob1.codigo == 1 %}
+                    <p>{{ ob1.observacion1 }}</p>
+                {% endif %}
+            {% endfor %}
         </div>
+                
         <div class="footer-texto2">
-            <p>Página diseñada por GMI - Gabriel Araya Garcia</p>
+            {% for ob1 in obs %}
+                {%if ob1.codigo == 2 %}
+                    <p>{{ ob1.observacion1 }}</p>
+                {% endif %}
+            {% endfor %}
         </div>
+        
         <div class="footer-texto3">
-            <p>Teléfono: 9 7721 1570 - gabrielaraya2011@gmail.com</p>
+            <!--
+             <u align="right" color="white"><a href="https://goo.gl/maps/VKabXnyynUGi2xBk9">Google Maps</a></u>
+            -->
+            <a title="Mapa de ubicación">
+               <img src="/static/img/mapa.jpg" />
+            </a>
+   
+        </div>
+
+        <div class="footer-texto4">
+            <p>Pagina diseñada por Gabriel Araya Garcia - email: gabrielaraya2011@gmail.com - f: +56 9 77211570</p>
         </div>
     </footer>
-
+    <!-- </div> -->
 </body> 
 
 

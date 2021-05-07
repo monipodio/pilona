@@ -43,6 +43,7 @@
 
 				<div class="c3">
 					<!-- VALOR TOTAL CON LOS CAMBIOS A LA PROMO -->
+					$:
        			   	<input type="text" size="12" id="vtot" class="vtot" value="{{vtot3}}" readonly>
        			</div>
 	       	</div>
@@ -1040,7 +1041,8 @@
 
 	<div class="recuerda">
 	    <p class="recordatorio-transf">
-	    	¡¡ Recuerda que antes de la entrega o retiro, debes efectuar la transferencia de $: {{vtot3}} !!
+	    	¡¡ Recuerda que antes de la entrega o retiro, debes efectuar la transferencia de $:
+			<input type="text" size="12" id="vtot_tot" class="vtot_tot" value="{{vtot3}}" readonly>
 	    </p>
 
 		<div class ="cuentas">
@@ -1082,19 +1084,19 @@
 			</div>
 
            	<div>
-           		<input type="submit" value="Solicita el pedido" class="btn btn-primary login-btn btn-block"></input>        
+           		<input type="submit" value="Solicita el pedido" class="btn btn-primary login-btn btn-block"></input>       
 			</div>
 
 		</form>
 		</section>
 
-	<!--
-	<form method = "POST" action=""> 
-	   	<div class="cont-boton-seguir">
+		<!--
+		<form method = "POST" action=""> 
+	   		<div class="cont-boton-seguir">
 			<a class="btn btn-danger" href="{% url 'pedidos_sc' 1 %}" role="button">Continuar, identificación y envía pedido</a>
-    	</div>
-    </form> 
-	-->
+    		</div>
+    	</form> 
+    	-->
 		
 	</section>	<!-- valorizacion -->
 

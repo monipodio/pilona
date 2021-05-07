@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %} 
 
-<form method="POST" action="" name='f1'> 
+ <form method="POST" action="" name='f1'> 
 {% csrf_token %}
 <section class="administrador"> <!-- grid principal -->
 
@@ -11,25 +11,31 @@
 	</div>
 
 	<!-- obs: en la view es request.POST.get('laburohoy') -->
-	<div class="radiolaburo">
+	<div class="contendor-inicial">
+		<div class="radiotrabajo">
 		{% if trabajo == 1 %}
-			<div><input type="radio" name="laburohoy" value="1" checked> Se trabaja hoy <br></div>
+			<div><input type="radio" name="laburohoy" value="1" checked>No Se trabaja hoy <br></div>
 			<div> </div>
-			<div><input type="radio" name="laburohoy" value="2"> NO se trabaja hoy<br></div>
+			<div><input type="radio" name="laburohoy" value="2"> Se trabaja hoy<br></div>
 		{% endif %}
 
 		{% if trabajo == 2 %}
-			<div><input type="radio" name="laburohoy" value="1" >Se trabaja hoy<br></div>
+			<div><input type="radio" name="laburohoy" value="1" >No se trabaja hoy<br></div>
 			<div> </div>
-			<div><input type="radio" name="laburohoy" value="2" checked> NO se trabaja hoy<br></div>
+			<div><input type="radio" name="laburohoy" value="2" checked> Se trabaja hoy<br></div>
 		{% endif %}
+		</div>
+		
+	    <div class="Inicializa-dia">
+        	<u><a id= "inicializa" onclick="return actualiza_horas('{{aHrs_def}}');">Inicializa dia</a></u>
+    	</div>
+
+		<div class="revihora">
+			<u><a id = "previsa_ped" onclick="return actualiza_horas('{{aHrs_def}}');">Revisa pedidos</a></u>
+		</div>
 	</div> 
 
 
-    <div class="administrador-titulo-opciones">
-    	<p>Opciones de Horario:</p>
-        <u><a id= "inicializa" onclick="return actualiza_horas('{{aHrs_def}}');">Inicializa dia</a></u>
-    </div>
 
 	<div class="grid-cabeceras"> <!-- subgrid -->
 		<div class="col1">
@@ -81,7 +87,8 @@
 		</div>	
 	{% endfor %} 
 
-	
+
+
 	<!-- SEGUNDA GRID (CTAS) -->
 	<br>
 	<div class="administrador-titulo-opciones">
@@ -137,8 +144,15 @@
 		</div>	
 	{% endfor %} 
 
+
+	<!-- RECUADROS PIE DE PAGINA (FOOTER) -->
+	{% for ob in obs %} 
+		<textarea class="form-control" name="{{ob.codigo}}" id="textArea1" rows="4">{{ob.observacion1}}</textarea>
+	{% endfor%} 
+
+
 	<div class="boton-graba">
-  		<input type="submit" id="btn-block" value="Graba todos los cambios" class="btn btn-primary login-btn btn-block"></input>  
+  		<input type="submit" id="btn-block" value="Graba todos los cambios de esta página" class="btn btn-primary login-btn btn-block"></input>  
 	</div>
 
 </section> 

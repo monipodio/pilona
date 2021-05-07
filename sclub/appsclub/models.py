@@ -21,6 +21,8 @@ class Param(models.Model):
 	corr = models.IntegerField(blank=True)
 	switch1 = models.IntegerField(blank=True)
 	switch2 = models.IntegerField(blank=True)
+	observacion1 = models.TextField(blank=True)
+	
 
 	def __str__(self):
 		return self.descrip

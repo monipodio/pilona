@@ -8,13 +8,19 @@
   <!-- IMAGENES DE TODAS LAS PROMOS -->
   <div  class = "personas"> 
       <div class = "capa-titulo">    
-          <div id="fantasma"></div> 
-            {% if nosetrabaja == '1' %}              
+            <div id="fantasma"></div> 
+            
+            {% if nosetrabaja == 2 %}              
             <div id="disponibilidad">
-                <spam>Disponibilidad</spam>
+                <spam>Disponibilidad de entrega</spam>
+            </div>
+            {%else%}
+            <div id="disponibilidad">
+                <spam>Disculpa:</spam>
             </div>
             {% endif %}
 
+ 
           {% if request.user.is_staff %}
             <div id="cerrar">
                   <u align="right"><a href="{% url 'log_out' %}">Cerrar sesion</a></u>
@@ -23,11 +29,17 @@
               <a></a>
           {% endif %}
 
-          {% if nosetrabaja == '1' %}              
+
+          {% if nosetrabaja == 2 %}              
             <div id="horas">
                <p>{{string_horas}}</p>
             </div>
+          {%else%}
+            <div id="horas">
+               <p>Por el dia de hoy no atenderemos</p>
+            </div>
           {%endif%}
+
 
       </div>
   
@@ -94,7 +106,7 @@
 
       </div> <!--FIN contendor de fotos -->
 
-
+    {% if nosetrabaja == 2 %}  
       <div class="contenedor-seleccion">
           <div class ="contenedor-subgrid">
             <div class="combo-promos">
@@ -161,6 +173,7 @@
             </div>
           </div> <!--contenedor-subgrid -->
       </div>  <!-- contenedor-seleccion -->
+    {%endif%}  
   </div>  <!-- personas -->
 
 </form> 

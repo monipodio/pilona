@@ -1345,8 +1345,8 @@ function suma_cambios() {
 		parseInt(rell1) + parseInt(rell2) + parseInt(rell3)+ parseInt(rell4) +
 		parseInt(rell5) + parseInt(rell6) + parseInt(rell7) ;
 
-		var new_tot = new_tot1;	
-		
+	var new_tot = new_tot1;	
+	
 	if(parseInt(npromo) >= 2) { 
 		var cmb1_2  = document.getElementById("subtot1_2").value; 
 		var cmb2_2  = document.getElementById("subtot2_2").value;
@@ -1403,7 +1403,7 @@ function suma_cambios() {
   	valor_totalizando(vtot_aux,new_tot);
 
 	document.getElementById('vtot').value = new_tot.toString();
-	document.getElementById('tot_final').value = new_tot.toString();
+	document.getElementById('vtot_tot').value = new_tot.toString();
 }
 
 
@@ -1550,7 +1550,6 @@ $(document).ready(function () {
 		document.getElementById('relle7_tot3').style.display = 'none';
 		document.getElementById('sub7_rell3').style.display = 'none';
 	}
-
 });
 
 
@@ -1599,21 +1598,17 @@ function seguir_comoadmin() {
 
 function actualiza_horas(v) {
 	var id1 = document.getElementById("320").value;
-
 	var xx = confirm("Todas las horas definidas ya seleccionadas, pasarán a estar vigentes. ¿Procede? "+id1);
 	if(xx==true){
-		/*alert("Procederá"+id1);  */
 		document.getElementById('44').checked = 1; 
-		/* document.getElementById('vtot').value = new_tot.toString(); */
 	}else{
 		/* alert("No procede");	*/
 	}	
 }
-
-
 
 function selecc_todas_definidas(){
    for (i=0;i<document.f1.elements.length;i++)
       if(document.f1.elements[i].type == "checkbox")
          document.f1.elements[i].checked=1;
 }
+
