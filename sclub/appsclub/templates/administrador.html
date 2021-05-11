@@ -27,14 +27,13 @@
 		</div>
 		
 	    <div class="Inicializa-dia">
-        	<u><a id= "inicializa" onclick="return actualiza_horas('{{aHrs_def}}');">Inicializa dia</a></u>
+        	<u><a id= "inicializa" onclick="return actualiza_horas();">Inicializa dia</a></u>
     	</div>
 
 		<div class="revihora">
-			<u><a id = "previsa_ped" onclick="return actualiza_horas('{{aHrs_def}}');">Revisa pedidos</a></u>
+			<u><a id = "previsa_ped" onclick="#">Revisa pedidos</a></u>
 		</div>
 	</div> 
-
 
 
 	<div class="grid-cabeceras"> <!-- subgrid -->
@@ -67,26 +66,26 @@
 			</div>
 
 			<!-- HORAS DEFINIDAS PARA USO -->
+			<!-- los id son para el JS "inicializar dia", el name es la llave para la VIEW, y value es el valor que retorna -->
 			<div class="col-grid3">
 				{% if hrs.switch1 == 0 %}
-					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.codigo}}"  value='{{ 0 }}'>
+					<input type="checkbox"  id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 0 }}'>
 				{% else %}
-					<input type="checkbox"  id="{{hrs.codigo}}" name="{{hrs.codigo}}"  value='{{ 1 }}' checked>	
+					<input type="checkbox"  id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 1 }}' checked>	
 				{% endif %}
 			</div>
 
 			<!-- HORAS VIGENTES HOY -->
 			<div class="col-grid4">
 				{% if hrs.switch2 == 0 %}
-					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}"  value='{{ 0 }}'>
+					<input type="checkbox" id="{{hrs.corr}}"  name="{{hrs.corr}}"  value='{{ 0 }}'>
 				{% else %}
-					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}"  value='{{ 1 }}' checked>	
+					<input type="checkbox" id = "{{hrs.corr}}" name="{{hrs.corr}}"  value='{{ 1 }}' checked>	
 				{% endif %}
 			</div>
 
 		</div>	
 	{% endfor %} 
-
 
 
 	<!-- SEGUNDA GRID (CTAS) -->
@@ -113,6 +112,7 @@
 		</div>
 	</div>	
 
+
 	<!-- CUENTAS BANCARIAS -->
  	{% for ct in cta %}
  		<div class="celdas-sub-grid-cuentas">
@@ -136,9 +136,9 @@
 			<div class="col-grid4-cuentas">
 				<!-- los que verá el usuario check2 -->
 				{% if ct.switch2 == 0 %}
-					<input type="checkbox" name="{{ct.corr}}"  value="{{ 0 }}">
+					<input type="checkbox" id="ct.corr" name="{{ct.corr}}"  value="{{ 0 }}">
 				{% else %}
-					<input type="checkbox" name="{{ct.corr}}"  value="{{ 1 }}" checked>	
+					<input type="checkbox" id="ct.corr" name="{{ct.corr}}"  value="{{ 1 }}" checked>	
 				{% endif %}
 			</div>
 		</div>	
@@ -147,7 +147,7 @@
 
 	<!-- RECUADROS PIE DE PAGINA (FOOTER) -->
 	{% for ob in obs %} 
-		<textarea class="form-control" name="{{ob.codigo}}" id="textArea1" rows="4">{{ob.observacion1}}</textarea>
+		<textarea class="form-control" name="{{ob.corr}}" id="textArea1" rows="4">{{ob.observacion1}}</textarea>
 	{% endfor%} 
 
 

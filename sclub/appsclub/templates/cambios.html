@@ -1036,7 +1036,7 @@
 	    	<span><p class="franja-horiz">Alguna petición que no signifique valor adicional, escribela aqui:</p></span>
 			<input type="text" name="input_peticion_final" size="60" id="input_peticion_final" class="input_peticion_final" placeholder = "Ejemplo: quiero que saque la palta de relleno en la segunda promo">
 		</div>
-	</div>    
+<!--	</div>    -->
 
 
 	<div class="recuerda">
@@ -1053,6 +1053,20 @@
 				</div>	
 			{% endfor %} 
 	 	</div>
+
+
+		<!-- FORMA EN QUE EL CLIENTE PAGARA --> 	
+		<div class="forma-pago-delcliente">
+			<p style="color: #FA0321;">Indique como pagará:</p>
+			<div class="radio-formapago" required="required">
+				<div><input type="radio" name="laburohoy" value="1">Transferencia <br></div>
+				<div><input type="radio" name="laburohoy" value="2">Efectivo<br></div>
+			</div>	
+		</div> 
+	</div>	
+
+
+
 
 		<section class ="form-register" id="form-register">
 		<form class="login100-form validate-form" action="#" method="post">{% csrf_token %}

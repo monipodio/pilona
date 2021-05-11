@@ -1596,19 +1596,55 @@ function seguir_comoadmin() {
 }
 
 
-function actualiza_horas(v) {
-	var id1 = document.getElementById("320").value;
-	var xx = confirm("Todas las horas definidas ya seleccionadas, pasarán a estar vigentes. ¿Procede? "+id1);
-	if(xx==true){
-		document.getElementById('44').checked = 1; 
-	}else{
-		/* alert("No procede");	*/
-	}	
+function actualiza_horas() {
+	if(document.getElementById('100').value  == '1') {
+		document.getElementById(1).checked=1; }
+	if(document.getElementById('110').value  == '1') {
+		document.getElementById(3).checked=1; }
+	if(document.getElementById('120').value  == '1') {
+		document.getElementById(5).checked=1; }
+	if(document.getElementById('130').value  == '1') {
+		document.getElementById(7).checked=1; }
+	if(document.getElementById('140').value  == '1') {
+		document.getElementById(9).checked=1; }
+	if(document.getElementById('150').value  == '1') {
+		document.getElementById(11).checked=1; }
+	if(document.getElementById('160').value  == '1') {
+		document.getElementById(13).checked=1; }
+	if(document.getElementById('170').value  == '1') {
+		document.getElementById(15).checked=1; }
+	if(document.getElementById('180').value  == '1') {
+		document.getElementById(17).checked=1; }
+	if(document.getElementById('190').value  == '1') {
+		document.getElementById(19).checked=1; }
+	if(document.getElementById('200').value  == '1') {
+		document.getElementById(21).checked=1; }
+	if(document.getElementById('210').value  == '1') {
+		document.getElementById(23).checked=1; }
+	if(document.getElementById('220').value  == '1') {
+		document.getElementById(25).checked=1; }
+	if(document.getElementById('232').value  == '1') {
+		document.getElementById(28).checked=1; }
+	if(document.getElementById('240').value  == '1') {
+		document.getElementById(29).checked=1; }
+	if(document.getElementById('250').value  == '1') {
+		document.getElementById(31).checked=1; }
+	if(document.getElementById('260').value  == '1') {
+		document.getElementById(33).checked=1; }
+	if(document.getElementById('270').value  == '1') {
+		document.getElementById(35).checked=1; }
+	if(document.getElementById('280').value  == '1') {
+		document.getElementById(37).checked=1; }
+	if(document.getElementById('290').value  == '1') {
+		document.getElementById(39).checked=1; }
+	if(document.getElementById('300').value  == '1') {
+		document.getElementById(40).checked=1; }
+	if(document.getElementById('310').value  == '1') {
+		document.getElementById(42).checked=1; }
+	if(document.getElementById('320').value  == '1') {
+		document.getElementById(44).checked=1; }
 }
 
-function selecc_todas_definidas(){
-   for (i=0;i<document.f1.elements.length;i++)
-      if(document.f1.elements[i].type == "checkbox")
-         document.f1.elements[i].checked=1;
-}
+
+
 

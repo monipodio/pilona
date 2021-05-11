@@ -426,7 +426,20 @@ p {
         padding:1rem;
         border-radius: 10px;
         align-items: center;
+        grid-gap: 7px; /* distancia entre celdas */
       }
+
+      .forma-pago-delcliente {
+        display: flex;
+        flex-direction:column;
+        border:1px #B8B8B8 solid;
+        width: 100%; 
+        padding:1rem;
+        border-radius: 10px;
+        align-items: center;
+        grid-gap: 7px; /* distancia entre celdas */
+      }
+
 
       .footer {
         display: flex;
@@ -438,6 +451,33 @@ p {
         color: white;
         grid-gap: 2px; /* distancia entre celdas */
       }
+
+      .radiotrabajo {
+        display: flex;
+        flex-direction:row;
+        /*justify-content: space-between; */
+        text-align:center;
+        padding: 4px;
+        background-color: #899EF3;
+        width: 100%;
+      }
+      
+      .Inicializa-dia {
+        /*background-color: yellow;  */
+        padding: 4px;
+        text-align:center;
+        background-color: #899EF3;  
+        width: 100%;
+      }
+      
+      .revihora {
+        padding: 4px;
+        text-align:center;
+        background-color: #899EF3;  
+        width: 100%;        
+      }
+
+
 
 }
 /* fin responsivo 600 px */
@@ -609,6 +649,16 @@ p {
     padding:6px; /* espacio de los elementos con el contenedor*/
     border:1px #B8B8B8 solid;
     border-radius: 10px;
+  }
+
+  .forma-pago-delcliente {
+    display: flex;
+    flex-direction:column;
+    align-items: center; 
+    padding:10px;          /* espacio de los elementos con el contenedor*/
+    border:1px #B8B8B8 solid;
+    border-radius: 10px;
+    margin:auto;  /* significa que ambos margenes son iguales por defecto*/
   }
 
 }
@@ -1335,7 +1385,7 @@ p {
       margin: auto;  /* alinea y centra respecto al HTML*/
       /*flex-wrap: wrap; */
       align-items: center;
-      margin-top: 10rem;   /* posiciona verticalmente respecto a la pantalla */
+      margin-top: 12rem;   /* posiciona verticalmente respecto a la pantalla */
   }
 
 /* Opciones del administrador del sistema */
@@ -1457,17 +1507,33 @@ p {
 .radiotrabajo {
   display: flex;
   flex-direction:row;
-  justify-content: space-between;
+  /*justify-content: space-between; */
+  justify-content:space-between;
   padding: 4px;
+  background-color: #899EF3;
+  width: 100%;
 }
+
+.radio-formapago {
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+  padding: 4px;
+  background-color: #899EF3;
+  width:30rem;
+}
+
 
 .Inicializa-dia {
   /*background-color: yellow;  */
   padding: 4px;
   text-align:center;
+  background-color: #899EF3;  
+  width: 100%;
 }
 
 .revihora {
   padding: 4px;
+  background-color: #899EF3;  
 }
 
