@@ -659,6 +659,7 @@ p {
     border:1px #B8B8B8 solid;
     border-radius: 10px;
     margin:auto;  /* significa que ambos margenes son iguales por defecto*/
+    width: 55%;
   }
 
 }

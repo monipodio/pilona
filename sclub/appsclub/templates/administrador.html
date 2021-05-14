@@ -69,23 +69,25 @@
 			<!-- los id son para el JS "inicializar dia", el name es la llave para la VIEW, y value es el valor que retorna -->
 			<div class="col-grid3">
 				{% if hrs.switch1 == 0 %}
-					<input type="checkbox"  id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 0 }}'>
+					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 0 }}' onclick="selecciona_desmarca_defi('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 0 }}'>
 				{% else %}
-					<input type="checkbox"  id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 1 }}' checked>	
+					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 1 }}' checked onclick="selecciona_desmarca_defi('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 0 }}'>	
 				{% endif %}
 			</div>
 
 			<!-- HORAS VIGENTES HOY -->
 			<div class="col-grid4">
 				{% if hrs.switch2 == 0 %}
-					<input type="checkbox" id="{{hrs.corr}}"  name="{{hrs.corr}}"  value='{{ 0 }}'>
+					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}" onclick="selecciona_vigente('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 0 }}'>
 				{% else %}
-					<input type="checkbox" id = "{{hrs.corr}}" name="{{hrs.corr}}"  value='{{ 1 }}' checked>	
+					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}" onclick="selecciona_vigente('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 1 }}' checked>	
 				{% endif %}
 			</div>
 
 		</div>	
 	{% endfor %} 
+
+
 
 
 	<!-- SEGUNDA GRID (CTAS) -->

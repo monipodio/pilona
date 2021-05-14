@@ -805,27 +805,6 @@ function ayuda2() {
 	alert('La forma de poner fotos a una FICHA DE CUIDADOR es de la iguiente manera:\n Al ingresar al sistema, debes seleccionar el link ADMIN desde la pantalla inicial de identificacion de usuario. Estando en el ADMIN, se debe seleccionar la tabla CUIDADORES. Clic en el nombre de la cuidadora, y hacia abajo buscamos el campo llamado MEDIA. Clic en SELECCIONAR ARCHIVO, entonces se debe elejir la foto cuyo nombre sea el rut del cuidador, por ejemplo: 21022645-1.jpg\nla cual has seleccionado y preparado previamente');
 }
 
-/* grid nuevo farmaco */
-function ayuda44() {
-	alert('Incorpora nuevo fármaco a la receta del paciente');
-}
-
-function ayuda_login() {
-	alert('Claves de perfiles a usar en el módulo ADMIN:\n'+
-	'grid_pcteselimina => Botón elimina paciente desde la grid\n'+
-	'btn_elim_gridcui => Botón elimina cuidador desde la grid\n'+
-	'btn_acep_fichapac => Botón graba desde ficha de paciente\n'+
-	'btn_acep_fichaant => Botón graba desde ficha anticipo\n'+
-	'btn_elim_gridrecet => Botón elimina desde grid receta\n'+
-	'btn_acep_fichapod => Botón aceptar desde ficha apoderado\n'+	
-	'btn_acep_fichapaut => Botón aceptar desde ficha pauta\n'+
-	'btn_acep_fichaparam => Botón aceptar desde ficha de parametros\n'+
-	'actualiza_pac => link sobre nombre de paciente en la grid\n'+
-	'actualiza_cui => link sobre nombre de cuidador en la grid\n'+
-	'btn_acep_fichafar => botón aceptar desde ficha farmaco\n'
-	)
-}
-
 
 function confirmaelimcui2(nombre,id){
 	var opcion=confirm('¿Seguro de borrar a paciente: '+nombre+' ?');
@@ -963,18 +942,53 @@ function valideKey(evt){
     }
 }
 
-/* valida el número de total digitos del celu */
-function val_longitud() {
+
+/* VALIDA LOS DATOS PERSONALES DEL CLIENTE */
+function val_datoscliente() {
 	var celu = document.getElementById("celu").value;
+	var hora_sel = document.getElementById("combo-aque-hora").value;	
+	var radios = document.getElementsByClassName("laburohoy");
 	var digitos = celu.length;
 	if(digitos!=0){
 		if(digitos != 9){
-			alert("El número de dígitos es erróneo!!, En total son nueve. Useted ha digitado: "+digitos);
-			document.getElementById('celu').focus()
+			Swal.fire({
+			  position: 'top-end',
+			  icon: 'error',
+			  title: 'El número de dígitos del celu es erróneo!!, En total son nueve, usted ha digitado:' +digitos,
+			  showConfirmButton: true,
+			  confirmButtonText: 'Aceptar',
+			  /*timer: 4500*/
+			})
 			return false;
-		} 	
+		}
+	}	
+
+	if(hora_sel == "hora") {
+			Swal.fire({
+			  position: 'top-end',
+			  icon: 'error',
+			  title: 'Debes seleccionar la hora en que necesitas tu pedido',
+			  showConfirmButton: true,
+			  confirmButtonText: 'Aceptar',
+			  /*timer: 4500*/
+			})
+			return false;
 	}
+
+    if($("#laburohoy1").is(':checked') || $("#laburohoy2").is(':checked')) {  
+    } else {  
+		Swal.fire({
+		  position: 'top-end',
+		  icon: 'error',
+		  title: 'Debes seleccionar una forma de pago',
+		  showConfirmButton: true,
+		  confirmButtonText: 'Aceptar',
+		  /*timer: 4500*/
+		})
+		return false;
+    }  
 }
+
 
 function mayusculas() {
 	var x=document.getElementById("nombre").value
@@ -1407,7 +1421,7 @@ function suma_cambios() {
 }
 
 
-/* OCULTA ROLLS (que no lacanzan los 7) */
+/* OCULTA ROLLS (que no alcanzan los 7) */
 $(document).ready(function () {
 	if(document.getElementById("caja3").value === "readonly") {
 		document.getElementById('caja3').style.display = 'none';
@@ -1559,11 +1573,12 @@ function val_eligio() {
 	if(caja1 === "") {
 		Swal.fire({
 		  icon: 'error',
+		  position: 'top-end',
 		  title: 'Debes seleccionar una promoción!',
 		  footer: '<a href>Para disfrutar los sushis mas deliciosos del mundo</a>',
 		  allowOutsideClick:false,
 		  confirmButtonText: "Aceptar",
-		  width: '700px'
+		  width: '400px'
 		})
 		return false;
 	}	
@@ -1594,7 +1609,6 @@ function seguir_comoadmin() {
 	})
 	return false;
 }
-
 
 function actualiza_horas() {
 	if(document.getElementById('100').value  == '1') {
@@ -1646,5 +1660,26 @@ function actualiza_horas() {
 }
 
 
+function selecciona_desmarca_defi(xx,yy) {
+	/*alert(document.getElementById(yy).checked);*/
+	if(document.getElementById(yy).checked  == 1) {
+		document.getElementById(xx).checked  = 0;
+		document.getElementById(yy).checked  = 0;
+	}
+}	
+
+function selecciona_vigente(xx,yy) {
+	if(document.getElementById(xx).checked  == 0) {
+		Swal.fire({
+		  position: 'top-end',
+		  icon: 'error',
+		  title: 'Debe estar seleccionada la definición para uso de dicha hora',
+		  showConfirmButton: true,
+		  confirmButtonText: 'Aceptar',
+		})
+		document.getElementById(yy).checked = 0;
+		return false;
+	}
+}	
 
 

@@ -58,11 +58,15 @@ def principal(request):
         aDisponibles.append(j.descrip) # llena arreglo con valor del campo
         string_horas = string_horas + j.descrip+","
 
+    #return HttpResponse(string_horas)    
+
     if string_horas == "":
         nosetrabaja = '0'
 
     string_horas = string_horas[:-2]  # quita los 2 últimos caracteres (lado derecho quita la coma y el pespacio)
     string_horas = string_horas + " hrs."  
+
+
 
     ctas = []
     for ct in cta:
