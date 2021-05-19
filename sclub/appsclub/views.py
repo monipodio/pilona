@@ -56,7 +56,7 @@ def principal(request):
     aDisponibles = []
     for j in hrs:
         aDisponibles.append(j.descrip) # llena arreglo con valor del campo
-        string_horas = string_horas + j.descrip+","
+        string_horas = string_horas +" "+ j.descrip+","
 
     #return HttpResponse(string_horas)    
 
@@ -469,9 +469,11 @@ def principal(request):
 def galeria(request):
     variable1 = 'Galeria Internacional'
     logo2 = "/static/img/Logo_sc.jpg"
+    obs =  Param.objects.filter(tipo="OBS").order_by('codigo')
     context ={
     	"variable1":variable1,
     	"logo_corp_chico":logo2, 
+        "obs":obs,
     }
     return render(request,'galeria.html',context)
 
@@ -636,10 +638,10 @@ def administrador(request):
         # TEXTO DE PIE DE PAGINA    
         # Trae la glosa del textarea directamente desde template según lo que tenga en name    
         for ob in obs:
-            name_x = request.POST.get(str(ob.corr)) # el valor de "ob.codigo" es lo q' hay en 'name' del template
+            observacion_x = request.POST.get(str(ob.corr)) # el valor de "ob.codigo" es lo q' hay en 'name' del template
             cursor.execute(
-            "update appsclub_param set observacion1=%s where id=%s",
-            [name_x,ob.corr]
+            "update appsclub_param set observacion1=%s where corr=%s",
+            [observacion_x,ob.corr]
             )
 
         # SE TRABAJA HOY     

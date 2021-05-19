@@ -24,7 +24,8 @@ DEBUG = True
 #DEBUG = False
 
 # local
-ALLOWED_HOSTS = ['127.0.0.1','localhost','b5c9f75b137f.ngrok.io']
+# NGROK se incvoca como: http://b37ffa1b7fad.ngrok.io/login_ini/
+ALLOWED_HOSTS = ['127.0.0.1','localhost','388b1eb5b613.ngrok.io']
 
 
 # Hosting web

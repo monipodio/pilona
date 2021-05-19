@@ -134,7 +134,7 @@ p {
    text-align: center; 
  }
 
-.footer-texto3 a img:hover { 
+.footer-texto3_ a img:hover { 
   width: 100%;
 }
 
@@ -203,33 +203,51 @@ p {
          margin-top: 0.5rem;  /* posiciona verticalmente el titulo respecto a la pantalla */      
       }
 
+
+      /* verde claro */
+      .capa-titulo {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;    
+          grid-template-rows: 50% 50%;
+          background: #BAFEC1; /* verde claro */
+          /*height: 100%;        /* alto de la franja que lleva el titulo verde */
+          margin-top: 9.5rem;  /* posiciona verticalmente el titulo respecto a la pantalla */
+          color: blue;    /* letra del texto*/
+          font-size: 1.5rem; 
+          text-align: center;
+          width:100%;
+          padding: 2rem;
+          border-radius: 0px 0px 15px 15px; 
+      }
+
       .capa-titulo #fantasma {
           padding: 0rem;
           width:100%;
-         /*background-color: red;*/
-
+          /*background-color: red;*/
       } 
 
        .capa-titulo #disponibilidad {
-          text-align:right;
+          text-align:center;
           font-size: 1.8rem;
           width:100%;
-          /*background-color: blue;*/
+          /*background-color: white;*/
       }
 
       .capa-titulo #cerrar {
           font-size: 15px; 
           text-align: right;
           width:100%;
-          /*background-color: orange; */
+          /*background-color: orange;*/
       }
 
       .capa-titulo #horas {
         grid-column-start: 1;
         grid-column-end: 4;
         text-align: center;
+        padding: 15px; 
+        /*border-right: 25px;*/
         width:100%;
-        /*background-color:green;*/       
+        /*background-color:#EABEF2; /*morado claro*/
       }
 
       /* marco que contiene la grid (imagenes) */
@@ -375,30 +393,6 @@ p {
         width:100%;
       }
 
-      .capa-titulo_ {
-        text-align: center;
-        /*background-color: #EAE9E4; /* gris */
-        background-color: #C3E3AA;
-        border: 1px;
-        height: 100px; /* alto de la franja que lleva el titulo verde */
-        margin-top: 10rem;
-        color:blue;
-      }
-
-      .capa-titulo {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;    
-          background: #BAFEC1; /* verde claro */
-          height: 90px;        /* alto de la franja que lleva el titulo verde */
-          margin-top: 9.5rem;  /* posiciona verticalmente el titulo respecto a la pantalla */
-          color: blue;    /* letra del texto*/
-          font-size: 1.5rem; 
-          text-align: center;
-          width:100%;
-          padding: 2rem;
-          border-radius: 0px 0px 15px 15px; 
-      }
-
 
       .titulo {
         text-align: center;
@@ -477,6 +471,18 @@ p {
         width: 100%;        
       }
 
+      .administrador {
+        width: 100%;    /* ancho del contenedor */
+      }
+
+      .grande {
+          width: 350px;
+          height: 200px;
+          -webkit-transition: all .2s ease-in-out;
+          -moz-transition: all .2s ease-in-out;
+          -o-transition: all .2s ease-in-out;
+          -ms-transition: all .2s ease-in-out;
+      }
 
 
 }
@@ -597,10 +603,10 @@ p {
     }
 
     .capa-titulo #horas {
-      grid-column-start: 1;
+      grid-column-start: 1; 
       grid-column-end: 4;
-      text-align: center;
-      /*background-color: #EAE9E4;*/
+      /*text-align:center;*/
+      /*background-color: blue;*/
     }
 
     /* contenedor de GRID GRANDE */
@@ -980,11 +986,11 @@ p {
 .valor-final {
   padding-top: 1rem;  /* borde o distancia superior */
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .c3 {
-  /* background-color: #DFDCDC; */
+  /*background-color: blue;*/
   text-align: center;
   /* border-radius: 9px; */
   font-weight: bold;
@@ -1538,3 +1544,27 @@ p {
   background-color: #899EF3;  
 }
 
+.titulo-galeria {
+  justify-content: center;   /* para centrar horizontalmente el boton */
+ }
+
+
+.chica {
+    width: 350px;
+    height: 200px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition:all 500ms ease;
+}
+ 
+.grande {
+    -webkit-transform: scale(1.8); 
+    -moz-transform: scale(1.8);
+    -o-transform: scale(1.8);
+    transform: scale(1.8);
+    transition:all 500ms ease;
+    box-shadow:1px 7px rgba(0,0,0,0.6);
+    margin-top: 3px;
+}

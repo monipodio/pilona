@@ -543,7 +543,6 @@ function mostrarPassword(){
 			$('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
 		}
 	} 
-	
 	$(document).ready(function () {
 	//CheckBox mostrar contraseña
 	$('#ShowPassword').click(function () {
@@ -668,11 +667,15 @@ function miniventana() {
 
 /* div que contiene una table (oculta-muesta toda la table)*/
 function oculta_muestra() {
-	if(document.getElementById('div1').style.display == 'none') {
- 		document.getElementById('div1').style.display = 'block';
-
+	if(document.getElementById('c1').style.display == 'none') {
+ 		document.getElementById('c1').style.display = 'block';
+ 		document.getElementById('c2').style.display = 'block';
+ 		document.getElementById('c3').style.display = 'block';
+ 
  	} else {
- 		document.getElementById('div1').style.display = 'none';
+ 		document.getElementById('c1').style.display = 'none';
+ 		document.getElementById('c2').style.display = 'none';
+ 		document.getElementById('c3').style.display = 'none';
  	}
 }
 
@@ -740,72 +743,6 @@ $(document).ready(function(){
 });
 */
 
-
-/* Valida FICHA de RECETA de ingreso de un farmaco */ 
-function ValidaFichaReceta() {
-	var descrip = document.getElementById("descrip").value
-	var fecha_prescri = document.getElementById("fecha_prescri").value 
-	var via_sumi = document.getElementById("via_sumi").value 
-	var frecuencia = document.getElementById("frecuencia").value 
-
-	if (descrip == ''){
-		alert("No ha especificado el farmaco ó suministros a ingresar !!");
-		document.getElementById('descrip').focus()
-		document.getElementById('descrip').style.border = '2px solid red';		
-		return false;	
-	}
-
-	if(fecha_prescri === ""){
-		alert("La FECHA DE PRESCRIPCION es obligatoria");
-		document.getElementById('fecha_prescri').focus()
-		document.getElementById('fecha_prescri').style.border = '2px solid red';
-		return false;
-	}
-
-	if(via_sumi === ""){
-		alert("Debe seleccionar VIA SUMINISTRO es obligatoria");
-		document.getElementById('via_sumi').focus()
-		document.getElementById('via_sumi').style.border = '2px solid red';
-		return false;
-	}
-
-	if(frecuencia === ""){
-		alert("Debe ingresar la FRECUENCIA ");
-		document.getElementById('frecuencia').focus()
-		document.getElementById('frecuencia').style.border = '2px solid red';
-		return false;
-	}
-
-}
-
-
-/* VALIDA FECHA DE prescricion de farmacos de una RECETA */
-function validaFechaFarmaco() {
-	var fecha_prescri = document.getElementById("fecha_prescri").value
-    var RegExPattern = /^\d{1,4}\-\d{1,2}\-\d{1,2}$/;
-    if (fecha_prescri.match(RegExPattern)) {
-    	document.getElementById("fecha_prescri").style.border = '';
-        return true;
-    } else {
-		/* document.getElementById('fe_ini').style.border = '2px solid red'; */
-      	alert("Error!! formato de FECHA INICIO debe ser aaaa-mm-dd, los separadores son signos menos");
-		document.getElementById('fecha_prescri').style.border = '2px solid red';
-      	return false;
-    }
-}
-
-
-/* pacientes */
-function ayuda1() {
-	alert('Al hacer clic en PASIVO implicará que a ese paciente no podrán hacerle pautas pero aparecerá en los demás informes.\nPor otra parte, el paciente que se va de alta se le deberá obviamente colocar la fecha de ALTA y el sistema automaticamente al momento de grabar lo dejará como PASIVO y eliminará la fecha de INICIO.\nEn caso de reingreso del paciente, se deberá borrar la fecha de alta manualmente, sacar el ticket de PASIVO y poner la nueva fecha de INICIO.');
-}
-
-/* cuidadores */
-function ayuda2() {
-	alert('La forma de poner fotos a una FICHA DE CUIDADOR es de la iguiente manera:\n Al ingresar al sistema, debes seleccionar el link ADMIN desde la pantalla inicial de identificacion de usuario. Estando en el ADMIN, se debe seleccionar la tabla CUIDADORES. Clic en el nombre de la cuidadora, y hacia abajo buscamos el campo llamado MEDIA. Clic en SELECCIONAR ARCHIVO, entonces se debe elejir la foto cuyo nombre sea el rut del cuidador, por ejemplo: 21022645-1.jpg\nla cual has seleccionado y preparado previamente');
-}
-
-
 function confirmaelimcui2(nombre,id){
 	var opcion=confirm('¿Seguro de borrar a paciente: '+nombre+' ?');
 	if (opcion == true) {
@@ -852,75 +789,6 @@ function confirmaelimcui(){
 	*/
 }
 
-/*
-function funcionprueba(){
-	var rut = document.getElementById("rut").value;
-	$('#mensaje').html(rut);
-}
-
-"use strict";
-let map;
-function initMap2() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: {
-      lat: -36.489491,
-      lng: -72.712028,
-    },
-    zoom: 8
-  });
-}
-
-
-function initMap() {
-  var myLatLng = {lat: -33.485815, lng: -70.592673};
-  map = new google.maps.Map(document.getElementById("map"), {
-  center: {
-      lat: -33.485815,
-      lng: -70.592673,
-    },
-    zoom: 17,
-  });
-  var marker = new google.maps.Marker({
-    map:map,
-    position: myLatLng,
-    title:"Puedes arrastrarme",
-    draggable: true,
-  })
-  
-}
-
-/*
-$(document).ready(function(){
-	$('#rut').blur(function(){
- 		var rut = $('input#rut').val();
-		var request = $.ajax({
-	    	url: 'https://www.google.com/', 
-	    	type: "GET",
-    		success: function(response) {
-                $('#mensaje').html(response);
-            }
-        });
-
-		request.fail( function(jqXHR, textStatus, errorThrown) {
-   			 if (jqXHR.status === 0) {
-			   alert('Sin coenxión: Revise la Network. => jqXHR.status='+jqXHR.status.toString());
-			 } else if (jqXHR.status == 404) {
-			   alert('La página solicitada no existe [404]'); 
-			 } else if (jqXHR.status == 500) {
-			   alert('Error interno del servidor [500].');
-			 } else if (textStatus === 'parsererror') {
-			   alert('Requested JSON parse failed.');
-			 } else if (textStatus === 'timeout') {
-			   alert('Error de expiración de tiempo.');
-			 } else if (textStatus === 'abort') {
-			   alert('Solicitud Ajax abortada.');
-			 } else {
-			   alert('Uncaught Error: ' + jqXHR.responseText);
-			 }
-		})
-  	});
-});
-*/
 
 function ValidaFichaReceta() {
 	var celu = document.getElementById("celu").value
@@ -949,6 +817,7 @@ function val_datoscliente() {
 	var hora_sel = document.getElementById("combo-aque-hora").value;	
 	var radios = document.getElementsByClassName("laburohoy");
 	var digitos = celu.length;
+	var sw = 0;
 	if(digitos!=0){
 		if(digitos != 9){
 			Swal.fire({
@@ -976,7 +845,7 @@ function val_datoscliente() {
 	}
 
     if($("#laburohoy1").is(':checked') || $("#laburohoy2").is(':checked')) {  
-    } else {  
+    } else {
 		Swal.fire({
 		  position: 'top-end',
 		  icon: 'error',
@@ -987,7 +856,20 @@ function val_datoscliente() {
 		})
 		return false;
     }  
-}
+
+	if(sw==0){
+		Swal.fire({
+		  icon: 'error',
+		  position: 'top-end',
+		  title: 'Hasta aquí la demo del sistema. ¿Como estubo?!!!',
+		  footer: '<a href>Hay que esperar a don Gabriel que siga desarrollando este sistema</a>',
+		  allowOutsideClick:false,
+		  confirmButtonText: "Aceptar",
+		  width: '400px'
+		})
+		return false;
+	}	
+}  /*--FIN DE LA FUNCION --*/
 
 
 function mayusculas() {
@@ -1005,7 +887,6 @@ function selecciona(codigo) {
    	/* document.getElementById("datepicker2").value=fenac; */
 	alert("x teiene el valor:"+x)
 }
-
 
 
 /* botones ELIMINA */
@@ -1046,7 +927,6 @@ $(document).ready(function () {
 
 	});
 });
-
 
 
 /* ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS ENVOLTURAS - Y RELLENOS */
@@ -1579,10 +1459,9 @@ function val_eligio() {
 		  allowOutsideClick:false,
 		  confirmButtonText: "Aceptar",
 		  width: '400px'
-		})
-		return false;
-	}	
-}
+	})
+	return false;
+}}
 
 
 /* Va totalizando, segun cambios y/o adicionales  < val_eligio() >*/
@@ -1661,7 +1540,6 @@ function actualiza_horas() {
 
 
 function selecciona_desmarca_defi(xx,yy) {
-	/*alert(document.getElementById(yy).checked);*/
 	if(document.getElementById(yy).checked  == 1) {
 		document.getElementById(xx).checked  = 0;
 		document.getElementById(yy).checked  = 0;
@@ -1669,11 +1547,12 @@ function selecciona_desmarca_defi(xx,yy) {
 }	
 
 function selecciona_vigente(xx,yy) {
+	var src = "/static/img/mapa.jpg";
 	if(document.getElementById(xx).checked  == 0) {
 		Swal.fire({
 		  position: 'top-end',
 		  icon: 'error',
-		  title: 'Debe estar seleccionada la definición para uso de dicha hora',
+		  title: 'Debe estar seleccionada la definición para uso de dicha hora', 
 		  showConfirmButton: true,
 		  confirmButtonText: 'Aceptar',
 		})
@@ -1681,5 +1560,15 @@ function selecciona_vigente(xx,yy) {
 		return false;
 	}
 }	
+
+function clic_img() {
+	var item = document.getElementById("img");
+	var hasClase2 = item.classList.contains( 'chica' );  /*entrega: true o false*/
+	if(hasClase2==true){
+		document.getElementById("img").className = "grande";
+	}else{
+		document.getElementById("img").className = "chica";
+	}
+}
 
 

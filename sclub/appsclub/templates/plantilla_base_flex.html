@@ -35,7 +35,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css"> 
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   <!-- NUEVO -->
@@ -53,9 +52,12 @@
     <link rel="shortcut icon" type="image/jpg" href="/static/img/logo_sc.jpg"> 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 </head>
 
-<body class="body">
+<body class="body" >
     <header class="header">{% csrf_token %}
         <div class="container logo-nav-container">  
             <a href="#" class="logo"><img  src="{{ logo_corp_chico }}"></a>
@@ -94,28 +96,25 @@
         <div class="footer-texto1">
             {% for ob1 in obs %}
                 {%if ob1.codigo == 1 %}
-                    <p>{{ ob1.observacion1 }}</p>
+                    <p name="{{ob1.corr}}">{{ ob1.observacion1 }}</p>
                 {% endif %}
             {% endfor %}
         </div>
                 
+        <div class="footer-texto3">
+            <a title="Mapa de ubicación">
+               <img src="/static/img/mapa.jpg" id="img" class="chica" onclick="return clic_img();"/> 
+            </a>
+        </div>
+
         <div class="footer-texto2">
             {% for ob1 in obs %}
                 {%if ob1.codigo == 2 %}
-                    <p>{{ ob1.observacion1 }}</p>
+                    <p name="{{ob1.corr}}">{{ ob1.observacion1 }}</p>
                 {% endif %}
             {% endfor %}
         </div>
         
-        <div class="footer-texto3">
-            <!--
-             <u align="right" color="white"><a href="https://goo.gl/maps/VKabXnyynUGi2xBk9">Google Maps</a></u>
-            -->
-            <a title="Mapa de ubicación">
-               <img src="/static/img/mapa.jpg" />
-            </a>
-   
-        </div>
 
         <div class="footer-texto4">
             <p>Pagina diseñada por Gabriel Araya Garcia - email: gabrielaraya2011@gmail.com - f: +56 9 77211570</p>
