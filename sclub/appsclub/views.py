@@ -531,7 +531,7 @@ def administrador(request):
     cta  =  Param.objects.filter(tipo="CTA").order_by('codigo')    
     trabajo =  Param.objects.filter(tipo="TRA").order_by('codigo') #
     obs =  Param.objects.filter(tipo="OBS").order_by('codigo')
-
+    envolt = Envolturas.objects.filter(cod="EN").order_by('roll').exclude(envolt='--Cambia por--')
     for ob in obs:
         obstext = ob.observacion1
 
@@ -546,7 +546,8 @@ def administrador(request):
         "horas":horas,
         "cta":cta,
         "trabajo":tr,
-        "obstext":obstext,        
+        "obstext":obstext,
+        "envolt":envolt,        
         "obs":obs,
         "ene_registros":ene_registros,
         }  
@@ -651,8 +652,7 @@ def administrador(request):
             "update appsclub_param set switch1=%s where tipo=%s",
             [trabajo,"TRA"]
         )     
-         
-    
+       
         return redirect("principal")  # redirecciona a la url 'principal'
     return render(request,'administrador.html',context)
 

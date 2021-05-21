@@ -989,7 +989,7 @@ p {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.c3 {
+.total-apago {
   /*background-color: blue;*/
   text-align: center;
   /* border-radius: 9px; */
@@ -1010,13 +1010,12 @@ p {
   border-left-color: #36F495;
 }
 
-/*
+
 .vtot_aux {
-  border: 0;
   background-color:white;
-  text-align: center
+  text-align:right;
 }
-*/
+
 
 .subtot1 .subtot2 .subtot3 .subtot4 .subtot5 .subtot6 .subtot7 {
   align:right;
@@ -1473,6 +1472,15 @@ p {
 }
 
 
+.col-grid3-envolturas {
+  background-color: white;  /* color de cada fila de la grid */  
+  height: 30px;  /* alto de cada fila de la grid*/
+  padding-top: 0.5rem;
+  width: 60%; /* ancho de la caja de texto */ 
+  border:none;
+  text-align: right;
+}
+
 /* cabeceras de la grid */
 .col1, .col2, .col3, .col4 {
   background-color: blue;
@@ -1568,3 +1576,22 @@ p {
     box-shadow:1px 7px rgba(0,0,0,0.6);
     margin-top: 3px;
 }
+
+
+.c1 {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition:all 500ms ease;
+}
+
+.esconde {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition-duration: 0.8s;
+}
+
+

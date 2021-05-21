@@ -88,9 +88,39 @@
 	{% endfor %} 
 
 
+	<!-- ENVOLTURAS -->
+	<br>
+	<div class="administrador-titulo-opciones">
+		Cambia valores de envolturas:		
+	</div>
+	<div class="grid-cabeceras"> <!-- subgrid -->
+		<div class="col1">
+		   <p>Código</p>
+		</div>
+		<div class="col2">
+		   <p>Envoltura</p>
+		</div>
+		<div class="col3">
+		   <p>Valor</p>
+		</div>
+	</div>	
+	<!-- GRID DE ENVOLTURAS -->
+ 	{% for env in envolt %}
+ 		<div class="celdas-sub-grid-cuentas">
+ 			<div class="col-grid1">
+	   			{{env.cod}} 
+	   	    </div>
+			<div class="col-grid2">
+				{{env.envolt}}
+			</div>
+			<div class="col-grid3">
+				<input type="text" class="col-grid3-envolturas" name="{{hrs.id}}" value='{{ env.valor }}'>
+			</div>	
+		</div>	
+	{% endfor %} 
 
 
-	<!-- SEGUNDA GRID (CTAS) -->
+	<!-- CUENTAS PARA DEPOSITO (CTAS) -->
 	<br>
 	<div class="administrador-titulo-opciones">
 		Opciones de cuentas bancarias para depósito por ventas:		
@@ -115,7 +145,7 @@
 	</div>	
 
 
-	<!-- CUENTAS BANCARIAS -->
+	<!-- GRID CUENTAS BANCARIAS -->
  	{% for ct in cta %}
  		<div class="celdas-sub-grid-cuentas">
  			<div class="col-grid1-cuentas">

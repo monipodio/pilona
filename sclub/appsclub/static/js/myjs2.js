@@ -580,8 +580,6 @@ function valifechavencimiento_contrato() {
 }
 
 
-
-
 /* VALIDA FECHA DE NACIMIENTO */
 function validarFormatoFecha2() {
 	var fe_nac = document.getElementById("fe_nac").value
@@ -665,19 +663,6 @@ function miniventana() {
 	window.open("http://www.desarrolloweb.com" , "ventana1" , "width=120,height=300,scrollbars=NO") 
 }
 
-/* div que contiene una table (oculta-muesta toda la table)*/
-function oculta_muestra() {
-	if(document.getElementById('c1').style.display == 'none') {
- 		document.getElementById('c1').style.display = 'block';
- 		document.getElementById('c2').style.display = 'block';
- 		document.getElementById('c3').style.display = 'block';
- 
- 	} else {
- 		document.getElementById('c1').style.display = 'none';
- 		document.getElementById('c2').style.display = 'none';
- 		document.getElementById('c3').style.display = 'none';
- 	}
-}
 
 
 function oculta() {
@@ -1565,10 +1550,51 @@ function clic_img() {
 	var item = document.getElementById("img");
 	var hasClase2 = item.classList.contains( 'chica' );  /*entrega: true o false*/
 	if(hasClase2==true){
-		document.getElementById("img").className = "grande";
+		document.getElementById("img").className = "grande"; /* cambia el nombre de la clase, asi gatilla CSS */
 	}else{
-		document.getElementById("img").className = "chica";
+		document.getElementById("img").className = "chica";  /* cambia el nombre de la clase, asi gatilla CSS */
 	}
 }
+
+function oculta_muestra() {
+	var prom1 = document.getElementById("c1");
+	var prom2 = document.getElementById("c2");
+	var prom3 = document.getElementById("c3");
+
+	var tieneclase = prom1.classList.contains( 'c1' );  /* entrega: true o false */
+	if(tieneclase==true){
+		document.getElementById("c1").className = "esconde"; /* cambia el nombre de la clase, pero el id sigue siendo c1 */
+	}else{
+		document.getElementById("c1").className = "c1";  /* cambia el nombre de la clase, pero el id sigue siendo c1 */
+	}
+
+	if(document.getElementById('c1').style.display == 'none') {
+		$("#c1").show("slowly");
+ 		document.getElementById('c1').style.display = 'block';
+ 		document.getElementById('c2').style.display = 'block';
+ 		document.getElementById('c3').style.display = 'block';
+ 	} else {
+  		document.getElementById('c1').style.display = 'none';
+ 		document.getElementById('c2').style.display = 'none';
+ 		document.getElementById('c3').style.display = 'none';
+ 	}
+
+}
+
+
+/*
+$(document).ready(function () {
+	alert("Llega al jQuery");
+	$("#c1").click(function() {
+		$("#c1").show("slow");
+	});
+
+	$("#esconde").click(function() {
+		$("#c1").hide("slow");
+	});
+
+});
+*/
+
 
 

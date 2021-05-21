@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Pedidos, Envolturas,Promos
+from .models import Pedidos, Envolturas,Promos, Rellenos
 
 admin.site.site_header = "Administración de Tablas del Sistema"
 admin.site.site_title = "Sushi Club"
@@ -18,9 +18,13 @@ class AdminPromos(admin.ModelAdmin):
 
 class AdminEnvolturas(admin.ModelAdmin):
 	list_display = ["cod","roll","envolt","valor"]
-	search_fields = ['envolt']
+	search_fields = ['cod']
 
+class AdminRellenos(admin.ModelAdmin):
+	list_display = ["cod","roll","relle","valor"]
+	search_fields = ['cod']
 
 admin.site.register(Pedidos,AdminPedidos)
 admin.site.register(Promos,AdminPromos)
 admin.site.register(Envolturas,AdminEnvolturas)
+admin.site.register(Rellenos,AdminRellenos)
