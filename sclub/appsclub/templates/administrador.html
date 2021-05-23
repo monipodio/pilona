@@ -58,7 +58,7 @@
  	{% for hrs in horas %}
  		<div class="celdas-sub-grid">
  			<div class="col-grid1">
-	   			{{hrs.codigo}} 
+	   			{{hrs.codigo}}-{{hrs.id}}-{{hrs.corr}}
 	   	    </div>
 
 			<div class="col-grid2">
@@ -69,31 +69,61 @@
 			<!-- los id son para el JS "inicializar dia", el name es la llave para la VIEW, y value es el valor que retorna -->
 			<div class="col-grid3">
 				{% if hrs.switch1 == 0 %}
-					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 0 }}' onclick="selecciona_desmarca_defi('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 0 }}'>
+					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.descrip}}" onclick="selecciona_desmarca_defi('{{hrs.codigo}}','{{hrs.descrip}}');">
 				{% else %}
-					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.codigo}}" value='{{ 1 }}' checked onclick="selecciona_desmarca_defi('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 0 }}'>	
+					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.descrip}}" checked onclick="selecciona_desmarca_defi('{{hrs.codigo}}','{{hrs.descrip}}');">	
 				{% endif %}
 			</div>
 
-			<!-- HORAS VIGENTES HOY -->
+			<!-- HORAS VIGENTES HOY  -->
 			<div class="col-grid4">
 				{% if hrs.switch2 == 0 %}
-					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}" onclick="selecciona_vigente('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 0 }}'>
+					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}" onclick="selecciona_vigente('{{hrs.codigo}}','{{hrs.corr}}');">
 				{% else %}
-					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}" onclick="selecciona_vigente('{{hrs.codigo}}','{{hrs.corr}}');" value='{{ 1 }}' checked>	
+					<input type="checkbox" id="{{hrs.corr}}" name="{{hrs.corr}}" onclick="selecciona_vigente('{{hrs.codigo}}','{{hrs.corr}}');" checked>	
 				{% endif %}
 			</div>
-
 		</div>	
 	{% endfor %} 
 
 
-	<!-- ENVOLTURAS -->
+	<!-- PROMOS TITULO, CABECERAS Y GRID -->
+	<br>
+	<div class="administrador-titulo-opciones">
+		Cambia valores de promociones:		
+	</div>
+	<div class="grid-cabe-admin-envolt"> 
+		<div class="col1">
+		   <p>Código</p>
+		</div>
+		<div class="col2">
+		   <p>Promoción</p>
+		</div>
+		<div class="col3">
+		   <p>Valor</p>
+		</div>
+	</div>	
+ 	{% for prom in promos %}
+ 		<div class="celdas-sub-grid-envolt">
+ 			<div class="col-grid1">
+	   			{{prom.cod}} 
+	   	    </div>
+			<div class="col-grid2">
+				{{prom.descrip}}
+			</div>
+			<div class="col-grid3">
+				<input type="text" class="col-grid3-envolturas" name="{{prom.id}}" value='{{ prom.valor }}'>
+			</div>	
+		</div>	
+	{% endfor %} <!-- fin promociones -->
+
+
+	<!-- ENVOLTURAS TITULO, CABECERAS Y GRID -->
 	<br>
 	<div class="administrador-titulo-opciones">
 		Cambia valores de envolturas:		
 	</div>
-	<div class="grid-cabeceras"> <!-- subgrid -->
+	<div class="grid-cabe-admin-envolt"> 
 		<div class="col1">
 		   <p>Código</p>
 		</div>
@@ -104,9 +134,8 @@
 		   <p>Valor</p>
 		</div>
 	</div>	
-	<!-- GRID DE ENVOLTURAS -->
  	{% for env in envolt %}
- 		<div class="celdas-sub-grid-cuentas">
+ 		<div class="celdas-sub-grid-envolt">
  			<div class="col-grid1">
 	   			{{env.cod}} 
 	   	    </div>
@@ -114,10 +143,72 @@
 				{{env.envolt}}
 			</div>
 			<div class="col-grid3">
-				<input type="text" class="col-grid3-envolturas" name="{{hrs.id}}" value='{{ env.valor }}'>
+				<input type="text" class="col-grid3-envolturas" name="{{env.id}}" value='{{ env.valor }}'>
 			</div>	
 		</div>	
-	{% endfor %} 
+	{% endfor %} <!-- fin envolturas -->
+
+
+	<!-- RELLENOS TITULO, CABECERAS Y GRID -->
+	<br>
+	<div class="administrador-titulo-opciones">
+		Cambia valores de rellenos:		
+	</div>
+	<div class="grid-cabe-admin-envolt"> 
+		<div class="col1">
+		   <p>Código</p>
+		</div>
+		<div class="col2">
+		   <p>Relleno</p>
+		</div>
+		<div class="col3">
+		   <p>Valor</p>
+		</div>
+	</div>	
+ 	{% for rell in relle %}
+ 		<div class="celdas-sub-grid-envolt">
+ 			<div class="col-grid1">
+	   			{{rell.cod}} 
+	   	    </div>
+			<div class="col-grid2">
+				{{rell.relle}}
+			</div>
+			<div class="col-grid3">
+				<input type="text" class="col-grid3-envolturas" name="{{rell.id}}" value='{{ rell.valor }}'>
+			</div>	
+		</div>	
+	{% endfor %} <!-- fin rellenos -->
+
+
+	<!-- ADICIONALES TITULO, CABECERAS Y GRID -->
+	<br>
+	<div class="administrador-titulo-opciones">
+		Cambia valores de adicionales:		
+	</div>
+	<div class="grid-cabe-admin-envolt"> 
+		<div class="col1">
+		   <p>ID</p>
+		</div>
+		<div class="col2">
+		   <p>Adicional</p>
+		</div>
+		<div class="col3">
+		   <p>Valor</p>
+		</div>
+	</div>	
+ 	{% for adic in adicionales %}
+ 		<div class="celdas-sub-grid-envolt">
+ 			<div class="col-grid1">
+	   			{{adic.id}} 
+	   	    </div>
+			<div class="col-grid2">
+				{{adic.descrip}}
+			</div>
+			<div class="col-grid3">
+				<input type="text" class="col-grid3-envolturas" name="{{adic.id}}" value='{{ adic.valor }}'>
+			</div>	
+		</div>	
+	{% endfor %} <!-- fin rellenos -->
 
 
 	<!-- CUENTAS PARA DEPOSITO (CTAS) -->
@@ -143,9 +234,6 @@
 		   <p>Vigente hoy</p>
 		</div>
 	</div>	
-
-
-	<!-- GRID CUENTAS BANCARIAS -->
  	{% for ct in cta %}
  		<div class="celdas-sub-grid-cuentas">
  			<div class="col-grid1-cuentas">
@@ -174,7 +262,7 @@
 				{% endif %}
 			</div>
 		</div>	
-	{% endfor %} 
+	{% endfor %} <!-- fin cuentas bancarias -->
 
 
 	<!-- RECUADROS PIE DE PAGINA (FOOTER) -->

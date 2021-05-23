@@ -66,8 +66,6 @@ def principal(request):
     string_horas = string_horas[:-2]  # quita los 2 últimos caracteres (lado derecho quita la coma y el pespacio)
     string_horas = string_horas + " hrs."  
 
-
-
     ctas = []
     for ct in cta:
         ctas.append(ct.descrip)
@@ -465,7 +463,7 @@ def principal(request):
         return render(request,'cambios.html',context)
     return render(request,'principal_flex2.html',context)
 
-
+@login_required(login_url='login_ini')
 def galeria(request):
     variable1 = 'Galeria Internacional'
     logo2 = "/static/img/Logo_sc.jpg"
@@ -477,7 +475,7 @@ def galeria(request):
     }
     return render(request,'galeria.html',context)
 
-
+@login_required(login_url='login_ini')
 def pedidos_sc(request,pr):
     variable1 = 'Identificación para el pedido'
     variable2 = 'prom'+str(pr)+".jpg"
@@ -490,7 +488,7 @@ def pedidos_sc(request,pr):
     }
     return render(request,'pedidos.html',context)
 
-
+@login_required(login_url='login_ini')
 def registrarse(request,pr):
     variable1 = 'Pantalla de Registro'
     logo2 = "/static/img/Logo_sc.jpg"
@@ -532,6 +530,10 @@ def administrador(request):
     trabajo =  Param.objects.filter(tipo="TRA").order_by('codigo') #
     obs =  Param.objects.filter(tipo="OBS").order_by('codigo')
     envolt = Envolturas.objects.filter(cod="EN").order_by('roll').exclude(envolt='--Cambia por--')
+    relle  = Rellenos.objects.filter(cod="RE").order_by('roll').exclude(relle='--seleccione--')
+    promos = Promos.objects.all().order_by('piezas').exclude(descrip='SELECCIONE PROMO...')
+    adicionales = Adicionales.objects.all().order_by('cod')
+
     for ob in obs:
         obstext = ob.observacion1
 
@@ -548,6 +550,9 @@ def administrador(request):
         "trabajo":tr,
         "obstext":obstext,
         "envolt":envolt,        
+        "relle":relle,
+        "promos":promos,
+        "adicionales":adicionales,
         "obs":obs,
         "ene_registros":ene_registros,
         }  
@@ -579,7 +584,7 @@ def administrador(request):
             ctas_id.append(ct.id)
 
         # HORAS DEFINIDAS / DISPONIBLES
-        k = 1  
+        k = 99  
         cursor = connection.cursor()  
         while k < ene_registros + 1:   # total registros de horas en la tabla 
             xx = horas_cod[k-1]        # extrae el value segun NAME (codigo) del arreglo
@@ -604,12 +609,96 @@ def administrador(request):
                 valor_yy = 1
             k=k+1 
 
+            #cursor.execute(
+            #"update appsclub_param set switch1=%s,switch2=%s where id=%s",
+            #[valor_xx, valor_yy, id_x]
+            #)     
+
+
+        #cursor = connection.cursor()  
+        #for h in horas:
+        #    id_x = h.id
+        #    xx = h.descrip   # name del template (DEBE SER VARCHAR)
+        #    yy = h.corr      # name del template (DEBE SER VARCHAR)
+        #    valor_xx = request.POST.get(xx)  #entrega "on" si marcó y "None" si está vacio
+        #    if valor_xx == None:
+        #        valor_xx = 0
+        #    else:    
+        #        valor_xx = 1
+        #
+        #    valor_yy = request.POST.get(yy)  # entrega "on" si marcó y "None" si está vacio
+        #    if id_x == 2:
+        #        return HttpResponse(valor_yy)
+        #
+        #    #--- #    
+        #    if valor_yy == None:
+        #        valor_yy = 0
+        #    else:    
+        #        valor_yy = 1
+        #
+        #    cursor.execute(
+        #    "update appsclub_param set switch1=%s,switch2=%s where id=%s",
+        #    [valor_xx, valor_yy, id_x]
+        #    )     
+
+        cursor = connection.cursor()  
+        for h in horas:
+            id_x = h.id
+            xx = h.descrip   # name del template (DEBE SER VARCHAR)
+            valor_xx = request.POST.get(xx)  #entrega "on" si marcó y "None" si está vacio
+            if valor_xx == None:
+                valor_xx = 0
+            else:    
+                valor_xx = 1
+        
             cursor.execute(
-            "update appsclub_param set switch1=%s,switch2=%s where id=%s",
-            [valor_xx, valor_yy, id_x]
+            "update appsclub_param set switch1=%s where id=%s",
+            [valor_xx, id_x]
             )     
 
-        # CUENTAS PARA DEPOSITO - CUENTAS PARA DEPOSITO     
+        cursor = connection.cursor()  
+        for h2 in horas:
+            id_x = h2.id
+            yy = h2.corr      # name del template (DEBE SER VARCHAR)
+            valor_yy = request.POST.get(yy)  # entrega "on" si marcó y "None" si está vacio
+
+            if valor_yy == None:
+                valor_yy = 0
+            else:    
+                valor_yy = 1
+
+            cursor.execute(
+            "update appsclub_param set switch2=%s where id=%s",
+            [valor_yy, id_x]
+            )     
+
+
+        # GRABA CAMBIOS EN ENVOLTURAS
+        for env in envolt:
+            valor_xx = request.POST.get(str(env.id))    
+            cursor.execute(
+            "update appsclub_envolturas set valor=%s where id=%s",
+            [valor_xx, env.id]
+            )     
+
+        # GRABA CAMBIOS EN RELLENOS
+        for rell in relle:
+            valor_xx = request.POST.get(str(rell.id))    
+            cursor.execute(
+            "update appsclub_rellenos set valor=%s where id=%s",
+            [valor_xx, rell.id]
+            )     
+
+        # GRABA CAMBIOS EN ADICIONALES
+        for adic in adicionales:
+            valor_xx = request.POST.get(str(adic.id))    
+            cursor.execute(
+            "update appsclub_adicionales set valor=%s where id=%s",
+            [valor_xx, adic.id]
+            )     
+
+
+        # GRABA CUENTAS PARA DEPOSITO     
         k = 1  
         while k < ene_regis_cta + 1:  # total registros de la tabla 
             xx = ctas_cod[k-1]        # extrae el valor 'codigo' del arreglo 0,1,2,3...etc

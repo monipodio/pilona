@@ -1524,7 +1524,7 @@ function actualiza_horas() {
 }
 
 
-function selecciona_desmarca_defi(xx,yy) {
+function selecciona_desmarca_defi_(xx,yy) {
 	if(document.getElementById(yy).checked  == 1) {
 		document.getElementById(xx).checked  = 0;
 		document.getElementById(yy).checked  = 0;
@@ -1584,7 +1584,6 @@ function oculta_muestra() {
 
 /*
 $(document).ready(function () {
-	alert("Llega al jQuery");
 	$("#c1").click(function() {
 		$("#c1").show("slow");
 	});
