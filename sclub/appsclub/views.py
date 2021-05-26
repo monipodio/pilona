@@ -376,7 +376,6 @@ def principal(request):
                     relle6_3  =  Rellenos.objects.filter(cod=70,roll=6)
                     relle7_3  =  Rellenos.objects.filter(cod=70,roll=7)
         
-        
         vtot =  valor1_x + valor2_x + valor3_x 
         vtot3 = vtot
 
@@ -463,6 +462,7 @@ def principal(request):
         return render(request,'cambios.html',context)
     return render(request,'principal_flex2.html',context)
 
+
 @login_required(login_url='login_ini')
 def galeria(request):
     variable1 = 'Galeria Internacional'
@@ -474,6 +474,7 @@ def galeria(request):
         "obs":obs,
     }
     return render(request,'galeria.html',context)
+
 
 @login_required(login_url='login_ini')
 def pedidos_sc(request,pr):
@@ -543,6 +544,13 @@ def administrador(request):
     ene_registros = horas.count()   # total registros de la tabla
     ene_regis_cta = cta.count()     # total registros de la tabla
 
+
+    aCorr = [] 
+    aCod = []
+    for hr in horas:
+       aCorr.append(hr.corr)
+       aCod.append(hr.codigo)
+
     context = {
         "logo_corp_chico":logo2,
         "horas":horas,
@@ -555,6 +563,8 @@ def administrador(request):
         "adicionales":adicionales,
         "obs":obs,
         "ene_registros":ene_registros,
+        "aCorr":str(aCorr),
+        "aCod":str(aCod),
         }  
 
     if request.method == "POST":
@@ -566,16 +576,6 @@ def administrador(request):
             ctas_cod.append(prba.codigo)
             ctas_corr.append(prba.corr)
             ctas_id.append(prba.id)
-        #    
-        horas_cod = []
-        horas_corr = []        
-        horas_id = []
-        au = []
-        # horas (llena arreglos desde tabla)
-        for h in horas:
-            horas_cod.append(h.codigo) # llena arreglo con valor campo 'codigo' desde la tabla
-            horas_corr.append(h.corr)  # llena arreglo con valor campo 'corr' desde la tabla
-            horas_id.append(h.id)
 
         # cta (llena arreglos desde tabla)
         for ct in cta:
@@ -583,93 +583,28 @@ def administrador(request):
             ctas_corr.append(ct.corr)  # llena arreglo con valor campo 'corr' de la tabla
             ctas_id.append(ct.id)
 
-        # HORAS DEFINIDAS / DISPONIBLES
-        k = 99  
-        cursor = connection.cursor()  
-        while k < ene_registros + 1:   # total registros de horas en la tabla 
-            xx = horas_cod[k-1]        # extrae el value segun NAME (codigo) del arreglo
-            yy = horas_corr[k-1]       # extrae el value segun NAME (corr) del arreglo 0,1,2,3...etc
-            id_x = horas_id[k-1]       # extrae el value de ID  
-
-            valor_xx = request.POST.get(str(xx))  # trae campo value del check segun mane del template (codigo)       
-            valor_yy = request.POST.get(str(yy))  # trae campo value del check segun name del template  (corr)   
-
-            #if xx == 100:
-                #return HttpResponse("xx="+str(xx)+" yy="+str(yy))
-                #return HttpResponse("valor_xx="+str(valor_xx)+" valor_yy="+str(valor_yy))       
-
-            if valor_xx == None:
-                valor_xx = 0
-            else:    
-                valor_xx = 1
-
-            if valor_yy == None:
-                valor_yy = 0
-            else:    
-                valor_yy = 1
-            k=k+1 
-
-            #cursor.execute(
-            #"update appsclub_param set switch1=%s,switch2=%s where id=%s",
-            #[valor_xx, valor_yy, id_x]
-            #)     
-
-
-        #cursor = connection.cursor()  
-        #for h in horas:
-        #    id_x = h.id
-        #    xx = h.descrip   # name del template (DEBE SER VARCHAR)
-        #    yy = h.corr      # name del template (DEBE SER VARCHAR)
-        #    valor_xx = request.POST.get(xx)  #entrega "on" si marcó y "None" si está vacio
-        #    if valor_xx == None:
-        #        valor_xx = 0
-        #    else:    
-        #        valor_xx = 1
-        #
-        #    valor_yy = request.POST.get(yy)  # entrega "on" si marcó y "None" si está vacio
-        #    if id_x == 2:
-        #        return HttpResponse(valor_yy)
-        #
-        #    #--- #    
-        #    if valor_yy == None:
-        #        valor_yy = 0
-        #    else:    
-        #        valor_yy = 1
-        #
-        #    cursor.execute(
-        #    "update appsclub_param set switch1=%s,switch2=%s where id=%s",
-        #    [valor_xx, valor_yy, id_x]
-        #    )     
-
         cursor = connection.cursor()  
         for h in horas:
             id_x = h.id
             xx = h.descrip   # name del template (DEBE SER VARCHAR)
+            yy = h.corr      # name del template (DEBE SER VARCHAR)
             valor_xx = request.POST.get(xx)  #entrega "on" si marcó y "None" si está vacio
             if valor_xx == None:
                 valor_xx = 0
             else:    
                 valor_xx = 1
         
-            cursor.execute(
-            "update appsclub_param set switch1=%s where id=%s",
-            [valor_xx, id_x]
-            )     
-
-        cursor = connection.cursor()  
-        for h2 in horas:
-            id_x = h2.id
-            yy = h2.corr      # name del template (DEBE SER VARCHAR)
             valor_yy = request.POST.get(yy)  # entrega "on" si marcó y "None" si está vacio
-
+        
+            #--- #    
             if valor_yy == None:
                 valor_yy = 0
             else:    
                 valor_yy = 1
-
+        
             cursor.execute(
-            "update appsclub_param set switch2=%s where id=%s",
-            [valor_yy, id_x]
+            "update appsclub_param set switch1=%s,switch2=%s where id=%s",
+            [valor_xx, valor_yy, id_x]
             )     
 
 
@@ -706,8 +641,6 @@ def administrador(request):
             id_x = ctas_id[k-1]
             valor_xx = request.POST.get(str(xx)) # trae campo value del check directamente desde template        
             valor_yy = request.POST.get(str(yy)) # trae campo value del check directamente desde template            
-
-            #au.append([id_x,xx,yy,valor_xx,valor_yy])
 
             if valor_xx == None:
                 valor_xx = 0

@@ -27,7 +27,8 @@
 		</div>
 		
 	    <div class="Inicializa-dia">
-        	<u><a id= "inicializa" onclick="return actualiza_horas();">Inicializa dia</a></u>
+        	<!-- <u><a id= "inicializa" onclick="inicializa_dia('{{aCod}}','{{aCorr}}');">Inicializa dia</a></u> -->
+        	<u><a id="inicializa" onclick="inicializa_dia({{aCod}})">Inicializa dia</a></u>
     	</div>
 
 		<div class="revihora">
@@ -38,7 +39,7 @@
 
 	<div class="grid-cabeceras"> <!-- subgrid -->
 		<div class="col1">
-		   <p>Código</p>
+		   <p>Código-id-corr</p>
 		</div>
 		
 		<div class="col2">
@@ -66,7 +67,7 @@
 			</div>
 
 			<!-- HORAS DEFINIDAS PARA USO -->
-			<!-- los id son para el JS "inicializar dia", el name es la llave para la VIEW, y value es el valor que retorna -->
+			<!-- los id son para el JS "inicializar dia", el NAME es llave para la VIEW, y VALUE es el valor que retorna -->
 			<div class="col-grid3">
 				{% if hrs.switch1 == 0 %}
 					<input type="checkbox" id="{{hrs.codigo}}" name="{{hrs.descrip}}" onclick="selecciona_desmarca_defi('{{hrs.codigo}}','{{hrs.descrip}}');">
@@ -87,14 +88,14 @@
 	{% endfor %} 
 
 
-	<!-- PROMOS TITULO, CABECERAS Y GRID -->
+	<!-- PROMOS: TITULO, CABECERAS Y GRID -->
 	<br>
 	<div class="administrador-titulo-opciones">
 		Cambia valores de promociones:		
 	</div>
 	<div class="grid-cabe-admin-envolt"> 
 		<div class="col1">
-		   <p>Código</p>
+		   <p>Código-id</p>
 		</div>
 		<div class="col2">
 		   <p>Promoción</p>
@@ -106,13 +107,13 @@
  	{% for prom in promos %}
  		<div class="celdas-sub-grid-envolt">
  			<div class="col-grid1">
-	   			{{prom.cod}} 
+	   			{{prom.cod}} - {{prom.id}}
 	   	    </div>
 			<div class="col-grid2">
 				{{prom.descrip}}
 			</div>
 			<div class="col-grid3">
-				<input type="text" class="col-grid3-envolturas" name="{{prom.id}}" value='{{ prom.valor }}'>
+				<input type="text" class="col-grid3-envolturas" id="{{prom.id}}" name="{{prom.id}}" value='{{ prom.valor }}'>
 			</div>	
 		</div>	
 	{% endfor %} <!-- fin promociones -->

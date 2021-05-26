@@ -1,7 +1,7 @@
 /* Nota: ID (#)  y clases (.), (gato y punto respectivamente) */
 /* Toda funcion que haga alusion a AJAX no hay que subirla a PythonAnywhere */
 /* pues dará un error 404 */
-/* ------------------ */
+/* ----------------- */
 
 function llenacaja(){
 	var fini = $('#datepicker').val();
@@ -1474,7 +1474,10 @@ function seguir_comoadmin() {
 	return false;
 }
 
-function actualiza_horas() {
+
+/* En el template: columna1 es ID = codigo, columna2 es ID = corr */
+function inicializa_dia_(xx,yy) {
+	alert("que chucha pasa? ");
 	if(document.getElementById('100').value  == '1') {
 		document.getElementById(1).checked=1; }
 	if(document.getElementById('110').value  == '1') {
@@ -1581,6 +1584,21 @@ function oculta_muestra() {
 
 }
 
+function inicializa_dia(xx) {
+	for (i in xx) {
+		if(i == 1) {
+			alert("Está marcado como: "+document.getElementById(xx[i]).checked);
+			return true;	
+		}
+		/* entrega true o false */
+		if(document.getElementById(110).checked) {
+			//alert("El 110 está marcado: "+document.getElementById('110').checked);
+		}else{
+			//alert("!!NO!! está marcado: "+document.getElementById('110').checked);	
+		}
+	}
+}
+
 
 /*
 $(document).ready(function () {
@@ -1594,6 +1612,4 @@ $(document).ready(function () {
 
 });
 */
-
-
 
