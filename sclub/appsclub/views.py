@@ -534,7 +534,6 @@ def administrador(request):
     relle  = Rellenos.objects.filter(cod="RE").order_by('roll').exclude(relle='--seleccione--')
     promos = Promos.objects.all().order_by('piezas').exclude(descrip='SELECCIONE PROMO...')
     adicionales = Adicionales.objects.all().order_by('cod')
-
     for ob in obs:
         obstext = ob.observacion1
 
@@ -551,6 +550,8 @@ def administrador(request):
        aCorr.append(hr.corr)
        aCod.append(hr.codigo)
 
+    aCambiosmax = ['0','1','2','3','4','5','6','7','8','9','10']
+
     context = {
         "logo_corp_chico":logo2,
         "horas":horas,
@@ -565,6 +566,7 @@ def administrador(request):
         "ene_registros":ene_registros,
         "aCorr":str(aCorr),
         "aCod":str(aCod),
+        "aCambiosmax":aCambiosmax,
         }  
 
     if request.method == "POST":

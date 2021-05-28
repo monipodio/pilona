@@ -28,7 +28,7 @@
 		
 	    <div class="Inicializa-dia">
         	<!-- <u><a id= "inicializa" onclick="inicializa_dia('{{aCod}}','{{aCorr}}');">Inicializa dia</a></u> -->
-        	<u><a id="inicializa" onclick="inicializa_dia({{aCod}})">Inicializa dia</a></u>
+        	<u><a id="inicializa" onclick="inicializa_dia({{aCod}},{{aCorr}})">Inicializa dia</a></u>
     	</div>
 
 		<div class="revihora">
@@ -210,6 +210,41 @@
 			</div>	
 		</div>	
 	{% endfor %} <!-- fin rellenos -->
+
+
+
+	<!-- CAMBIOS MAXIMOS -->
+	<br>
+	<div class="administrador-titulo-opciones" id="tit-maximos-cambios">
+		Máximos cambios permitidos en envolturas y rellenos por cada promo seleccionada:		
+	</div>
+	<div class="contendor-maximos-cambios">
+		<div>
+		   <p>Máximos cambios en envolturas:</p>
+			<select name="envolt" class="cambio-max1">
+            {% for tip in aCambiosmax %}
+                {% if tip == var_aCambiosmax %}	
+					<option value ="{{forloop.counter0}}" selected="selected">{{tip}}</option>
+			    {% else %}
+		           <option value ="{{forloop.counter0}}">{{tip}} </option>
+			    {% endif %}	
+			{% endfor %}
+	    	</select>
+		</div>
+		
+	    <div>
+		   <p>Máximos cambios en rellenos:</p>
+			<select name="envolt" class="cambio-max2">
+            {% for tip in aCambiosmax %}
+                {% if tip == var_aCambiosmax %}	
+					<option value ="{{forloop.counter0}}" selected="selected">{{tip}}</option>
+			    {% else %}
+		           <option value ="{{forloop.counter0}}">{{tip}} </option>
+			    {% endif %}	
+			{% endfor %}
+	    	</select>
+    	</div>
+	</div> <!-- FIN CAMBIOS MAXIMOS -->
 
 
 	<!-- CUENTAS PARA DEPOSITO (CTAS) -->

@@ -1623,5 +1623,22 @@ p {
     /*color: white; /* color texto de todos los elementos q' componen la subgrid */
 }
 
+.contendor-maximos-cambios {
+  display: flex;
+  flex-direction: rows;
+  margin-top: 0rem; /* espacio entre el contenedor y el objeto inmediatamente arriba (en este caso el titulo) */ 
+  background-color: #899EF3;  /* color de cada fila de la grid */ 
+  border-radius: 5px;
+  justify-content: space-evenly; 
+  padding: 6px;
+  height:95px;
+}
 
+.tit-maximos-cambios {
+  background-color: yellow;
+}
 
+.cambio-max1, .cambio-max2 {
+ width: 100px;
+ /* margin-top: 0rem; */
+}

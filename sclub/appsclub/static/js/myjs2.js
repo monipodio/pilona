@@ -1526,14 +1526,6 @@ function inicializa_dia_(xx,yy) {
 		document.getElementById(44).checked=1; }
 }
 
-
-function selecciona_desmarca_defi_(xx,yy) {
-	if(document.getElementById(yy).checked  == 1) {
-		document.getElementById(xx).checked  = 0;
-		document.getElementById(yy).checked  = 0;
-	}
-}	
-
 function selecciona_vigente(xx,yy) {
 	var src = "/static/img/mapa.jpg";
 	if(document.getElementById(xx).checked  == 0) {
@@ -1563,13 +1555,14 @@ function oculta_muestra() {
 	var prom1 = document.getElementById("c1");
 	var prom2 = document.getElementById("c2");
 	var prom3 = document.getElementById("c3");
-
-	var tieneclase = prom1.classList.contains( 'c1' );  /* entrega: true o false */
+    /*
+	var tieneclase = prom1.classList.contains( 'c1' );  /* entrega: true o false 
 	if(tieneclase==true){
-		document.getElementById("c1").className = "esconde"; /* cambia el nombre de la clase, pero el id sigue siendo c1 */
+		document.getElementById("c1").className = "esconde"; /* cambia el nombre de la clase, pero el id sigue siendo c1 
 	}else{
-		document.getElementById("c1").className = "c1";  /* cambia el nombre de la clase, pero el id sigue siendo c1 */
+		document.getElementById("c1").className = "c1";  /* cambia el nombre de la clase, pero el id sigue siendo c1 
 	}
+	*/
 
 	if(document.getElementById('c1').style.display == 'none') {
 		$("#c1").show("slowly");
@@ -1584,17 +1577,10 @@ function oculta_muestra() {
 
 }
 
-function inicializa_dia(xx) {
+function inicializa_dia(xx,yy) {
 	for (i in xx) {
-		if(i == 1) {
-			alert("Está marcado como: "+document.getElementById(xx[i]).checked);
-			return true;	
-		}
-		/* entrega true o false */
-		if(document.getElementById(110).checked) {
-			//alert("El 110 está marcado: "+document.getElementById('110').checked);
-		}else{
-			//alert("!!NO!! está marcado: "+document.getElementById('110').checked);	
+		if(document.getElementById(xx[i]).checked) {
+			document.getElementById(yy[i]).checked = true; 
 		}
 	}
 }
