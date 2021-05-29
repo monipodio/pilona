@@ -534,6 +534,7 @@ def administrador(request):
     relle  = Rellenos.objects.filter(cod="RE").order_by('roll').exclude(relle='--seleccione--')
     promos = Promos.objects.all().order_by('piezas').exclude(descrip='SELECCIONE PROMO...')
     adicionales = Adicionales.objects.all().order_by('cod')
+    cambios_max = Param.objects.filter(tipo="MAX")
     for ob in obs:
         obstext = ob.observacion1
 
@@ -550,7 +551,12 @@ def administrador(request):
        aCorr.append(hr.corr)
        aCod.append(hr.codigo)
 
-    aCambiosmax = ['0','1','2','3','4','5','6','7','8','9','10']
+    for camb in cambios_max:
+        var_valor1 = camb.valor1
+        var_valor2 = camb.valor2    
+
+
+    aCambiosmax = [0,1,2,3,4,5,6,7,8,9,10]
 
     context = {
         "logo_corp_chico":logo2,
@@ -567,6 +573,9 @@ def administrador(request):
         "aCorr":str(aCorr),
         "aCod":str(aCod),
         "aCambiosmax":aCambiosmax,
+        "cambios_max":cambios_max,
+        "var_valor1":var_valor1,
+        "var_valor2":var_valor2,
         }  
 
     if request.method == "POST":
@@ -632,6 +641,16 @@ def administrador(request):
             cursor.execute(
             "update appsclub_adicionales set valor=%s where id=%s",
             [valor_xx, adic.id]
+            )     
+
+
+        # GRABA CANTIDADES DE CAMBIOS MAXIMOS PERMITIDOS EN ENVOLTURAS Y/O RELLENOS
+        for camb in cambios_max:
+            cambios1_x = request.POST.get('cambio-max1') # combo de NAME: "cambio-max1" y trae lo que tiene en VALUE
+            cambios2_x = request.POST.get('cambio-max2') # combo de NAME: "cambio-max2" y trae lo que tiene en VALUE
+            cursor.execute(
+            "update appsclub_param set valor1=%s, valor2=%s where id=%s",
+            [cambios1_x,cambios2_x,camb.id]
             )     
 
 

@@ -221,9 +221,9 @@
 	<div class="contendor-maximos-cambios">
 		<div>
 		   <p>Máximos cambios en envolturas:</p>
-			<select name="envolt" class="cambio-max1">
+			<select name="cambio-max1" class="cambio-max1">
             {% for tip in aCambiosmax %}
-                {% if tip == var_aCambiosmax %}	
+                {% if tip == var_valor1 %}	
 					<option value ="{{forloop.counter0}}" selected="selected">{{tip}}</option>
 			    {% else %}
 		           <option value ="{{forloop.counter0}}">{{tip}} </option>
@@ -234,9 +234,9 @@
 		
 	    <div>
 		   <p>Máximos cambios en rellenos:</p>
-			<select name="envolt" class="cambio-max2">
+			<select name="cambio-max2" class="cambio-max2">
             {% for tip in aCambiosmax %}
-                {% if tip == var_aCambiosmax %}	
+                {% if tip == var_valor2 %}	
 					<option value ="{{forloop.counter0}}" selected="selected">{{tip}}</option>
 			    {% else %}
 		           <option value ="{{forloop.counter0}}">{{tip}} </option>
