@@ -984,20 +984,21 @@ p {
 
 
 .valor-final {
-  padding-top: 1rem;  /* borde o distancia superior */
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}    
 
-.total-apago {
-  /*background-color: blue;*/
+
+.total-apago_ {
+  background-color: orange;
   text-align: center;
   /* border-radius: 9px; */
   font-weight: bold;
 }
 
-.vtot, .vtot_tot {
-  background-color:transparent;
+.vtot_tot {
+  /*background-color:transparent;*/
   text-align: center;
   border-radius: 80px 20px;
   border-top-width: 1px;
@@ -1008,11 +1009,11 @@ p {
   border-right-color: 36F495;
   border-bottom-color: #36F495;
   border-left-color: #36F495;
+  width: 100px;
 }
 
-
 .vtot_aux {
-  background-color:white;
+  background-color:white; 
   text-align:right;
 }
 
@@ -1634,11 +1635,30 @@ p {
   height:95px;
 }
 
-.tit-maximos-cambios {
-  background-color: yellow;
-}
-
 .cambio-max1, .cambio-max2 {
  width: 100px;
  /* margin-top: 0rem; */
 }
+
+.vtot_aux,.npromo,.var_valor1,.var_valor2 {
+  width: 90%;
+  text-align:right;
+  border-radius: 9px;
+  border:1px #B8B8B8 none;
+  background-color: #E6E2E9;
+  color: #E6E2E9;
+}
+
+.vtot {
+  width: 90%;
+  text-align:right;
+  border-radius: 9px;
+  border:1px #B8B8B8 none;
+}
+
+
+
+.signo-peso {
+  margin-top: 0.2rem;
+  width: 13px;  
+} 

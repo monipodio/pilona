@@ -48,6 +48,7 @@ def principal(request):
     obs = Param.objects.filter(tipo="OBS").order_by('codigo')
     prs =  Promos.objects.all().order_by('piezas')
     trabajo =  Param.objects.filter(tipo="TRA").order_by('codigo') #
+    cambios_max = Param.objects.filter(tipo="MAX")
 
     for traba in trabajo: 
         nosetrabaja = traba.switch1
@@ -70,6 +71,10 @@ def principal(request):
     for ct in cta:
         ctas.append(ct.descrip)
 
+    for camb in cambios_max:
+        var_valor1 = camb.valor1
+        var_valor2 = camb.valor2    
+       
     context ={
         "string_horas":string_horas,
         "prs":prs,
@@ -77,8 +82,7 @@ def principal(request):
     	"logo_corp_chico":logo2,
         "cta":cta, 
         "nosetrabaja":nosetrabaja,
-        "obs":obs,
-        }
+        "obs":obs, }
 
     npromo = 1
     kontador = 0      
@@ -457,8 +461,9 @@ def principal(request):
                 "hrs":hrs,
                 "cta":cta,
                 "ctas":ctas,
-                "obs":obs,
-        }
+                "var_valor1":var_valor1,
+                "var_valor2":var_valor2,
+                "obs":obs,}
         return render(request,'cambios.html',context)
     return render(request,'principal_flex2.html',context)
 
@@ -551,11 +556,6 @@ def administrador(request):
        aCorr.append(hr.corr)
        aCod.append(hr.codigo)
 
-    for camb in cambios_max:
-        var_valor1 = camb.valor1
-        var_valor2 = camb.valor2    
-
-
     aCambiosmax = [0,1,2,3,4,5,6,7,8,9,10]
 
     context = {
@@ -574,9 +574,7 @@ def administrador(request):
         "aCod":str(aCod),
         "aCambiosmax":aCambiosmax,
         "cambios_max":cambios_max,
-        "var_valor1":var_valor1,
-        "var_valor2":var_valor2,
-        }  
+    }  
 
     if request.method == "POST":
         ctas = []

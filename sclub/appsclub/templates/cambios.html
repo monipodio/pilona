@@ -27,26 +27,40 @@
 				{% endif %}
 			</div>
 
-			<div class = "valor-final"> <!-- GRID MUESTRA EL VALOR TOTAL EN LA ESQUINA -->
+			<div class = "valor-final"> <!-- GRID MUESTRA EL VALOR TOTAL EN LA ESQUINA-->
 				<div>
 					<p href="#" onclick="oculta_muestra()" class="btn btn-primary" id="disparador" title ="si quiere cambios">cambios?</p>
-				</div>	
+				</div>
+
 				<div> <!-- VALOR INVISIBLE TOTAL DE LA(s) PROMO(s) type="hidden"-->
 					{% if npromo != 1 %}
-						<input  size="12" id="vtot_aux" class="vtot_aux" value="{{vtot}}" readonly> 
+						<input  type="text" id="vtot_aux" class="vtot_aux" value="{{vtot}}" readonly> 
 					{% else %}
-						<input  type = "hidden" size="12" id="vtot_aux" class="vtot_aux" value="{{vtot}}" readonly> 
+						<!--type = "hidden" -->
+						<input type="text"  id="vtot_aux" class="vtot_aux" value="{{vtot}}" readonly> 
 					{% endif %}
        			</div>
 
+       			<!-- type = "hidden" -->
 				<div>
-					<input  type = "hidden" size="9" id="npromo" class="npromo" value="{{npromo}}" readonly>
+					<input type="text" id="npromo" class="npromo" value="{{npromo}}" readonly>
 				</div>	
 
-				<div class="total-apago"> <!-- class="c3" -->
-					<!-- VALOR TOTAL CON LOS CAMBIOS A LA PROMO -->
+				<div>
+					<input type="text" id="var_valor1" class="var_valor1" value="{{var_valor1}}" readonly>
+				</div>
+
+				<div>	
+					<input type="text" id="var_valor2" class="var_valor2" value="{{var_valor2}}" readonly>
+				</div>	
+
+				<div class="signo-peso">
 					$:
-       			   	<input type="text" size="12" id="vtot" class="vtot" value="{{vtot3}}" readonly>
+				</div>	
+
+				<div>
+					<!-- VALOR TOTAL CON LOS CAMBIOS A LA PROMO -->
+       			   	<input type="text" id="vtot" class="vtot" value="{{vtot3}}" readonly>
        			</div>
 	       	</div>
 		</ul>
