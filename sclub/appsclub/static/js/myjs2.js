@@ -1,7 +1,7 @@
 /* Nota: ID (#)  y clases (.), (gato y punto respectivamente) */
 /* Toda funcion que haga alusion a AJAX no hay que subirla a PythonAnywhere */
 /* pues dará un error 404 */
-/* ----------------- */
+/* ----------------- */ 
 
 function llenacaja(){
 	var fini = $('#datepicker').val();
@@ -921,24 +921,28 @@ $(document).ready(function () {
 /* SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO1  - pone el subtotal en la columna3 */
 $(document).ready(function () {
     $("#id_env1").on('change', function () { 
+    	ncambios_yahechos();
         var cmb = $(this).val();
     	document.getElementById("subtot1").value = cmb;
 		suma_cambios();
 	});
 
-    $("#id_env2").on('change', function () {            
+    $("#id_env2").on('change', function () {   
+    	ncambios_yahechos();         
         var cmb = $(this).val();
     	document.getElementById("subtot2").value = cmb;
 		suma_cambios();
 	});
 
     $("#id_env3").on('change', function () {            
+    	ncambios_yahechos();
         var cmb = $(this).val();
     	document.getElementById("subtot3").value = cmb;
  		suma_cambios();
 	});
 
     $("#id_env4").on('change', function () {            
+    	ncambios_yahechos();
         var cmb = $(this).val();
     	document.getElementById("subtot4").value = cmb;
 		suma_cambios();
@@ -1195,6 +1199,21 @@ $(document).ready(function () {
 	});
 
 });
+
+
+function ncambios_yahechos() {
+	var ene = ['1','2','3','4','5','6','7'];
+	var ene_cambios = 0;
+	for (i in ene) {
+		if(document.getElementById("subtot"+ene[i]).value != 0) {
+			ene_cambios = ene_cambios + 1; 
+		}
+	}
+	if(ene_cambios != 0) {
+		alert("Se encontraron cambios ya hechos: "+ene_cambios.toString()); 
+	}
+}
+
 
 
 /* SUMA FINAL PARA EL TOTAL DE LA(S) PROMOS PEDIDAS */
@@ -1475,57 +1494,6 @@ function seguir_comoadmin() {
 }
 
 
-/* En el template: columna1 es ID = codigo, columna2 es ID = corr */
-function inicializa_dia_(xx,yy) {
-	alert("que chucha pasa? ");
-	if(document.getElementById('100').value  == '1') {
-		document.getElementById(1).checked=1; }
-	if(document.getElementById('110').value  == '1') {
-		document.getElementById(3).checked=1; }
-	if(document.getElementById('120').value  == '1') {
-		document.getElementById(5).checked=1; }
-	if(document.getElementById('130').value  == '1') {
-		document.getElementById(7).checked=1; }
-	if(document.getElementById('140').value  == '1') {
-		document.getElementById(9).checked=1; }
-	if(document.getElementById('150').value  == '1') {
-		document.getElementById(11).checked=1; }
-	if(document.getElementById('160').value  == '1') {
-		document.getElementById(13).checked=1; }
-	if(document.getElementById('170').value  == '1') {
-		document.getElementById(15).checked=1; }
-	if(document.getElementById('180').value  == '1') {
-		document.getElementById(17).checked=1; }
-	if(document.getElementById('190').value  == '1') {
-		document.getElementById(19).checked=1; }
-	if(document.getElementById('200').value  == '1') {
-		document.getElementById(21).checked=1; }
-	if(document.getElementById('210').value  == '1') {
-		document.getElementById(23).checked=1; }
-	if(document.getElementById('220').value  == '1') {
-		document.getElementById(25).checked=1; }
-	if(document.getElementById('232').value  == '1') {
-		document.getElementById(28).checked=1; }
-	if(document.getElementById('240').value  == '1') {
-		document.getElementById(29).checked=1; }
-	if(document.getElementById('250').value  == '1') {
-		document.getElementById(31).checked=1; }
-	if(document.getElementById('260').value  == '1') {
-		document.getElementById(33).checked=1; }
-	if(document.getElementById('270').value  == '1') {
-		document.getElementById(35).checked=1; }
-	if(document.getElementById('280').value  == '1') {
-		document.getElementById(37).checked=1; }
-	if(document.getElementById('290').value  == '1') {
-		document.getElementById(39).checked=1; }
-	if(document.getElementById('300').value  == '1') {
-		document.getElementById(40).checked=1; }
-	if(document.getElementById('310').value  == '1') {
-		document.getElementById(42).checked=1; }
-	if(document.getElementById('320').value  == '1') {
-		document.getElementById(44).checked=1; }
-}
-
 function selecciona_vigente(xx,yy) {
 	var src = "/static/img/mapa.jpg";
 	if(document.getElementById(xx).checked  == 0) {
@@ -1577,6 +1545,8 @@ function oculta_muestra() {
 
 }
 
+
+/* En el template: columna1 es ID = codigo, columna2 es ID = corr */
 function inicializa_dia(xx,yy) {
 	for (i in xx) {
 		if(document.getElementById(xx[i]).checked) {

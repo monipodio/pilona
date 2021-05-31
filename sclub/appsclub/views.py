@@ -605,7 +605,7 @@ def administrador(request):
             else:    
                 valor_xx = 1
         
-            valor_yy = request.POST.get(yy)  # entrega "on" si marcó y "None" si está vacio
+            valor_yy = request.POST.get(yy)  # entrega "on" si marcó y "None" si está vacio (check box)
         
             #--- #    
             if valor_yy == None:
@@ -621,7 +621,7 @@ def administrador(request):
 
         # GRABA CAMBIOS EN ENVOLTURAS
         for env in envolt:
-            valor_xx = request.POST.get(str(env.id))    
+            valor_xx = request.POST.get(str(env.id)) # combo con NAME: "id" y trae lo que tiene en VALUE   
             cursor.execute(
             "update appsclub_envolturas set valor=%s where id=%s",
             [valor_xx, env.id]
@@ -629,7 +629,7 @@ def administrador(request):
 
         # GRABA CAMBIOS EN RELLENOS
         for rell in relle:
-            valor_xx = request.POST.get(str(rell.id))    
+            valor_xx = request.POST.get(str(rell.id))  # combo con NAME: "id" y trae lo que tiene en VALUE
             cursor.execute(
             "update appsclub_rellenos set valor=%s where id=%s",
             [valor_xx, rell.id]
@@ -637,7 +637,7 @@ def administrador(request):
 
         # GRABA CAMBIOS EN ADICIONALES
         for adic in adicionales:
-            valor_xx = request.POST.get(str(adic.id))    
+            valor_xx = request.POST.get(str(adic.id)) # combo con NAME: "id" y trae lo que tiene en VALUE    
             cursor.execute(
             "update appsclub_adicionales set valor=%s where id=%s",
             [valor_xx, adic.id]
@@ -646,8 +646,8 @@ def administrador(request):
 
         # GRABA CANTIDADES DE CAMBIOS MAXIMOS PERMITIDOS EN ENVOLTURAS Y/O RELLENOS
         for camb in cambios_max:
-            cambios1_x = request.POST.get('cambio-max1') # combo de NAME: "cambio-max1" y trae lo que tiene en VALUE
-            cambios2_x = request.POST.get('cambio-max2') # combo de NAME: "cambio-max2" y trae lo que tiene en VALUE
+            cambios1_x = request.POST.get('cambio-max1') # combo con NAME: "cambio-max1" y trae lo que tiene en VALUE
+            cambios2_x = request.POST.get('cambio-max2') # combo con NAME: "cambio-max2" y trae lo que tiene en VALUE
             cursor.execute(
             "update appsclub_param set valor1=%s, valor2=%s where id=%s",
             [cambios1_x,cambios2_x,camb.id]
