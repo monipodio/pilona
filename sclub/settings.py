@@ -24,8 +24,9 @@ DEBUG = True
 #DEBUG = False
 
 # local
-# NGROK se incvoca como: http://b37ffa1b7fad.ngrok.io/login_ini/
-ALLOWED_HOSTS = ['127.0.0.1','localhost','388b1eb5b613.ngrok.io']
+# NGROK se debe invocar como: ngrok http 8000
+# y la URL de acceso al sistema: http://b37ffa1b7fad.ngrok.io/login_ini/
+ALLOWED_HOSTS = ['127.0.0.1','localhost','0f7cbfce9284.ngrok.io']
 
 
 # Hosting web

@@ -540,8 +540,6 @@ def administrador(request):
     promos = Promos.objects.all().order_by('piezas').exclude(descrip='SELECCIONE PROMO...')
     adicionales = Adicionales.objects.all().order_by('cod')
     cambios_max = Param.objects.filter(tipo="MAX")
-    for ob in obs:
-        obstext = ob.observacion1
 
     for t in trabajo:
         tr = t.switch1  # 0=no se trabaja, 1=se trabaja
@@ -557,13 +555,15 @@ def administrador(request):
        aCod.append(hr.codigo)
 
     aCambiosmax = [0,1,2,3,4,5,6,7,8,9,10]
+    for camb in cambios_max:
+        var_valor2 = camb.valor2
+        var_valor1 = camb.valor1
 
     context = {
         "logo_corp_chico":logo2,
         "horas":horas,
         "cta":cta,
         "trabajo":tr,
-        "obstext":obstext,
         "envolt":envolt,        
         "relle":relle,
         "promos":promos,
@@ -574,6 +574,8 @@ def administrador(request):
         "aCod":str(aCod),
         "aCambiosmax":aCambiosmax,
         "cambios_max":cambios_max,
+        "var_valor1":var_valor1,
+        "var_valor2":var_valor2,
     }  
 
     if request.method == "POST":
@@ -642,7 +644,7 @@ def administrador(request):
             )     
 
 
-        # GRABA CANTIDADES DE CAMBIOS MAXIMOS PERMITIDOS EN ENVOLTURAS Y/O RELLENOS
+        # CAMBIOS MAXIMOS PERMITIDOS EN ENVOLTURAS Y/O RELLENOS
         for camb in cambios_max:
             cambios1_x = request.POST.get('cambio-max1') # combo con NAME: "cambio-max1" y trae lo que tiene en VALUE
             cambios2_x = request.POST.get('cambio-max2') # combo con NAME: "cambio-max2" y trae lo que tiene en VALUE
@@ -679,12 +681,16 @@ def administrador(request):
 
         # TEXTO DE PIE DE PAGINA    
         # Trae la glosa del textarea directamente desde template según lo que tenga en name    
+        #aGlosa = []
         for ob in obs:
-            observacion_x = request.POST.get(str(ob.corr)) # el valor de "ob.codigo" es lo q' hay en 'name' del template
+            observacion_x = request.POST.get(str(ob.id)) # el valor de "ob.codigo" es lo q' hay en 'name' del template
+            #aGlosa.append(observacion_x) # llena arreglo con valor del campo
             cursor.execute(
-            "update appsclub_param set observacion1=%s where corr=%s",
-            [observacion_x,ob.corr]
+            "update appsclub_param set observacion1=%s where id=%s",
+            [observacion_x,ob.id]
             )
+
+        #return HttpResponse(str(aGlosa)) #prueba
 
         # SE TRABAJA HOY     
         trabajo = request.POST.get('laburohoy') # trae campo value del check directamente desde template            

@@ -1645,7 +1645,7 @@ p {
   text-align:right;
   border-radius: 9px;
   border:1px #B8B8B8 none;
-  background-color: #E6E2E9;
+  background-color: #E6E2E9; /* color que ya tiene el tiene el tapiz de fondo*/
   color: #E6E2E9;
 }
 

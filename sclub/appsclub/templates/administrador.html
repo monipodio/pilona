@@ -219,7 +219,7 @@
 	</div>
 	<div class="contendor-maximos-cambios">
 		<div>
-		   <p>Máximos cambios en envolturas:</p>
+		   <p>En envolturas:</p>
 			<select name="cambio-max1" class="cambio-max1">
             {% for tip in aCambiosmax %}
                 {% if tip == var_valor1 %}	
@@ -232,7 +232,7 @@
 		</div>
 		
 	    <div>
-		   <p>Máximos cambios en rellenos:</p>
+		   <p>En rellenos:</p>
 			<select name="cambio-max2" class="cambio-max2">
             {% for tip in aCambiosmax %}
                 {% if tip == var_valor2 %}	
@@ -302,7 +302,7 @@
 
 	<!-- RECUADROS PIE DE PAGINA (FOOTER) -->
 	{% for ob in obs %} 
-		<textarea class="form-control" name="{{ob.corr}}" id="textArea1" rows="4">{{ob.observacion1}}</textarea>
+		<textarea class="form-control" name="{{ob.id}}" id="textArea1" rows="4">{{ob.observacion1}}</textarea>
 	{% endfor%} 
 
 
