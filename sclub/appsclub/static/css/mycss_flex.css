@@ -263,6 +263,7 @@ p {
         padding-bottom: 3rem;
         background-color: #EAE9E4;
         border-radius: 10px 10px 10px 10px;
+        with:95%;
       }
 
       /* PRINCIPAL - promos */
@@ -569,7 +570,8 @@ p {
       width:85%; 
       margin: auto;   /* alinea y centra equitativamente respecto al HTML*/
       justify-item: center;
-      background-color: #EAE9E4;
+      background-color: #EAE9E4; 
+      /* background-color: yellow; */
       padding-top: 3rem;    /* margen sup. de la grid con respecto a su  */ 
       padding-bottom: 3rem;
       border-radius: 10px 10px 10px 10px;

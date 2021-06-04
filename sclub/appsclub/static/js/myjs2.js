@@ -1,7 +1,7 @@
 /* Nota: ID (#)  y clases (.), (gato y punto respectivamente) */
 /* Toda funcion que haga alusion a AJAX no hay que subirla a PythonAnywhere */
 /* pues dará un error 404 */
-/* ----------------- */ 
+/* ----------------- */  
 
 function llenacaja(){
 	var fini = $('#datepicker').val();
@@ -920,78 +920,68 @@ $(document).ready(function () {
 /* SELECCIONA ENVOLTORIOS PARA CAMBIO PROMO1  - pone el subtotal en la columna3 */
 $(document).ready(function () {
     $("#id_env1").on('change', function () { 
-    	var max_env=0;
-    	var maxcamb_envolt = document.getElementById("var_valor1").value
-    	var maxcamb_relle  = document.getElementById("var_valor2").value
-		max_env = ncambios_yahechos();
-    	if(max_env > maxcamb_envolt) {
-    		alert("!! NO!! maxcamb_envolt: "+str(maxcamb_envolt)+" max_env: "+str(max_env));
-    	}else{
-        	var cmb = $(this).val();
-    		document.getElementById("subtot1").value = cmb;
+       	var cmb = $(this).val();
+    	var xx = sweetalert_maximocambio(cmb);
+    	if(xx == false) {
+    		document.getElementById("subtot1").value = cmb; /*hace el cambio*/
 			suma_cambios();
 		}
 	});
 
-    /* para pruebas */
+
     $("#id_env2").on('change', function () {   
-    	var maxcamb_envolt = document.getElementById("var_valor1").value
-    	var maxcamb_relle  = document.getElementById("var_valor2").value
-		var max_env = ncambios_yahechos();
-    	if(max_env+1 > maxcamb_envolt) {
-    		alert("Cambios máximos permitidos es de: "+max_env);
-    	}else{
-	        var cmb = $(this).val();
-    		document.getElementById("subtot2").value = cmb;
+	    var cmb = $(this).val();
+    	var xx = sweetalert_maximocambio(cmb);
+    	if(xx == false) {
+    		document.getElementById("subtot2").value = cmb; /*hace el cambio*/
 			suma_cambios();
 		}
 	});
 
+    /* PARA PRUEBAS */
     $("#id_env3").on('change', function () {            
-    	var max_env=0;
-    	var maxcamb_envolt = document.getElementById("var_valor1").value
-    	var maxcamb_relle  = document.getElementById("var_valor2").value
-		max_env = ncambios_yahechos();
-    	if(max_env+1> maxcamb_envolt) {
-    		alert("!! NO!! maxcamb_envolt: "+maxcamb_envolt+" max_env: "+max_env);
-    	}else{
-	        var cmb = $(this).val();
-    		document.getElementById("subtot3").value = cmb;
+    	var cmb = $(this).val();
+    	var xx = sweetalert_maximocambio(cmb);
+    	if(xx == false) {
+    		document.getElementById("subtot3").value = cmb; /*hace el cambio*/
  			suma_cambios();
  		}
 	});
 
     $("#id_env4").on('change', function () {            
-    	var max_env=0;
-    	var maxcamb_envolt = document.getElementById("var_valor1").value
-    	var maxcamb_relle  = document.getElementById("var_valor2").value
-		max_env = ncambios_yahechos();
-    	if(max_env > maxcamb_envolt) {
-    		alert("!! NO!! maxcamb_envolt: "+maxcamb_envolt+" max_env: "+max_env);
-    	}else{
-	    	ncambios_yahechos();
-    	    var cmb = $(this).val();
-    		document.getElementById("subtot4").value = cmb;
+    	var cmb = $(this).val();
+    	var xx = sweetalert_maximocambio(cmb);
+    	if(xx == false) {
+    		document.getElementById("subtot4").value = cmb;  /*hace el cambio*/
 			suma_cambios();
 		}
 	});
 
     $("#id_env5").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot5").value = cmb;
- 		suma_cambios();
+    	var xx = sweetalert_maximocambio(cmb);
+    	if(xx == false) {
+    		document.getElementById("subtot5").value = cmb; /*hace el cambio*/
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env6").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot6").value = cmb;
- 		suma_cambios();
+    	var xx = sweetalert_maximocambio(cmb);
+    	if(xx == false) {
+    		document.getElementById("subtot6").value = cmb; /*hace el cambio*/
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env7").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot7").value = cmb;
- 		suma_cambios();
+    	var xx = sweetalert_maximocambio(cmb);
+    	if(xx == false) {
+    		document.getElementById("subtot7").value = cmb; /*hace el cambio*/
+ 			suma_cambios();
+ 		}
 	});
 
     /* RELLENOS PROMO1 -  pone el subtotal en la columna3 */
@@ -1591,4 +1581,25 @@ $(document).ready(function () {
 
 });
 */
+
+function sweetalert_maximocambio(cmb) {
+	var entrega_x = false;
+  	var maxcamb_envolt = document.getElementById("var_valor1").value;	
+	var maxcamb_relle  = document.getElementById("var_valor2").value;
+	var max_env = ncambios_yahechos();
+	/* Nota: cmb=0, implica que esa seleccion fue "--cambia por--" */
+	if(cmb!=0){
+   		if(max_env+1 > maxcamb_envolt) {
+			Swal.fire({
+	  		position: 'top-end',
+	  		icon: 'error',
+	  		title: 'Has completado el máximo de cambios, que es de '+maxcamb_envolt+' por promoción', 
+	  		showConfirmButton: true,
+	  		confirmButtonText: 'Aceptar',
+			})
+  			entrega_x = true;
+   		}
+   	}	
+	return entrega_x;
+}	
 
