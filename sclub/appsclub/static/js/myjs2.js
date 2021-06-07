@@ -921,7 +921,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#id_env1").on('change', function () { 
        	var cmb = $(this).val();
-    	var xx = sweetalert_maximocambio(cmb);
+    	var xx = sweetalert_maximocambio(cmb,1);
     	if(xx == false) {
     		document.getElementById("subtot1").value = cmb; /*hace el cambio*/
 			suma_cambios();
@@ -931,7 +931,7 @@ $(document).ready(function () {
 
     $("#id_env2").on('change', function () {   
 	    var cmb = $(this).val();
-    	var xx = sweetalert_maximocambio(cmb);
+    	var xx = sweetalert_maximocambio(cmb,1);
     	if(xx == false) {
     		document.getElementById("subtot2").value = cmb; /*hace el cambio*/
 			suma_cambios();
@@ -941,7 +941,7 @@ $(document).ready(function () {
     /* PARA PRUEBAS */
     $("#id_env3").on('change', function () {            
     	var cmb = $(this).val();
-    	var xx = sweetalert_maximocambio(cmb);
+    	var xx = sweetalert_maximocambio(cmb,1);
     	if(xx == false) {
     		document.getElementById("subtot3").value = cmb; /*hace el cambio*/
  			suma_cambios();
@@ -950,7 +950,7 @@ $(document).ready(function () {
 
     $("#id_env4").on('change', function () {            
     	var cmb = $(this).val();
-    	var xx = sweetalert_maximocambio(cmb);
+    	var xx = sweetalert_maximocambio(cmb,1);
     	if(xx == false) {
     		document.getElementById("subtot4").value = cmb;  /*hace el cambio*/
 			suma_cambios();
@@ -959,7 +959,7 @@ $(document).ready(function () {
 
     $("#id_env5").on('change', function () {            
         var cmb = $(this).val();
-    	var xx = sweetalert_maximocambio(cmb);
+    	var xx = sweetalert_maximocambio(cmb,1);
     	if(xx == false) {
     		document.getElementById("subtot5").value = cmb; /*hace el cambio*/
  			suma_cambios();
@@ -968,7 +968,7 @@ $(document).ready(function () {
 
     $("#id_env6").on('change', function () {            
         var cmb = $(this).val();
-    	var xx = sweetalert_maximocambio(cmb);
+    	var xx = sweetalert_maximocambio(cmb,1);
     	if(xx == false) {
     		document.getElementById("subtot6").value = cmb; /*hace el cambio*/
  			suma_cambios();
@@ -977,62 +977,87 @@ $(document).ready(function () {
 
     $("#id_env7").on('change', function () {            
         var cmb = $(this).val();
-    	var xx = sweetalert_maximocambio(cmb);
+    	var xx = sweetalert_maximocambio(cmb,1);
     	if(xx == false) {
     		document.getElementById("subtot7").value = cmb; /*hace el cambio*/
  			suma_cambios();
  		}
 	});
 
+
     /* RELLENOS PROMO1 -  pone el subtotal en la columna3 */
     $("#relle1_tot").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub1_rell").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,1);
+    	if(xx == false) {
+	    	document.getElementById("sub1_rell").value = rell;
+ 			suma_cambios();
+ 		}
  	});
 
 	$("#relle2_tot").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub2_rell").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,1);
+    	if(xx == false) {        
+    		document.getElementById("sub2_rell").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#relle3_tot").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub3_rell").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,1);
+    	if(xx == false) {
+    		document.getElementById("sub3_rell").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#relle4_tot").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub4_rell").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,1);
+    	if(xx == false) {
+    		document.getElementById("sub4_rell").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#relle5_tot").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub5_rell").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,1);
+    	if(xx == false) {
+    		document.getElementById("sub5_rell").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#relle6_tot").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub6_rell").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,1);
+    	if(xx == false) {
+    		document.getElementById("sub6_rell").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#relle7_tot").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub7_rell").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,1);
+    	if(xx == false) {
+    		document.getElementById("sub7_rell").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
 
     /* ENVOLTURAS PROMO2   - pone el subtotal en la columna3 */
     $("#id_env1_2").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot1_2").value = cmb;
-  		suma_cambios();
+        var xx = sweetalert_maximocambio2(cmb,2);
+    	if(xx == false) {
+    		document.getElementById("subtot1_2").value = cmb;
+  			suma_cambios();
+  		}
 	});
     $("#id_env2_2").on('change', function () {            
         var cmb = $(this).val();
@@ -1218,16 +1243,46 @@ $(document).ready(function () {
 });
 
 /*controla los maximos cambios permitidos*/
-function ncambios_yahechos() {
+function ncambios_yahechos(nprom) {
+	/* contabiliza cambios en envoltorios PROMO1 */
 	var ene = ['1','2','3','4','5','6','7'];
 	var ene_cambios = 0;
-	for (i in ene) {
-		if(document.getElementById("subtot"+ene[i]).value != 0) {
-			ene_cambios = ene_cambios + 1; 
+	/* contabiliza PROMO1 envolturas y rellenos*/
+	if(nprom==1) {
+		for (i in ene) {
+			if(document.getElementById("subtot"+ene[i]).value != 0) {
+				ene_cambios = ene_cambios + 1; 
+			}
 		}
+		/* contabiliza cambios en rellenos PROMO1 */
+		for (i in ene) {
+			if(document.getElementById("sub"+ene[i]+"_rell").value != 0) {
+				ene_cambios = ene_cambios + 1; 
+			}
+		}
+		return ene_cambios;
 	}
-	return ene_cambios;
+
+	/* contabiliza PROMO2 envolturas y rellenos*/
+	if(nprom==2) {
+		for (i in ene) {
+			if(document.getElementById("subtot"+ene[i])+"_2".value != 0) {
+				ene_cambios = ene_cambios + 1; 
+			}
+		}
+		/* contabiliza cambios en rellenos PROMO2 */
+		for (i in ene) {
+			if(document.getElementById("sub"+ene[i]+"_rell2").value != 0) {
+				ene_cambios = ene_cambios + 1; 
+			}
+		}
+		return ene_cambios;
+	}
+
 }
+
+
+
 
 /* SUMA FINAL PARA EL TOTAL DE LA(S) PROMOS PEDIDAS */
 function suma_cambios() {
@@ -1582,11 +1637,11 @@ $(document).ready(function () {
 });
 */
 
-function sweetalert_maximocambio(cmb) {
+/* PARA LA PRIMERA PROMO */
+function sweetalert_maximocambio(cmb,nprom) {
 	var entrega_x = false;
-  	var maxcamb_envolt = document.getElementById("var_valor1").value;	
-	var maxcamb_relle  = document.getElementById("var_valor2").value;
-	var max_env = ncambios_yahechos();
+  	var maxcamb_envolt = document.getElementById("var_valor1").value; /* trae el max cambio q debe hacerse x definicion*/	
+	var max_env = ncambios_yahechos(nprom);  /* nprom es la promo nuemro,.. */
 	/* Nota: cmb=0, implica que esa seleccion fue "--cambia por--" */
 	if(cmb!=0){
    		if(max_env+1 > maxcamb_envolt) {
