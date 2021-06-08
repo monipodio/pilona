@@ -29,7 +29,9 @@
 
 			<div class = "valor-final"> <!-- GRID MUESTRA EL VALOR TOTAL EN LA ESQUINA-->
 				<div>
+					{% if var_valor1 != 0 %}	
 					<p href="#" onclick="oculta_muestra()" class="btn btn-primary" id="disparador" title ="si quiere cambios">cambios?</p>
+					{% endif %}
 				</div>
 
 				<div> <!-- VALOR INVISIBLE TOTAL DE LA(s) PROMO(s) type="hidden"-->

@@ -302,210 +302,6 @@ function ValidarForm() {
 		document.getElementById('reca_cui').style.border = '2px solid red';
 		return false;
 	}
-
-}
-
-function ValidaFichapac() {
-	var medico = document.getElementById("medico").value 
-	var fe_ini = document.getElementById("fe_ini").value 
-	var fono_pcte = document.getElementById("fono_pcte").value 
-	var valor_t1 = document.getElementById("valor_t1").value 
-	var valor_t2 = document.getElementById("valor_t2").value 
-	var valor_t3 = document.getElementById("valor_t3").value 
-	var f_apod = document.getElementById("f_apod").value 
-	var parentes = document.getElementById("parentes").value 
-    var rut  = document.getElementById("rut").value
-    var clasi = document.getElementById("clasi").value 
-	var yace = document.getElementById("yace").value 
-	var correo_apod = document.getElementById("correo_apod").value 
-	var abono_ini = document.getElementById("valor_abono").value
-
-
-	if(rut === "0" || rut === "" || rut === 0-0){
-		alert("El RUT no debe estar en blanco o ser cero");
-		document.getElementById('rut').focus()
-		document.getElementById('rut').style.border = '2px solid red';
-		return false;
-	}
-
-	if(medico === ""){
-		alert("El nombre del MEDICO es obligatorio");
-		document.getElementById('medico').focus()
-		document.getElementById('medico').style.border = '2px solid red';
-		return false;
-	}
-	if(fe_ini === ""){
-		alert("La FECHA DE INICIO del paciente es obligatoria");
-		document.getElementById('fe_ini').focus()
-		document.getElementById('fe_ini').style.border = '2px solid red';
-		return false;
-	}
-	if(fono_pcte === ""){
-		alert("El FONO DEL PACIENTE es obligatorio");
-		document.getElementById('fono_pcte').focus()
-		document.getElementById('fono_pcte').style.border = '2px solid red';
-		return false;
-	}
-
-	if(clasi === "0"){
-		alert("LA CLASIFICACION es obligatoria");
-		document.getElementById('clasi').focus()
-		document.getElementById('clasi').style.border = '2px solid red';
-		return false;
-	}
-
-	if(yace === "6"){
-		alert("LUGAR DONDE SE OTORGA LA PRESTACION es obligatorio"); 
-		document.getElementById('yace').focus()
-		document.getElementById('yace').style.border = '2px solid red';
-		return false;
-	}
-
-
-	if(valor_t1 === ""){
-		alert("TARIFA DE MAÑANA es obligatoria");
-		document.getElementById('valor_t1').focus()
-		document.getElementById('valor_t1').style.border = '2px solid red';
-		return false;
-	}
-	if(valor_t2 === ""){
-		alert("TARIFA DE TARDE es obligatoria");
-		document.getElementById('valor_t2').focus()
-		document.getElementById('valor_t2').style.border = '2px solid red';
-		return false;
-	}
-	if(valor_t3 === ""){
-		alert("TARIFA DE NOCHE es obligatoria");
-		document.getElementById('valor_t3').focus()
-		document.getElementById('valor_t3').style.border = '2px solid red';
-		return false;
-	}
-
-	if(f_apod === ""){
-		alert("FONO APODERADO es obligatorio");
-		document.getElementById('f_apod').focus()
-		document.getElementById('f_apod').style.border = '2px solid red';
-		return false;
-	}
-
-
-	if(parentes === ""){
-		alert("El PARENTEZCO es obligatorio");
-		document.getElementById('parentes').focus()
-		document.getElementById('parentes').style.border = '2px solid red';
-		return false;
-	}
-
-	if(correo_apod === ""){
-		alert("El CORREO DEL APODERADO es obligatorio");
-		document.getElementById('correo_apod').focus()
-		document.getElementById('correo_apod').style.border = '2px solid red';
-		return false;
-	}
-
-	if(abono_ini === "" || abono_ini  === "0" || abono_ini=== 'none') {
-		document.getElementById('abono_inicial').style.border = '2px solid red'; 
-		alert("Una vez grabada esta ficha, deberá volver a la misma e ingresar el monto ABONO INICIAL");
-	} 
-
-}
-
-function ValidaFichacui() {
-	var tipo = document.getElementById("tipo").value 
-	var fe_ini = document.getElementById("fe_ini").value  
-	var direccion = document.getElementById("direccion").value
-	var fono_cuid = document.getElementById("fono_cuid").value 
-	var apago1 = document.getElementById("apago1").value 
-	var apago2 = document.getElementById("apago2").value 
-	var apago3 = document.getElementById("apago3").value 
-    var nombre = document.getElementById("nombre").value
-    var fono_cuid = document.getElementById("fono_cuid").value
-    var afp = document.getElementById("afp").value
-
-
-	if(nombre === ""){
-		alert("El NOMBRE es obligatorio");
-		document.getElementById('nombre').focus()
-		document.getElementById('nombre').style.border = '2px solid red';
-		return false;
-	}
-
-	if(tipo === '0'){
-		alert("El TIPO DE CONTRATO es obligatorio");
-		document.getElementById('tipo').focus()
-		document.getElementById('tipo').style.border = '2px solid red';
-		return false;
-	}
-
-	if(direccion === ''){
-		alert("La DIRECCION es obligatoria");
-		document.getElementById('direccion').focus()
-		document.getElementById('direccion').style.border = '2px solid red';
-		return false;
-	}
-
-	if(fe_ini === ''){
-		alert("La FECHA DE INICIO es obligatoria");
-		document.getElementById('fe_ini').focus()
-		document.getElementById('fe_ini').style.border = '2px solid red';
-		return false;
-	}
-
-	if(fono_cuid === ''){
-		alert("El FONO es obligatorio");
-		document.getElementById('fono_cuid').focus()
-		document.getElementById('fono_cuid').style.border = '2px solid red';
-		return false;
-	}
-
-	if(apago1 === "0" || apago1 === ""){
-		alert("TARIFA DE MAÑANA es obligatoria");
-		document.getElementById('apago1').focus()
-		document.getElementById('apago1').style.border = '2px solid red';
-		return false;
-	}
-	if(apago2 === "0" || apago2 === ""){
-		alert("TARIFA DE TARDE es obligatoria");
-		document.getElementById('apago2').focus()
-		document.getElementById('apago2').style.border = '2px solid red';
-		return false;
-	}
-
-	if(apago3 === "0" || apago3 === ""){
-		alert("TARIFA DE NOCHE es obligatoria");
-		document.getElementById('apago3').focus()
-		document.getElementById('apago3').style.border = '2px solid red';
-		return false;
-	}
-
-	if(afp === ""){
-		alert("Previsión es obligatorio");
-		document.getElementById('afp').focus()
-		document.getElementById('afp').style.border = '2px solid red';
-		return false;
-	}
-}
-
-function ValidaFicha_anti() {
-	var tipabon = document.getElementById("abon").value
-	var banco =   document.getElementById("banco").value
-	var fe_che =  document.getElementById("fecha_cheque").value
-
-	if(tipabon === "0"){
-		alert("TIPO DE ABONO es obligatorio");
-		document.getElementById('abon').focus()
-		document.getElementById('abon').style.border = '2px solid red';
-		return false;
-	}
-
-	if(tipabon == "2" && banco == "9"){
-		alert("Si el abono es CHEQUE, entonces complete los datos de este");
-		document.getElementById('abon').focus()
-		document.getElementById('cheque').style.border = '2px solid red';
-		document.getElementById('banco').style.border = '2px solid red';
-		document.getElementById('fecha_cheque').style.border = '2px solid red';
-		return false;
-	} 
 }
 
 
@@ -928,7 +724,6 @@ $(document).ready(function () {
 		}
 	});
 
-
     $("#id_env2").on('change', function () {   
 	    var cmb = $(this).val();
     	var xx = sweetalert_maximocambio(cmb,1);
@@ -945,6 +740,8 @@ $(document).ready(function () {
     	if(xx == false) {
     		document.getElementById("subtot3").value = cmb; /*hace el cambio*/
  			suma_cambios();
+ 		}else{
+ 			document.getElementById("id_env3").value = "--cambia por--";
  		}
 	});
 
@@ -1053,7 +850,7 @@ $(document).ready(function () {
     /* ENVOLTURAS PROMO2   - pone el subtotal en la columna3 */
     $("#id_env1_2").on('change', function () {            
         var cmb = $(this).val();
-        var xx = sweetalert_maximocambio2(cmb,2);
+        var xx = sweetalert_maximocambio(cmb,2);
     	if(xx == false) {
     		document.getElementById("subtot1_2").value = cmb;
   			suma_cambios();
@@ -1061,152 +858,234 @@ $(document).ready(function () {
 	});
     $("#id_env2_2").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot2_2").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,2);
+    	if(xx == false) {                
+    		document.getElementById("subtot2_2").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
     $("#id_env3_2").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot3_2").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,2);
+    	if(xx == false) {                                
+    		document.getElementById("subtot3_2").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env4_2").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot4_2").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,2);
+    	if(xx == false) {                
+    		document.getElementById("subtot4_2").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env5_2").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot5_2").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,2);        
+    	if(xx == false) {                        
+    		document.getElementById("subtot5_2").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
     $("#id_env6_2").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot6_2").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,2);
+    	if(xx == false) {                
+    		document.getElementById("subtot6_2").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env7_2").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot7_2").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,2);
+    	if(xx == false) {
+    		document.getElementById("subtot7_2").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
     /* RELLENOS PROMO2  - pone el subtotal en la columna3 */
     $("#relle1_tot2").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub1_rell2").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,2);
+    	if(xx == false) {
+    		document.getElementById("sub1_rell2").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle2_tot2").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub2_rell2").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,2);
+    	if(xx == false) {
+    		document.getElementById("sub2_rell2").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle3_tot2").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub3_rell2").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,2);
+    	if(xx == false) {                
+    		document.getElementById("sub3_rell2").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle4_tot2").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub4_rell2").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,2);
+    	if(xx == false) {                
+    		document.getElementById("sub4_rell2").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle5_tot2").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub5_rell2").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,2);
+    	if(xx == false) {                
+    		document.getElementById("sub5_rell2").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle6_tot2").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub6_rell2").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,2);
+    	if(xx == false) {                
+    		document.getElementById("sub6_rell2").value = rell;
+ 			suma_cambios();
+ 		}	
 	});
     $("#relle7_tot2").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub7_rell2").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,2);
+    	if(xx == false) {                
+    		document.getElementById("sub7_rell2").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
 
     /* ENVOLTURAS PROMO3   - pone el subtotal en la columna3 */
     $("#id_env1_3").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot1_3").value = cmb;
-  		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,3);
+    	if(xx == false) {                
+    		document.getElementById("subtot1_3").value = cmb;
+  			suma_cambios();
+  		}
 	});
     $("#id_env2_3").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot2_3").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,3);
+    	if(xx == false) {                                
+    		document.getElementById("subtot2_3").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
     $("#id_env3_3").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot3_3").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,3);
+    	if(xx == false) {                                                
+    		document.getElementById("subtot3_3").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env4_3").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot4_3").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,3);
+    	if(xx == false) {
+    		document.getElementById("subtot4_3").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env5_3").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot5_3").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,3);
+    	if(xx == false) {                
+    		document.getElementById("subtot5_3").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
     $("#id_env6_3").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot6_3").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,3);
+    	if(xx == false) {                
+    		document.getElementById("subtot6_3").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
     $("#id_env7_3").on('change', function () {            
         var cmb = $(this).val();
-    	document.getElementById("subtot7_3").value = cmb;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(cmb,3);
+    	if(xx == false) {                
+    		document.getElementById("subtot7_3").value = cmb;
+ 			suma_cambios();
+ 		}
 	});
 
 
     /* RELLENOS PROMO3 - pone el subtotal en la columna3 */
     $("#relle1_tot3").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub1_rell3").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,3);
+    	if(xx == false) {
+    		document.getElementById("sub1_rell3").value = rell;
+ 			suma_cambios();
+ 		}
 	});
+
     $("#relle2_tot3").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub2_rell3").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,3);
+    	if(xx == false) {                
+    		document.getElementById("sub2_rell3").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle3_tot3").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub3_rell3").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,3);
+       	if(xx == false) {        
+    		document.getElementById("sub3_rell3").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle4_tot3").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub4_rell3").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,3);
+        if(xx == false) {        
+    		document.getElementById("sub4_rell3").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle5_tot3").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub5_rell3").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,3);
+        if(xx == false) {
+    		document.getElementById("sub5_rell3").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle6_tot3").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub6_rell3").value = rell;
- 		suma_cambios();
+        var xx = sweetalert_maximocambio(rell,3);
+        if(xx == false) {
+    		document.getElementById("sub6_rell3").value = rell;
+ 			suma_cambios();
+ 		}
 	});
     $("#relle7_tot3").on('change', function () {            
         var rell = $(this).val();
-    	document.getElementById("sub7_rell3").value = rell;
- 		suma_cambios();
+        var rell = $(this).val();
+        if(xx == false) {
+    		document.getElementById("sub7_rell3").value = rell;
+ 			suma_cambios();
+ 		}
 	});
 
     /* ADICIONALES */
@@ -1246,8 +1125,9 @@ $(document).ready(function () {
 function ncambios_yahechos(nprom) {
 	/* contabiliza cambios en envoltorios PROMO1 */
 	var ene = ['1','2','3','4','5','6','7'];
+
+	/* CONTABILIZA PROMO1 ENVOLTURAS Y RELLENOS */
 	var ene_cambios = 0;
-	/* contabiliza PROMO1 envolturas y rellenos*/
 	if(nprom==1) {
 		for (i in ene) {
 			if(document.getElementById("subtot"+ene[i]).value != 0) {
@@ -1263,10 +1143,11 @@ function ncambios_yahechos(nprom) {
 		return ene_cambios;
 	}
 
-	/* contabiliza PROMO2 envolturas y rellenos*/
+	/* CONTABILIZA PROMO2 ENVOLTURAS Y RELLENOS */
 	if(nprom==2) {
 		for (i in ene) {
-			if(document.getElementById("subtot"+ene[i])+"_2".value != 0) {
+			//zz = document.getElementById("subtot"+ene[i])+"_2";
+			if(document.getElementById("subtot"+ene[i]+"_2").value != 0) {
 				ene_cambios = ene_cambios + 1; 
 			}
 		}
@@ -1276,12 +1157,26 @@ function ncambios_yahechos(nprom) {
 				ene_cambios = ene_cambios + 1; 
 			}
 		}
+ 		return ene_cambios;
+	}
+
+	/* CONTABILIZA PROMO3 ENVOLTURAS Y RELLENOS */
+	if(nprom==3) {
+		for (i in ene) {
+			if(document.getElementById("subtot"+ene[i]+"_3").value != 0) {
+				ene_cambios = ene_cambios + 1; 
+			}
+		}
+		/* contabiliza cambios rellenos PROMO3 */
+		for (i in ene) {
+			if(document.getElementById("sub"+ene[i]+"_rell3").value != 0) {
+				ene_cambios = ene_cambios + 1; 
+			}
+		}
 		return ene_cambios;
 	}
 
 }
-
-
 
 
 /* SUMA FINAL PARA EL TOTAL DE LA(S) PROMOS PEDIDAS */
@@ -1375,6 +1270,7 @@ function suma_cambios() {
 
 /* OCULTA ROLLS (que no alcanzan los 7) */
 $(document).ready(function () {
+	/* PROMO1 ENVOLTORIOS */
 	if(document.getElementById("caja3").value === "readonly") {
 		document.getElementById('caja3').style.display = 'none';
 		document.getElementById('id_env3').style.display = 'none';
@@ -1403,7 +1299,7 @@ $(document).ready(function () {
 		document.getElementById('subtot7').style.display = 'none';
 	}
 	
-	/* RELLENOS */
+	/* PROMO1 RELLENOS */
 	if(document.getElementById("caja3").value === "readonly") {
 		document.getElementById('relle3').style.display = 'none';
 		document.getElementById('relle3_tot').style.display = 'none';
@@ -1488,6 +1384,33 @@ $(document).ready(function () {
 		document.getElementById('relle7_2').style.display = 'none';
 		document.getElementById('relle7_tot2').style.display = 'none';
 		document.getElementById('sub7_rell2').style.display = 'none';
+	}
+
+	/* PROMO3 ENVOLTURAS */
+	if(document.getElementById("caja3_3").value === "readonly") {
+		document.getElementById('caja3_3').style.display = 'none';
+		document.getElementById('id_env3_3').style.display = 'none';
+		document.getElementById('subtot3_3').style.display = 'none';
+	}
+	if(document.getElementById("caja4_3").value === "readonly") {
+		document.getElementById('caja4_3').style.display = 'none';
+		document.getElementById('id_env4_3').style.display = 'none';
+		document.getElementById('subtot4_3').style.display = 'none';
+	}
+	if(document.getElementById("caja5_3").value === "readonly") {
+		document.getElementById('caja5_3').style.display = 'none';
+		document.getElementById('id_env5_3').style.display = 'none';
+		document.getElementById('subtot5_3').style.display = 'none';
+	}
+	if(document.getElementById("caja6_3").value === "readonly") {
+		document.getElementById('caja6_3').style.display = 'none';
+		document.getElementById('id_env6_3').style.display = 'none';
+		document.getElementById('subtot5_3').style.display = 'none';
+	}
+	if(document.getElementById("caja7_3").value === "readonly") {
+		document.getElementById('caja7_3').style.display = 'none';
+		document.getElementById('id_env7_3').style.display = 'none';
+		document.getElementById('subtot7_3').style.display = 'none';
 	}
 
 	/* PROMO3 RELLENOS */
@@ -1637,11 +1560,11 @@ $(document).ready(function () {
 });
 */
 
-/* PARA LA PRIMERA PROMO */
+/* ES LLAMADA DESDE LA LINEA 921  */
 function sweetalert_maximocambio(cmb,nprom) {
 	var entrega_x = false;
   	var maxcamb_envolt = document.getElementById("var_valor1").value; /* trae el max cambio q debe hacerse x definicion*/	
-	var max_env = ncambios_yahechos(nprom);  /* nprom es la promo nuemro,.. */
+	var max_env = ncambios_yahechos(nprom);  /* cambios ya hechos a la promo 'npromo' */
 	/* Nota: cmb=0, implica que esa seleccion fue "--cambia por--" */
 	if(cmb!=0){
    		if(max_env+1 > maxcamb_envolt) {
